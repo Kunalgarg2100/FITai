@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "141119886401",
+    "project_id": "firebase-fitai"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141119886401:android:a12cd66fcd58838e",
+        "android_client_info": {
+          "package_name": "com.example.user.fitai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141119886401-dmic9eu4115svau61584m1sf4afdv4op.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "141119886401-sn9bsue27c77voffuan5ns01o952ltif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.fitai",
+            "certificate_hash": "13f1dfed6fdfda5630e4ff00982a450819661f38"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkmeSSTsTs7-_evKRL4fzaPMn0GCglZmI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
