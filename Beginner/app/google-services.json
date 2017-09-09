@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "622616540918",
+    "project_id": "firebase-beginner"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622616540918:android:56f11ee9a150634e",
+        "android_client_info": {
+          "package_name": "com.example.nirvan.beginner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622616540918-ni4al7k53ckq4im6t10pn76c1loqhedd.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "622616540918-u2u8qool4s7cai6ub5it5t0iplprcoa6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nirvan.beginner",
+            "certificate_hash": "90653d681bcda170653223d18ffbcb8646e0dc59"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOC-fQlTb96yxNG1xLl-7FGxC1QNQu8UQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
