@@ -1,4 +1,4 @@
-package com.example.mohit.signup;
+package com.example.user.fitai;
 
 import org.junit.Test;
 

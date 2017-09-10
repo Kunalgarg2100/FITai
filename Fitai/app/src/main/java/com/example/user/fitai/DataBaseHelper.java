@@ -1,4 +1,4 @@
-package com.example.mohit.signup;
+package com.example.user.fitai;
 
 import android.content.ContentValues;
 import android.content.Context;

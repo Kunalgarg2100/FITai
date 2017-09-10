@@ -1,9 +1,9 @@
-package com.example.mohit.signup;
+package com.example.user.fitai;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class Transition extends AppCompatActivity {
     private static int time_out = 3000;

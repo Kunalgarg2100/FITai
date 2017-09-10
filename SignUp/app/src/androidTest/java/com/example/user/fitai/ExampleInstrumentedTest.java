@@ -1,4 +1,4 @@
-package com.example.mohit.signup;
+package com.example.user.fitai;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

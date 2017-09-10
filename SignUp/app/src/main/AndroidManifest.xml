@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mohit.signup">
+    package="com.example.user.fitai">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -16,54 +16,54 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.user.fitai.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.example.user.fitai.MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Signup"
+            android:name="com.example.user.fitai.Signup"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="com.example.mohit.signup.Signup" />
+                <action android:name="com.example.user.fitai.Signup" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.user.fitai.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="com.example.mohit.signup.LoginActivity" />
+                <action android:name="com.example.user.fitai.LoginActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Transition"
+            android:name="com.example.user.fitai.Transition"
             android:theme="@style/AppTheme2">
             <intent-filter>
-                <action android:name="com.example.mohit.signup.Transition" />
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.example.user.fitai.SignUpActivity"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="com.example.mohit.signup.SignUpActivity" />
+                <action android:name="com.example.user.fitai.SignUpActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Logout"
+            android:name="com.example.user.fitai.Logout"
             android:theme="@style/AppTheme">
         </activity>
     </application>

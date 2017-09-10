@@ -1,143 +1,156 @@
 package com.example.user.fitai;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.database.Cursor;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
-
-    CallbackManager callbackManager;
-    LoginButton loginButton;
-    TextView textView;
-
-    private SignInButton signinbutton;
-    private GoogleSignInOptions gso;
-    private GoogleApiClient mGoogleApiClient;
-    private int RC_SIGN_IN = 100;
-    //private TextView textViewName;
-    //private TextView textViewEmail;
-
+    public static DataBaseHelper myDB;
+    //public static DataBaseHelper myDB;
+    //public DataBaseHelper myDB;
+    EditText username_text, email_text, pass1_text, pass2_text;
+    Button signup_btn, view_data_btn, signup_page_btn;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.fb_activity);
-        callbackManager = CallbackManager.Factory.create();
-        textView = (TextView)findViewById(R.id.textView);
-        loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                textView.setText(
-                        "Login Sucess \n" +
-                        "User ID: " + loginResult.getAccessToken().getUserId()
-                                + "\n" + "Auth Token: " + loginResult.getAccessToken().getToken()
-                );
-            }
+        //myDB = new DataBaseHelper(this);
 
-            @Override
-            public void onCancel()
-            {
-                textView.setText("Login attempt cancelled.");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                textView.setText("Login attempt failed.");
-            }
-        });
-
-        signinbutton = (SignInButton) findViewById(R.id.googlesigninbutton);
-        signinbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signInWithGoogle();
-
-            }
-
-        });
-
+        username_text = (EditText)findViewById(R.id.user_text);
+        email_text = (EditText)findViewById(R.id.email_text);
+        pass1_text = (EditText)findViewById(R.id.pass1_text);
+        pass2_text = (EditText) findViewById(R.id.pass2_text);
+        signup_btn = (Button) findViewById(R.id.signup_btn);
+        view_data_btn = (Button)findViewById(R.id.view_btn);
+        signup_page_btn = (Button)findViewById(R.id.signup_page_btn);
+        newPage();
+        addData();
+        viewData();
     }
-    private void signInWithGoogle() {
-        if (mGoogleApiClient != null) {
-            mGoogleApiClient.disconnect();
-        }
 
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
-
-        final Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleGoogleSignInResult(result);
-        }
-    }
-    //After the signing we are calling this function
-    private void handleGoogleSignInResult(GoogleSignInResult result) {
-        //If the login succeed
-        if (result.isSuccess()) {
-            //Getting google account
-            GoogleSignInAccount acct = result.getSignInAccount();
-            textView = (TextView)findViewById(R.id.textView);
-            textView.setText(
-                    "Login Sucess \n" +
-                            "User ID: " + acct.getDisplayName()
-                            + "\n" + "Email: " + acct.getEmail()
-            );
-
-
-            //Displaying name and email
-            //textViewName.setText(acct.getDisplayName());
-            //textViewEmail.setText(acct.getEmail());
-        } else {
-            Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
-
-        }
-    }
-    private void GooglesignOut() {
-
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
+    public void newPage(){
+        signup_page_btn.setOnClickListener(
+                new View.OnClickListener() {
                     @Override
-                    public void onResult(Status status) {
-
+                    public void onClick(View view) {
+                        Intent it = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(it);
                     }
-                });
+                }
+        );
     }
 
+    public void addData(){
+        signup_btn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String username = username_text.getText().toString();
+                        String email = email_text.getText().toString();
+                        String pass1 = null;
+                        try {
+                            pass1 = SHA1(pass1_text.getText().toString());
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        String pass2 = null;
+                        try {
+                            pass2 = SHA1(pass2_text.getText().toString());
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        if(username.equals("") || email.equals("") || pass1.equals("") || pass2.equals("")){
+                            Toast.makeText(MainActivity.this, "All fields are required", Toast.LENGTH_LONG).show();
+                            return ;
+                        }
+                        if(!pass1.equals(pass2)){
+                            //Toast.makeText(MainActivity.this, "Passwords do not match", Toast.LENGTH_LONG).show();
+                            pass1_text.setError("Passwords do not match!");
+                            return;
+                        }
+                        if(myDB.verifySignup(email, username)==true){
+                            boolean signup = myDB.insertData(username, email, pass1);
+                            if(signup == true)
+                                Toast.makeText(MainActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();
+                            else
+                                Toast.makeText(MainActivity.this, "SignUp not successfull", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Email already exists!!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+    }
 
+    public void viewData(){
+        view_data_btn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Cursor res = myDB.getData();
+                        if(res.getCount() == 0) {
+                            getDialog("Error","Nothing found");
+                            return;
+                        }
+
+                        StringBuffer buffer = new StringBuffer();
+                        while (res.moveToNext()) {
+                            buffer.append("Id :"+ res.getString(0)+"\n");
+                            buffer.append("Username :"+ res.getString(1)+"\n");
+                            buffer.append("Email :"+ res.getString(2)+"\n");
+                            buffer.append("Password :"+ res.getString(3)+"\n\n");
+                        }
+
+                        // Show all data
+                        getDialog("Data",buffer.toString());
+                    }
+                }
+        );
+    }
+
+    public void getDialog(String title, String message){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setCancelable(true);
+        dialog.setTitle(title);
+        dialog.setMessage(message);
+        dialog.show();
+    }
+
+    private static String convertToHex(byte[] data) {
+        StringBuilder buf = new StringBuilder();
+        for (byte b : data) {
+            int halfbyte = (b >>> 4) & 0x0F;
+            int two_halfs = 0;
+            do {
+                buf.append((0 <= halfbyte) && (halfbyte <= 9) ? (char) ('0' + halfbyte) : (char) ('a' + (halfbyte - 10)));
+                halfbyte = b & 0x0F;
+            } while (two_halfs++ < 1);
+        }
+        return buf.toString();
+    }
+
+    public static String SHA1(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] textBytes = text.getBytes("iso-8859-1");
+        md.update(textBytes, 0, textBytes.length);
+        byte[] sha1hash = md.digest();
+        return convertToHex(sha1hash);
+    }
 }

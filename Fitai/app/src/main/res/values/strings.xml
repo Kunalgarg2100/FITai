@@ -2,4 +2,39 @@
     <string name="app_name">Fitai</string>
     <string name="facebook_app_id">1912061792394247</string>
     <string name="fb_login_protocol_scheme">fb1912061792394247</string>
+    <string name="form_user_text">Username</string>
+    <string name="form_email_text">Email</string>
+    <string name="form_pass1_text">Type your password</string>
+    <string name="form_pass2_text">Re-type your password</string>
+    <string name="signup_page_btn">SIgnUp page</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="again_login_password">Re-type Password</string>
+    <string name="action_sign_in">SIGN IN</string>
+    <string name="action_sign_up">New User? SIGNUP</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_user">This username is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_match_password">Passwords does not match</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="title_activity_transition">Transition</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="login_user">Username</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="sign_in">Existing User? SIGN IN</string>
 </resources>

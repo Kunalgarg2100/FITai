@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SignUp</string>
+    <string name="app_name">Fitai</string>
     <string name="form_user_text">Username</string>
     <string name="form_email_text">Email</string>
     <string name="form_pass1_text">Type your password</string>

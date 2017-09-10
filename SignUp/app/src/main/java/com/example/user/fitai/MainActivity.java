@@ -1,6 +1,5 @@
-package com.example.mohit.signup;
+package com.example.user.fitai;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
@@ -14,9 +13,6 @@ import android.widget.Toast;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import com.parse.Parse;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
     public static DataBaseHelper myDB;
