@@ -19,7 +19,9 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
-    DataBaseHelper myDB;
+    public static DataBaseHelper myDB;
+    //public static DataBaseHelper myDB;
+    //public DataBaseHelper myDB;
     EditText username_text, email_text, pass1_text, pass2_text;
     Button signup_btn, view_data_btn, signup_page_btn;
 
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myDB = new DataBaseHelper(this);
+        //myDB = new DataBaseHelper(this);
+
         username_text = (EditText)findViewById(R.id.user_text);
         email_text = (EditText)findViewById(R.id.email_text);
         pass1_text = (EditText)findViewById(R.id.pass1_text);
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             pass1_text.setError("Passwords do not match!");
                             return;
                         }
-                        if(myDB.verifySignup(email)==true){
+                        if(myDB.verifySignup(email, username)==true){
                             boolean signup = myDB.insertData(username, email, pass1);
                             if(signup == true)
                                 Toast.makeText(MainActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();

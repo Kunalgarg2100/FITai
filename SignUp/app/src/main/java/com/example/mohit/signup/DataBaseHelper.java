@@ -46,9 +46,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean verifySignup(String email){
+    public boolean verifySignup(String email, String user){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, null, " EMAIL = ? ", new String[]{email}, null, null, null);
+        Cursor cursor = db.query(TABLE_NAME, null, " EMAIL = ? or USERNAME = ?", new String[]{email, user}, null, null, null);
         if(cursor.getCount()>0)
             return false;
         else
@@ -60,4 +60,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
     }
+
+    public boolean verifyLogin(String user, String pass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, null, " USERNAME = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
+        if(cursor.getCount()==1)
+            return true;
+        else
+            return false;
+    }
+
 }
