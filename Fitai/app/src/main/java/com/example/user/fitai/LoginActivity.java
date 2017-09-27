@@ -295,7 +295,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 editor.putString(Name, email);
                 editor.putString(Pass, password);
                 editor.commit();
-                startActivity(new Intent(LoginActivity.this, Logout.class));
+                startActivity(new Intent(LoginActivity.this, Dashboard.class));
             }
             else{
                 Toast.makeText(LoginActivity.this, "Invalid username or password!!", Toast.LENGTH_LONG).show();
