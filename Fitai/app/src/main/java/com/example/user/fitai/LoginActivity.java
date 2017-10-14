@@ -15,11 +15,13 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +37,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -46,7 +50,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -64,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String MyPREFERENCES = "Session" ;
     public static final String Name = "nameKey";
     public static final String Pass = "passKey";
+    private static final String TAG = "MyActivity";
     private static final int REQUEST_READ_CONTACTS = 0;
 
     CallbackManager callbackManager;
@@ -85,6 +94,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    private Bundle getFacebookData(JSONObject object) {
+        Bundle bundle = new Bundle();
+        try {
+            String id = object.getString("id");
+            URL profile_pic;
+            try {
+                profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
+                bundle.putString("profile_pic", profile_pic.toString());
+                Log.i("djfd", bundle.getString("profile_pic") + "");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            }
+            if (object.has("first_name"))
+                bundle.putString("first_name", object.getString("first_name") + "");
+            if (object.has("last_name"))
+                bundle.putString("last_name", object.getString("last_name") + "");
+            if (object.has("gender"))
+                bundle.putString("gender", object.getString("gender") + "");
+        } catch (Exception e) {
+            Log.d(TAG, "BUNDLE Exception : "+e.toString());
+        }
+        return bundle;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,15 +127,34 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         callbackManager = CallbackManager.Factory.create();
         textView = (TextView)findViewById(R.id.textView);
         loginButton = (LoginButton) findViewById(R.id.login_button);
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                textView.setText(
-                        "Login Sucess \n" +
-                                "User ID: " + loginResult.getAccessToken().getUserId()
-                                + "\n" + "Auth Token: " + loginResult.getAccessToken().getToken()
-                );
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject jsonObject,
+                                                    GraphResponse response) {
+                                Bundle facebookData = getFacebookData(jsonObject);
+                                textView.setText(
+                                        "Login Sucess \n" +
+                                                "first_name " + facebookData.getString("first_name") + "\n" +
+                                                "last_name " + facebookData.getString("last_name") + "\n" +
+                                                "email " + facebookData.getString("email") + "\n" +
+                                                "gender " + facebookData.getString("gender") + "\n" +
+                                                "profile url " +  facebookData.getString("profile_pic"));
+                            }
+                        });
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,first_name,last_name,email,gender");
+                request.setParameters(parameters);
+                request.executeAsync();
             }
+
+
 
             @Override
             public void onCancel()
@@ -492,8 +544,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             textView = (TextView)findViewById(R.id.textView);
             textView.setText(
                     "Login Sucess \n" +
-                            "User ID: " + acct.getDisplayName()
+                            "User Name: " + acct.getDisplayName()
                             + "\n" + "Email: " + acct.getEmail()
+                            + "\n" + "Photo Url: " + acct.getPhotoUrl()
             );
 
 
