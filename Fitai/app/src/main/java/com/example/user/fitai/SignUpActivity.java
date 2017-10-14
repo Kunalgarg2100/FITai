@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -231,16 +232,36 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
                 showProgress(true);
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);
-                boolean signup = LoginActivity.myDB.insertData(user, email, LoginActivity.SHA1(password));
+                //String subject = "Email Cofirmation";
+                //String message = "Thanks for registering on Fitai Finess App.";
+                //SendMail sm = new SendMail(this, email, subject, message);
+                //sm.execute();
+                String pin = generateCode();
+                //startActivity(new Intent(SignUpActivity.this, VerifyEmail.class));
+                Intent intent = new Intent(SignUpActivity.this, VerifyEmail.class);
+                intent.putExtra("Code", pin);
+                intent.putExtra("user", user);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                startActivity(intent);
+                /*boolean signup = LoginActivity.myDB.insertData(user, email, LoginActivity.SHA1(password));
                 if(signup == true)
                     Toast.makeText(SignUpActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(SignUpActivity.this, "SignUp not successfull", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this, "SignUp not successfull", Toast.LENGTH_LONG).show();*/
             }
             else{
                 Toast.makeText(SignUpActivity.this, "Username or Email already exists!!", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private String generateCode(){
+        SecureRandom random = new SecureRandom();
+        int num = random.nextInt(100000);
+        String formatted = String.format("%05d", num);
+        //System.out.println(formatted);
+        return formatted;
     }
 
     private boolean isEmailValid(String email) {
@@ -392,7 +413,8 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             showProgress(false);
 
             if (success) {
-                finish();
+                //finish();
+                //startActivity(new Intent(SignUpActivity.this, VerifyEmail.class));
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
