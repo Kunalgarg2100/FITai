@@ -3,17 +3,26 @@ package com.example.user.fitai;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class VerifyEmail extends AppCompatActivity {
-    TextView textView;
+    TextView textView, resend_btn, error;
     EditText c1,c2,c3,c4,c5;
     Button verify_btn;
-    String code;
+    String code, subject, message, user, email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +30,18 @@ public class VerifyEmail extends AppCompatActivity {
         setContentView(R.layout.activity_logout);
         Intent intent = getIntent();
         code = intent.getStringExtra("Code").trim();
-        String user = intent.getStringExtra("user");
-        String email = intent.getStringExtra("email");
-        String password = intent.getStringExtra("password");
+        user = intent.getStringExtra("user");
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
 
         // Capture the layout's TextView and set the string as its text
         textView = (TextView) findViewById(R.id.code);
-        textView.setText(code);
-        String subject = "Email Cofirmation";
-        String message = "Thanks for registering on Fitai Fitness App.\n"+
-                          "Your Verification code is\n"+
+        resend_btn = (TextView) findViewById(R.id.resend);
+        error = (TextView) findViewById(R.id.error);
+        //textView.setText(code);
+        subject = "Email Cofirmation";
+        message = "Hello "+user + "!!!\nThanks for registering on Fitai Fitness App.\n"+
+                          "Your Verification code is-\n"+
                             code+"\nUse this code to verify your Enail address!!";
         SendMail sm = new SendMail(this, email, subject, message);
         sm.execute();
@@ -40,23 +51,188 @@ public class VerifyEmail extends AppCompatActivity {
         c4 = (EditText) findViewById(R.id.editText6);
         c5 = (EditText) findViewById(R.id.editText11);
         verify_btn = (Button) findViewById(R.id.verify_btn);
-        check_code();
+        //check_code();
+        try {
+            check_code();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        resend_code();
+
+        c1.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                // TODO Auto-generated method stub
+                if(c1.getText().toString().length()==1)     //size as per your requirement
+                {
+                    c2.requestFocus();
+                }
+
+            }
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+        });
+
+        c2.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                // TODO Auto-generated method stub
+                if(c2.getText().toString().length()==1)     //size as per your requirement
+                {
+                    c3.requestFocus();
+                }
+                if(c2.getText().toString().length()==0)     //size as per your requirement
+                {
+                    c1.requestFocus();
+                }
+
+            }
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+        });
+
+        c3.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                // TODO Auto-generated method stub
+                if(c3.getText().toString().length()==1)     //size as per your requirement
+                {
+                    c4.requestFocus();
+                }
+                if(c3.getText().toString().length()==0)     //size as per your requirement
+                {
+                    c2.requestFocus();
+                }
+
+            }
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+        });
+
+        c4.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                // TODO Auto-generated method stub
+                if(c4.getText().toString().length()==1)     //size as per your requirement
+                {
+                    c5.requestFocus();
+                }
+                if(c4.getText().toString().length()==0)     //size as per your requirement
+                {
+                    c3.requestFocus();
+                }
+
+            }
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+        });
+
+        c5.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                // TODO Auto-generated method stub
+                if(c5.getText().toString().length()==0)     //size as per your requirement
+                {
+                    c4.requestFocus();
+                }
+
+            }
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+
+        });
 
     }
 
-    public void check_code(){
+
+
+    public void check_code() throws UnsupportedEncodingException, NoSuchAlgorithmException{
         verify_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String ver_code = c1.getText().toString().trim() +c2.getText().toString().trim() +c3.getText().toString().trim() +c4.getText().toString().trim()+c5.getText().toString().trim();
                 ver_code = ver_code.trim();
-                String ver_code1 = code;
-                if(ver_code == ver_code1){
-                    textView.setText("yes "+ver_code+" "+code);
+                //String ver_code1 = code;
+                if(ver_code.equals(code)){
+                    //textView.setText("yes "+ver_code+" "+code);
+                    boolean signup = false;
+                    try {
+                        signup = LoginActivity.myDB.insertData(user, email, LoginActivity.SHA1(password));
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    if(signup == true) {
+                        Toast.makeText(VerifyEmail.this, "SignUp successfull", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(VerifyEmail.this, LoginActivity.class));
+                    }
+                    else
+                        Toast.makeText(VerifyEmail.this, "SignUp not successfull", Toast.LENGTH_LONG).show();
+
                 } else{
-                    textView.setText("no "+ver_code+" "+code);
+                    error.setText("Verification code is invalid. Please try one more time!");
                 }
             }
         });
     }
+
+    private void resend_code() {
+        resend_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SendMail sm = new SendMail(VerifyEmail.this, email, subject, message);
+                sm.execute();
+                //Toast.makeText(VerifyEmail.this, "Code is Successfully sent", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
