@@ -91,7 +91,7 @@
                 android:textStyle="" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/dashboard_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"

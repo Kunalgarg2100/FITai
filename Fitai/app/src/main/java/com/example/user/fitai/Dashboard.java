@@ -5,20 +5,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.share.Share;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +59,20 @@ public class Dashboard extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+/*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        TextView username = (TextView)header.findViewById(R.id.dashboard_username);
+        TextView useremail = (TextView)header.findViewById(R.id.dashboard_username);
+        username.setText(value);
+        useremail.setText(value1);
+        String personPhotoUrl = sharedpreferences.getString("photoKey", "");
+        ImageView imgProfilePic = (ImageView)header.findViewById(R.id.dashboard_image);
+
+        Glide.with(getApplicationContext()).load(personPhotoUrl)
+                .thumbnail(0.3f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imgProfilePic);
     }
 
     @Override

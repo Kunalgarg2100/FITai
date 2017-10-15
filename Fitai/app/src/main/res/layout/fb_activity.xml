@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Login Status"
-            android:id="@+id/textView"
+            android:id="@+id/dashboard_username"
             android:gravity="center"
             android:textStyle="bold"
             facebook:layout_constraintTop_toTopOf="parent"
@@ -35,7 +35,7 @@
             android:layout_marginLeft="8dp"
             facebook:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="40dp"
-            facebook:layout_constraintTop_toBottomOf="@+id/textView" />
+            facebook:layout_constraintTop_toBottomOf="@+id/dashboard_username" />
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googlesigninbutton"
             android:layout_width="wrap_content"
