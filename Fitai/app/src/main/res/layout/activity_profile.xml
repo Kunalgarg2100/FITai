@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.user.fitai.Profile">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/linearLayout">
+            <ViewFlipper
+                android:id="@+id/v"
+                android:layout_width="fill_parent"
+                android:layout_height="190dp">
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gym1"/>
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gym2"/>
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gym3"/>
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gym4"/>
+                <ImageView
+                    android:id="@+id/image5"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gym5"/>
+                <ImageView
+                    android:id="@+id/image6"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gym6"/>
+            </ViewFlipper>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:onClick="selectImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="115dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/profilepic"
+            android:background="@drawable/circle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout"/>
+
+        <Button
+            android:id="@+id/button_height"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="360dp"
+            android:onClick="heightUpdate"
+            android:text="Height"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_gender"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:onClick="genderUpdate"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Gender"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_height" />
+
+        <Button
+            android:id="@+id/button_weight"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="360dp"
+            android:onClick="weightUpdate"
+            android:text="Weight"
+            android:textSize="10sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_dateOfBirth"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="dateUpdate"
+            android:text="BirthDate"
+            android:textSize="10sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_weight" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="casual"
+            android:text="HELLO, USER"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="100dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/userName4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="11dp"
+            android:text="User Information"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintLeft_toRightOf="@+id/view"
+            app:layout_constraintRight_toLeftOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="100dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
