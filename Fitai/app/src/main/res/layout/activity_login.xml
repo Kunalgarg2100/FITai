@@ -89,7 +89,7 @@
                 android:background="#e62e00"
                 android:text="@string/action_sign_up"
                 android:textStyle="" />
-            
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
