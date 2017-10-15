@@ -52,6 +52,8 @@ import com.google.android.gms.common.api.Status;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -118,22 +120,38 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 } else {
                                     String user_lastname = me.optString("last_name");
                                     String user_firstname = me.optString("first_name");
+                                    String id = me.optString("id");
+                                    String user_gender = me.optString("gender");
+
+                                    URL profile_pic = null;
+                                    try {
+                                        profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
+                                        Log.i("profile_pic", profile_pic + "");
+                                    } catch (MalformedURLException e) {
+                                        e.printStackTrace();
+                                    }
                                     String user_email =response.getJSONObject().optString("email");
                                     SharedPreferences.Editor editor = sharedpreferences.edit();
                                     editor.clear();
                                     editor.putString(Name, user_firstname + " " + user_lastname);
                                     editor.putString(Email,user_email);
+                                    editor.putString(PhotoUrl, profile_pic.toString());
+                                    editor.putString(Gender, user_gender);
+
                                     editor.commit();
                                     Log.d("rt",user_email);
                                     Log.d("ii",sharedpreferences.getString("nameKey", ""));
                                     Log.d("ii",sharedpreferences.getString("emailKey", ""));
+                                    Log.d("ii",sharedpreferences.getString("photoKey", ""));
+                                    Log.d("ii",sharedpreferences.getString("genderKey", ""));
+
                                     startActivity(new Intent(LoginActivity.this, Dashboard.class));
                                 }
                             }
                         });
 
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "last_name,first_name,email");
+                parameters.putString("fields", "last_name,first_name,id,gender,email");
                 request.setParameters(parameters);
                 request.executeAsync();
 

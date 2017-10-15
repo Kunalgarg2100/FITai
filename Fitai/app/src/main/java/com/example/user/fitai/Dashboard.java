@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,6 +33,10 @@ public class Dashboard extends AppCompatActivity
         SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         String value = sharedpreferences.getString("nameKey", "");
         String value1 = sharedpreferences.getString("emailKey", "");
+        Log.d("ii",sharedpreferences.getString("nameKey", ""));
+        Log.d("ii",sharedpreferences.getString("emailKey", ""));
+        Log.d("ii",sharedpreferences.getString("photoKey", ""));
+        Log.d("ii",sharedpreferences.getString("genderKey", ""));
         name = (TextView) findViewById(R.id.username);
         name.setText("name :" + value + "email :" + value1);
 
