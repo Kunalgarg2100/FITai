@@ -15,7 +15,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -53,8 +52,6 @@ import com.google.android.gms.common.api.Status;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -72,6 +69,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String MyPREFERENCES = "Session" ;
     public static final String Name = "nameKey";
     public static final String Pass = "passKey";
+    public static final String Email = "emailKey";
+    public static final String PhotoUrl = "photoKey";
+    public static final String Gender = "genderKey";
     private static final String TAG = "MyActivity";
     private static final int REQUEST_READ_CONTACTS = 0;
 
@@ -94,30 +94,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
-    private Bundle getFacebookData(JSONObject object) {
-        Bundle bundle = new Bundle();
-        try {
-            String id = object.getString("id");
-            URL profile_pic;
-            try {
-                profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
-                bundle.putString("profile_pic", profile_pic.toString());
-                Log.i("djfd", bundle.getString("profile_pic") + "");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                return null;
-            }
-            if (object.has("first_name"))
-                bundle.putString("first_name", object.getString("first_name") + "");
-            if (object.has("last_name"))
-                bundle.putString("last_name", object.getString("last_name") + "");
-            if (object.has("gender"))
-                bundle.putString("gender", object.getString("gender") + "");
-        } catch (Exception e) {
-            Log.d(TAG, "BUNDLE Exception : "+e.toString());
-        }
-        return bundle;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,33 +101,42 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         callbackManager = CallbackManager.Factory.create();
-        textView = (TextView)findViewById(R.id.textView);
         loginButton = (LoginButton) findViewById(R.id.login_button);
-
+        loginButton.setReadPermissions("email");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                GraphRequest request = GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback() {
+                //    String nam,gend;
+
+                GraphRequest request =  GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                             @Override
-                            public void onCompleted(JSONObject jsonObject,
-                                                    GraphResponse response) {
-                                Bundle facebookData = getFacebookData(jsonObject);
-                                textView.setText(
-                                        "Login Sucess \n" +
-                                                "first_name " + facebookData.getString("first_name") + "\n" +
-                                                "last_name " + facebookData.getString("last_name") + "\n" +
-                                                "email " + facebookData.getString("email") + "\n" +
-                                                "gender " + facebookData.getString("gender") + "\n" +
-                                                "profile url " +  facebookData.getString("profile_pic"));
+                            public void onCompleted(JSONObject me, GraphResponse response) {
+
+                                if (response.getError() != null) {
+                                    // handle error
+                                } else {
+                                    String user_lastname = me.optString("last_name");
+                                    String user_firstname = me.optString("first_name");
+                                    String user_email =response.getJSONObject().optString("email");
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.clear();
+                                    editor.putString(Name, user_firstname + " " + user_lastname);
+                                    editor.putString(Email,user_email);
+                                    editor.commit();
+                                    Log.d("rt",user_email);
+                                    Log.d("ii",sharedpreferences.getString("nameKey", ""));
+                                    Log.d("ii",sharedpreferences.getString("emailKey", ""));
+                                    startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                                }
                             }
                         });
 
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,first_name,last_name,email,gender");
+                parameters.putString("fields", "last_name,first_name,email");
                 request.setParameters(parameters);
                 request.executeAsync();
+
             }
 
 
@@ -539,20 +524,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void handleGoogleSignInResult(GoogleSignInResult result) {
         //If the login succeed
         if (result.isSuccess()) {
-            //Getting google account
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
+
+            SharedPreferences.Editor editor = sharedpreferences.edit();
             GoogleSignInAccount acct = result.getSignInAccount();
-            textView = (TextView)findViewById(R.id.textView);
-            textView.setText(
-                    "Login Sucess \n" +
-                            "User Name: " + acct.getDisplayName()
-                            + "\n" + "Email: " + acct.getEmail()
-                            + "\n" + "Photo Url: " + acct.getPhotoUrl()
-            );
 
+            editor.putString(Email, acct.getEmail());
+            editor.putString(Name, acct.getDisplayName());
 
-            //Displaying name and email
-            //textViewName.setText(acct.getDisplayName());
-            //textViewEmail.setText(acct.getEmail());
+            editor.commit();
+            startActivity(new Intent(LoginActivity.this, Dashboard.class));
         } else {
             Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
 
@@ -569,4 +550,3 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 });
     }
 }
-
