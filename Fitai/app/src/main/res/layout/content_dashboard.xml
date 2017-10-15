@@ -8,4 +8,16 @@
     tools:context="com.example.user.fitai.Dashboard"
     tools:showIn="@layout/app_bar_dashboard">
 
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="129dp"
+        android:layout_height="69dp"
+        android:textSize="20dp"
+        android:text="TextView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
