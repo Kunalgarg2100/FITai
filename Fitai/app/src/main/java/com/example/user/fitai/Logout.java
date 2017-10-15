@@ -14,22 +14,8 @@ public class Logout extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
-        logout = (Button)findViewById(R.id.logout_btn);
-        logout();
-    }
-
-    public void logout(){
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = Logout.this;
-                SharedPreferences sharedpreferences = context.getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.clear();
-                editor.apply();
-                startActivity(new Intent(Logout.this, LoginActivity.class));
-            }
-        });
+        //logout = (Button)findViewById(R.id.logout_btn);
+        //logout();
     }
 
 }
