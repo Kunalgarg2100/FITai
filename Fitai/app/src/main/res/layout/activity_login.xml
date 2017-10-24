@@ -94,18 +94,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.39"
-                android:weightSum="1">
+                android:weightSum="1"
+                tools:layout_editor_absoluteY="230dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:overrideLibrary= "">
 
                 <com.facebook.login.widget.LoginButton
                     xmlns:facebook="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/login_button"
                     style="@style/CustomFbButton"
-                    android:layout_width="327dp"
+                    android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="37dp"
                     android:paddingBottom="10sp"
                     android:paddingTop="10sp"
                     android:textSize="16sp"
@@ -113,21 +113,22 @@
                     facebook:layout_constraintLeft_toLeftOf="parent"
                     facebook:layout_constraintRight_toRightOf="parent"
                     facebook:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteY="36dp"
-                    tools:layout_editor_absoluteX="6dp" />
+                    android:layout_marginTop="42dp"
+                    facebook:layout_constraintHorizontal_bias="0.6" />
+
 
                 <com.google.android.gms.common.SignInButton
-                    android:id="@+id/googlesigninbutton"
                     android:layout_width="327dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="31dp"
-                    android:text="Countinue with Google"
-                    facebook:layout_constraintHorizontal_bias="0.454"
+                    android:id="@+id/googlesigninbutton"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true"
+                    android:text="@string/google_sign_up"
                     facebook:layout_constraintLeft_toLeftOf="parent"
                     facebook:layout_constraintRight_toRightOf="parent"
-                    facebook:layout_constraintTop_toBottomOf="@+id/login_button" />
+                    facebook:layout_constraintTop_toBottomOf="@+id/login_button"
+                    android:layout_marginTop="2dp"
+                    facebook:layout_constraintHorizontal_bias="0.6" />
+
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
 

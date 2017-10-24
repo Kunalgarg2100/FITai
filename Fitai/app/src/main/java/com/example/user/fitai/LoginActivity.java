@@ -11,6 +11,8 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -83,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private SignInButton signinbutton;
     private GoogleSignInOptions gso;
-    private GoogleApiClient mGoogleApiClient;
+    public GoogleApiClient mGoogleApiClient;
     private int RC_SIGN_IN = 100;
 
     private static final String[] DUMMY_CREDENTIALS = new String[]{
@@ -95,7 +97,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,72 +112,66 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                //    String nam,gend;
+            loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    //    String nam,gend;
+                        GraphRequest request = GraphRequest.newMeRequest(
+                                loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(JSONObject me, GraphResponse response) {
 
-                GraphRequest request =  GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject me, GraphResponse response) {
+                                        if (response.getError() != null) {
+                                            // handle error
+                                        } else {
+                                            String user_lastname = me.optString("last_name");
+                                            String user_firstname = me.optString("first_name");
+                                            String id = me.optString("id");
+                                            String user_gender = me.optString("gender");
 
-                                if (response.getError() != null) {
-                                    // handle error
-                                } else {
-                                    String user_lastname = me.optString("last_name");
-                                    String user_firstname = me.optString("first_name");
-                                    String id = me.optString("id");
-                                    String user_gender = me.optString("gender");
+                                            URL profile_pic = null;
+                                            try {
+                                                profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
+                                                Log.i("profile_pic", profile_pic + "");
+                                            } catch (MalformedURLException e) {
+                                                e.printStackTrace();
+                                            }
+                                            String user_email = response.getJSONObject().optString("email");
+                                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                                            editor.clear();
+                                            editor.putString(Name, user_firstname + " " + user_lastname);
+                                            editor.putString(Email, user_email);
+                                            editor.putString(PhotoUrl, profile_pic.toString());
+                                            editor.putString(Gender, user_gender);
 
-                                    URL profile_pic = null;
-                                    try {
-                                        profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
-                                        Log.i("profile_pic", profile_pic + "");
-                                    } catch (MalformedURLException e) {
-                                        e.printStackTrace();
+                                            editor.commit();
+                                            Log.d("rt", user_email);
+                                            Log.d("ii", sharedpreferences.getString("nameKey", ""));
+                                            Log.d("ii", sharedpreferences.getString("emailKey", ""));
+                                            Log.d("ii", sharedpreferences.getString("photoKey", ""));
+                                            Log.d("ii", sharedpreferences.getString("genderKey", ""));
+
+                                            startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                                        }
                                     }
-                                    String user_email =response.getJSONObject().optString("email");
-                                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                                    editor.clear();
-                                    editor.putString(Name, user_firstname + " " + user_lastname);
-                                    editor.putString(Email,user_email);
-                                    editor.putString(PhotoUrl, profile_pic.toString());
-                                    editor.putString(Gender, user_gender);
+                                });
 
-                                    editor.commit();
-                                    Log.d("rt",user_email);
-                                    Log.d("ii",sharedpreferences.getString("nameKey", ""));
-                                    Log.d("ii",sharedpreferences.getString("emailKey", ""));
-                                    Log.d("ii",sharedpreferences.getString("photoKey", ""));
-                                    Log.d("ii",sharedpreferences.getString("genderKey", ""));
+                        Bundle parameters = new Bundle();
+                        parameters.putString("fields", "last_name,first_name,id,gender,email");
+                        request.setParameters(parameters);
+                        request.executeAsync();
+                }
 
-                                    startActivity(new Intent(LoginActivity.this, Dashboard.class));
-                                }
-                            }
-                        });
+                @Override
+                public void onCancel() {
+                    textView.setText("Login attempt cancelled.");
+                }
 
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "last_name,first_name,id,gender,email");
-                request.setParameters(parameters);
-                request.executeAsync();
-
-            }
-
-
-
-            @Override
-            public void onCancel()
-            {
-                textView.setText("Login attempt cancelled.");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                textView.setText("Login attempt failed.");
-            }
-        });
-
+                @Override
+                public void onError(FacebookException exception) {
+                    Toast.makeText(LoginActivity.this, "Check your internet connection!!", Toast.LENGTH_LONG).show();
+                }
+            });
         signinbutton = (SignInButton) findViewById(R.id.googlesigninbutton);
         signinbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -567,4 +568,5 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                 });
     }
+
 }

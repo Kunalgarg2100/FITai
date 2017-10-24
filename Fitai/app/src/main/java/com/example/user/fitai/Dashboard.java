@@ -21,11 +21,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView name;
+
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +127,8 @@ public class Dashboard extends AppCompatActivity
             startActivity(new Intent(this, Profile.class));
 
         } else if (id == R.id.nav_slideshow) {
+            startActivity(new Intent(this, Schedule.class));
+
 
         } else if (id == R.id.nav_manage) {
 
@@ -131,6 +141,8 @@ public class Dashboard extends AppCompatActivity
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.clear();
             editor.commit();
+            if(isLoggedIn())
+            LoginManager.getInstance().logOut();
             startActivity(new Intent(Dashboard.this, LoginActivity.class));
         }
 

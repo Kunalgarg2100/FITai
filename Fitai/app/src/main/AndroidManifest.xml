@@ -99,6 +99,14 @@
         <activity
             android:name=".Profile"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".Schedule"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.example.user.fitai.Schedule" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
