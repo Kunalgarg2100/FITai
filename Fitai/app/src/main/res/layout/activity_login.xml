@@ -122,7 +122,6 @@
                     android:id="@+id/googlesigninbutton"
                     android:layout_height="45dp"
                     android:layout_centerInParent="true"
-                    android:text="@string/google_sign_up"
                     facebook:layout_constraintLeft_toLeftOf="parent"
                     facebook:layout_constraintRight_toRightOf="parent"
                     facebook:layout_constraintTop_toBottomOf="@+id/login_button"
