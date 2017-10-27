@@ -3,6 +3,7 @@ package com.example.user.fitai;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -24,6 +25,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -92,6 +96,22 @@ public class Dashboard extends AppCompatActivity
             super.onBackPressed();
         }
     }
+    public void disp() {
+        java.util.Date date= new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int mnth = cal.get(Calendar.MONTH);
+        int yr = cal.get(Calendar.YEAR);
+        int dte = cal.get(Calendar.DATE);
+        int tym = cal.get(Calendar.HOUR);
+        int min = cal.get(Calendar.MINUTE);
+        cal.set(yr, mnth, dte, tym, min);
+        Uri uri = Uri.parse("content://com.android.calendar/time/"
+                + String.valueOf(cal.getTimeInMillis()));
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        // Use the Calendar app to view the time.
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,10 +147,9 @@ public class Dashboard extends AppCompatActivity
             startActivity(new Intent(this, Profile.class));
 
         } else if (id == R.id.nav_slideshow) {
-            startActivity(new Intent(this, Schedule.class));
-
-
+            disp();
         } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(this, TrainingPrograms.class));
 
         } else if (id == R.id.nav_share) {
 

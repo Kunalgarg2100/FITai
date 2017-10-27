@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 @Override
                 public void onCancel() {
-                    textView.setText("Login attempt cancelled.");
+                    Toast.makeText(LoginActivity.this, "Login attempt cancelled!!", Toast.LENGTH_LONG).show();
                 }
 
                 @Override

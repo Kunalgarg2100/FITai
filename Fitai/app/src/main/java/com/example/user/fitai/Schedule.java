@@ -19,16 +19,16 @@ public class Schedule extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedule);
-        Button disp = (Button) findViewById(R.id.dispbut);
+        //setContentView(R.layout.activity_schedule);
+        /*Button disp = (Button) findViewById(R.id.dispbut);
         disp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                disp();
-            }
-        });
+          */      disp();
+            //}
+        //});
     }
 
     public void disp() {

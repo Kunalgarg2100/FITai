@@ -98,12 +98,14 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Profile"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
-            android:name=".Schedule"
-            android:theme="@style/AppTheme">
+            android:name=".TrainingPrograms"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".Dashboard">
+
             <intent-filter>
-                <action android:name="com.example.user.fitai.Schedule" />
+                <action android:name="com.example.user.fitai.TrainingPrograms" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
