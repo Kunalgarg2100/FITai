@@ -10,4 +10,6 @@
     <color name="Transparent">#0000ffff</color>
     <color name="colorWhite">#ffffff</color>
     <color name = "fillMenuIcon">#424242</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
 </resources>

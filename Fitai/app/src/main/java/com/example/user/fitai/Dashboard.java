@@ -25,7 +25,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.user.fitai.fragment.HomeFragment;
 import com.example.user.fitai.fragment.TabsFragment;
 import com.example.user.fitai.fragment.TrainingProgramsFragment;
 import com.facebook.AccessToken;
@@ -154,6 +153,7 @@ public class Dashboard extends AppCompatActivity
             fragment = new TabsFragment();
             getSupportActionBar().setTitle("FITAI");
         } else if (id == R.id.nav_workout_plan) {
+            startActivity(new Intent(this, WorkoutActivity.class));
         } else if (id == R.id.nav_training_programs) {
             fragment = new TrainingProgramsFragment();
             getSupportActionBar().setTitle("Training Programs");
