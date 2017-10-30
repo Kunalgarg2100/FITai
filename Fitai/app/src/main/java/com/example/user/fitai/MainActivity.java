@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         if(myDB.verifySignup(email, username)==true){
-                            boolean signup = myDB.insertData(username, email, pass1);
+                            byte[] image=null;
+                            boolean signup = myDB.insertData(username, email, pass1, image);
                             if(signup == true)
                                 Toast.makeText(MainActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                             else

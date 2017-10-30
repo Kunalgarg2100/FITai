@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by mohit on 28/8/17.
@@ -17,9 +18,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COL_2 = "USERNAME";
     public static final String COL_3 = "EMAIL";
     public static final String COL_4 = "PASSWORD";
+    public static final String COL_5 = "IMAGE";
+    public static final String COL_6 = "HEIGHT";
+    public static final String COL_7 = "WEIGHT";
+    public static final String COL_8 = "DOB";
+    public static final String COL_9 = "GENDER";
+
 
     public DataBaseHelper(Context context) {
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, 3);
     }
 
     @Override
@@ -28,20 +35,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(db);
+        if (newVersion > oldVersion) {
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN IMAGE BLOB");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN HEIGHT REAL");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN WEIGHT REAL");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN DOB INTEGER");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN GENDER TEXT");
+        }
     }
 
-    public boolean insertData(String user, String email, String pass){
+    public boolean insertData(String user, String email, String pass, byte[] image){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, user);
         contentValues.put(COL_3, email);
         contentValues.put(COL_4, pass);
+        contentValues.put(COL_5, image);
         long res = db.insert(TABLE_NAME,  null, contentValues);
-        if(res == -1)
+        if(res == -1) {
+            Log.d("res", "false");
             return false;
+        }
         else
             return true;
     }
@@ -63,11 +80,55 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public boolean verifyLogin(String user, String pass){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, null, " USERNAME = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
-        if(cursor.getCount()==1)
+        Cursor cursor1 = db.query(TABLE_NAME, null, " USERNAME = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
+        Cursor cursor2 = db.query(TABLE_NAME, null, " EMAIL = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
+        if(cursor1.getCount()==1 || cursor2.getCount()==1)
             return true;
         else
             return false;
     }
 
+    public Cursor getEmail(String user){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor1 = db.query(TABLE_NAME, null, "USERNAME = ?", new String []{user}, null, null, null);
+        Cursor cursor2 = db.query(TABLE_NAME, null, "EMAIL = ?", new String []{user}, null, null, null);
+        if(cursor1 != null) {
+            return cursor1;
+        } else if(cursor2 != null){
+            return cursor2;
+        } else{
+            return null;
+        }
+    }
+
+    public void insertImage(byte[] imageBytes) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COL_5, imageBytes);
+        Log.d("dbUri", imageBytes.toString());
+        db.insert(TABLE_NAME, null, cv);
+    }
+
+    // Get the image from SQLite DB
+    // We will just get the last image we just saved for convenience...
+
+    /*public byte[] retreiveImageFromDB() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.query(true, IMAGES_TABLE, new String[]{IMAGE,},
+                null, null, null, null,
+                IMAGE_ID + " DESC", "1");
+        if (cur.moveToFirst()) {
+            byte[] blob = cur.getBlob(cur.getColumnIndex(IMAGE));
+            cur.close();
+            return blob;
+        }
+        cur.close();
+        return null;
+    }*/
+
+    public boolean deleteData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + TABLE_NAME);
+        return true;
+    }
 }

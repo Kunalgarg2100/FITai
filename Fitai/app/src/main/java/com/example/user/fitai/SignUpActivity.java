@@ -112,11 +112,26 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+
+        Button deleteData = (Button) findViewById(R.id.delete_button);
+        deleteData.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(LoginActivity.myDB.deleteData()==true){
+                    Toast.makeText(SignUpActivity.this, "Database deleted successfully!", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(SignUpActivity.this, "Error deleting database!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
     }
 
     private void populateAutoComplete() {
@@ -244,6 +259,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
                 startActivity(intent);
+                finish();
                 /*boolean signup = LoginActivity.myDB.insertData(user, email, LoginActivity.SHA1(password));
                 if(signup == true)
                     Toast.makeText(SignUpActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();

@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
@@ -20,8 +21,10 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -76,6 +79,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String Email = "emailKey";
     public static final String PhotoUrl = "photoKey";
     public static final String Gender = "genderKey";
+    public static final String Height = "heightKey";
+    public static final String Weight = "weightKey";
+    public static final String DOB = "dobKey";
     private static final String TAG = "MyActivity";
     private static final int REQUEST_READ_CONTACTS = 0;
 
@@ -152,6 +158,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                             Log.d("ii", sharedpreferences.getString("genderKey", ""));
 
                                             startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                                            finish();
+
                                         }
                                     }
                                 });
@@ -228,6 +236,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+                finish();
             }
         });
 
@@ -302,8 +311,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
 
-
-
     private void attemptLogin() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         if (mAuthTask != null) {
             return;
@@ -316,6 +323,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String user = null;
+        String uemail = null;
+        String pass = null;
+        byte[] blob = null;
 
         boolean cancel = false;
         View focusView = null;
@@ -346,19 +357,41 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 mAuthTask = new UserLoginTask(email, SHA1(password));
                 mAuthTask.execute((Void) null);
                 Toast.makeText(LoginActivity.this, "Login successfull", Toast.LENGTH_LONG).show();
+                Cursor info = myDB.getEmail(email);
+                if (info.moveToFirst()) {
+                    blob = info.getBlob(info.getColumnIndex("IMAGE"));
+                    user = info.getString(1);
+                    uemail = info.getString(2);
+                    pass = info.getString(3);
+                }
+                if (info == null){
+                    Toast.makeText(LoginActivity.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
+                }
+
+                //image.setImageBitmap(Utils.getImage(blob));
+
+                Log.d("user", user);
+                Log.d("email", uemail);
+                Log.d("pass", pass);
+                Log.d("uri", blob.toString());
+                //Log.d("uri", encoded);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
 
-                editor.putString(Name, email);
-                editor.putString(Pass, password);
+                editor.putString(Name, user);
+                editor.putString(Email, uemail);
+                editor.putString(Pass, pass);
+                String encoded = Base64.encodeToString(blob, Base64.DEFAULT);
+                editor.putString(PhotoUrl, encoded);
                 editor.commit();
+                Log.d("suri", encoded);
                 startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                finish();
             }
             else{
                 Toast.makeText(LoginActivity.this, "Invalid username or password!!", Toast.LENGTH_LONG).show();
             }
         }
     }
-
 
     /**
      * Shows the progress UI and hides the login form.
@@ -553,6 +586,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             editor.commit();
             startActivity(new Intent(LoginActivity.this, Dashboard.class));
+            finish();
+
         } else {
             Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
 
@@ -567,6 +602,28 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Do you want to Exit?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user pressed "yes", then he is allowed to exit from application
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 }

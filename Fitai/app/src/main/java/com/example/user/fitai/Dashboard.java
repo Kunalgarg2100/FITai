@@ -1,6 +1,7 @@
 package com.example.user.fitai;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -14,8 +15,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,7 +39,7 @@ import java.util.Date;
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView name;
+
     private FragmentManager fragmentManager;
     private Fragment fragment = null;
     public boolean isLoggedIn() {
@@ -50,12 +53,41 @@ public class Dashboard extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-        String value = sharedpreferences.getString("nameKey", "");
-        String value1 = sharedpreferences.getString("emailKey", "");
-        Log.d("ii",sharedpreferences.getString("nameKey", ""));
-        Log.d("ii",sharedpreferences.getString("emailKey", ""));
-        Log.d("ii",sharedpreferences.getString("photoKey", ""));
-        Log.d("ii",sharedpreferences.getString("genderKey", ""));
+        String uname = sharedpreferences.getString("nameKey", "");
+        String uemail = sharedpreferences.getString("emailKey", "");
+        String upass = sharedpreferences.getString("passKey", "");
+        String uphoto = sharedpreferences.getString("photoKey", "");
+        byte[] photoByte = Base64.decode(uphoto, Base64.DEFAULT);
+
+        Float height = null, weight = null;
+        Integer dob = null;
+        String gender = null;
+        Log.d("user",uname);
+        /*Cursor userInfo = LoginActivity.myDB.getEmail(uemail);
+        if (userInfo.moveToFirst()) {
+            height = userInfo.getFloat(5);
+            weight = userInfo.getFloat(6);
+            dob = userInfo.getInt(7);
+            gender = userInfo.getString(8);
+        }
+        else if (userInfo == null){
+            Toast.makeText(Dashboard.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
+        }
+        if(height != null || weight != null || dob != null || gender != null){
+            setProfile.setVisibility(View.GONE);
+        } else{
+            setProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Dashboard.this, SetProfile.class));
+                    //finish();
+                }
+            });
+        }*/
+
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -83,16 +115,19 @@ public class Dashboard extends AppCompatActivity
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
         TextView username = (TextView)header.findViewById(R.id.dashboard_username);
         TextView useremail = (TextView)header.findViewById(R.id.dashboard_email);
-        username.setText(value);
-        useremail.setText(value1);
-        String personPhotoUrl = sharedpreferences.getString("photoKey", "");
+        username.setText(uname);
+        useremail.setText(uemail);
+        //String personPhotoUrl = sharedpreferences.getString("photoKey", "");
         ImageView imgProfilePic = (ImageView)header.findViewById(R.id.dashboard_image);
+        //ImageView myImage = (ImageView) findViewById(R.id.imageView);
 
-        Glide.with(getApplicationContext()).load(personPhotoUrl)
+        /*Glide.with(getApplicationContext()).load(personPhotoUrl)
                 .thumbnail(0.3f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgProfilePic);
+                .into(imgProfilePic);*/
+        imgProfilePic.setImageBitmap(Utils.getImage(photoByte));
+        //myImage.setImageBitmap(Utils.getImage(photoByte));
     }
 
     @Override
@@ -101,7 +136,26 @@ public class Dashboard extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(false);
+            builder.setMessage("Do you want to Exit?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user pressed "yes", then he is allowed to exit from application
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
         }
     }
     public void disp() {
@@ -163,17 +217,37 @@ public class Dashboard extends AppCompatActivity
         else if (id == R.id.nav_settings){
             startActivity(new Intent(this, Profile.class));
         }
-        else if (id == R.id.nav_logout){
-            SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.clear();
-            editor.commit();
-            if(isLoggedIn())
-                LoginManager.getInstance().logOut();
-            startActivity(new Intent(Dashboard.this, LoginActivity.class));
-        }
-        else if (id == R.id.nav_chat) {
+        else if (id == R.id.nav_logout)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(false);
+            builder.setMessage("Do you want to Logout?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user pressed "yes", then he is allowed to exit from application
+                    SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.clear();
+                    editor.commit();
+                    if(isLoggedIn())
+                        LoginManager.getInstance().logOut();
+                    startActivity(new Intent(Dashboard.this, LoginActivity.class));
+                    finish();
 
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+            }
+        else if (id == R.id.nav_chat) {
         } else if (id == R.id.nav_invitefriends) {
 
         }

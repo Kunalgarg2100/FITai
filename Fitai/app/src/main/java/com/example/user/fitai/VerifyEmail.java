@@ -1,10 +1,12 @@
 package com.example.user.fitai;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,16 +15,22 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
 public class VerifyEmail extends AppCompatActivity {
+    private static final String TAG = "MyActivity";
     TextView textView, resend_btn, error;
     EditText c1,c2,c3,c4,c5;
     Button verify_btn;
     String code, subject, message, user, email, password;
+    byte[] inputData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +47,13 @@ public class VerifyEmail extends AppCompatActivity {
         resend_btn = (TextView) findViewById(R.id.resend);
         error = (TextView) findViewById(R.id.error);
         //textView.setText(code);
+        Log.d("ii",user);
+        Log.d("hi",email);
+        Log.d("hi",code);
         subject = "Email Cofirmation";
         message = "Hello "+user + "!!!\nThanks for registering on Fitai Fitness App.\n"+
-                          "Your Verification code is-\n"+
-                            code+"\nUse this code to verify your Enail address!!";
+                "Your Verification code is-\n"+
+                code+"\nUse this code to verify your Enail address!!";
         SendMail sm = new SendMail(this, email, subject, message);
         sm.execute();
         c1 = (EditText) findViewById(R.id.editText7);
@@ -197,22 +208,33 @@ public class VerifyEmail extends AppCompatActivity {
         verify_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Uri profile_pic = null;
                 String ver_code = c1.getText().toString().trim() +c2.getText().toString().trim() +c3.getText().toString().trim() +c4.getText().toString().trim()+c5.getText().toString().trim();
                 ver_code = ver_code.trim();
                 //String ver_code1 = code;
+                Uri profile_pic = Uri.parse("android.resource://com.example.user.fitai/drawable/profile");
                 if(ver_code.equals(code)){
                     //textView.setText("yes "+ver_code+" "+code);
                     boolean signup = false;
+                    boolean ins_image;
                     try {
-                        signup = LoginActivity.myDB.insertData(user, email, LoginActivity.SHA1(password));
+                        InputStream iStream = getContentResolver().openInputStream(profile_pic);
+                        inputData = Utils.getBytes(iStream);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        signup = LoginActivity.myDB.insertData(user, email, LoginActivity.SHA1(password), inputData);
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
+                    //ins_image = saveImageInDB(profile_pic);
                     if(signup == true) {
                         Toast.makeText(VerifyEmail.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(VerifyEmail.this, LoginActivity.class));
+                        finish();
                     }
                     else
                         Toast.makeText(VerifyEmail.this, "SignUp not successfull", Toast.LENGTH_LONG).show();
@@ -234,5 +256,37 @@ public class VerifyEmail extends AppCompatActivity {
             }
         });
     }
+
+    Boolean saveImageInDB(Uri selectedImageUri) {
+
+        try {
+            //dbHelper.open();
+            InputStream iStream = getContentResolver().openInputStream(selectedImageUri);
+            byte[] inputData = Utils.getBytes(iStream);
+            Log.d("Uri", inputData.toString());
+            LoginActivity.myDB.insertImage(inputData);
+            //dbHelper.close();
+            return true;
+        } catch (IOException ioe) {
+            Log.e(TAG, "<saveImageInDB> Error : " + ioe.getLocalizedMessage());
+            //dbHelper.close();
+            return false;
+        }
+
+    }
+
+    /*Boolean loadImageFromDB() {
+        try {
+            //dbHelper.open();
+            byte[] bytes = LoginActivity.myDB.retreiveImageFromDB();
+            //dbHelper.close();
+            imgView.setImageBitmap(Utils.getImage(bytes));
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "<loadImageFromDB> Error : " + e.getLocalizedMessage());
+            dbHelper.close();
+            return false;
+        }
+    }*/
 
 }
