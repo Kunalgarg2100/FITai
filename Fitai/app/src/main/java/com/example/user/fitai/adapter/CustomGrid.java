@@ -1,4 +1,4 @@
-package com.example.user.fitai;
+package com.example.user.fitai.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.user.fitai.R;
 
 public class CustomGrid extends BaseAdapter{
     private Context mContext;

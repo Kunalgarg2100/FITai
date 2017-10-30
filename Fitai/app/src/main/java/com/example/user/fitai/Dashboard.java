@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,9 +25,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.user.fitai.fragment.HomeFragment;
+import com.example.user.fitai.fragment.TabsFragment;
+import com.example.user.fitai.fragment.TrainingProgramsFragment;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +38,8 @@ public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView name;
-
+    private FragmentManager fragmentManager;
+    private Fragment fragment = null;
     public boolean isLoggedIn() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
@@ -51,8 +57,6 @@ public class Dashboard extends AppCompatActivity
         Log.d("ii",sharedpreferences.getString("emailKey", ""));
         Log.d("ii",sharedpreferences.getString("photoKey", ""));
         Log.d("ii",sharedpreferences.getString("genderKey", ""));
-        name = (TextView) findViewById(R.id.username);
-        name.setText("name :" + value + "email :" + value1);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +72,18 @@ public class Dashboard extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        fragmentManager = getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragment = new TabsFragment();
+        fragmentTransaction.replace(R.id.main_container_wrapper, fragment);
+        fragmentTransaction.commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header=navigationView.getHeaderView(0);
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
         TextView username = (TextView)header.findViewById(R.id.dashboard_username);
-        TextView useremail = (TextView)header.findViewById(R.id.dashboard_username);
+        TextView useremail = (TextView)header.findViewById(R.id.dashboard_email);
         username.setText(value);
         useremail.setText(value1);
         String personPhotoUrl = sharedpreferences.getString("photoKey", "");
@@ -141,31 +150,40 @@ public class Dashboard extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(this, Profile.class));
-
-        } else if (id == R.id.nav_slideshow) {
+        if (id == R.id.nav_home) {
+            fragment = new TabsFragment();
+            getSupportActionBar().setTitle("FITAI");
+        } else if (id == R.id.nav_workout_plan) {
+        } else if (id == R.id.nav_training_programs) {
+            fragment = new TrainingProgramsFragment();
+            getSupportActionBar().setTitle("Training Programs");
+        } else if (id == R.id.nav_schedule) {
             disp();
-        } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(this, TrainingPrograms.class));
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        } else if (id == R.id.nav_logout){
+        }
+        else if (id == R.id.nav_settings){
+            startActivity(new Intent(this, Profile.class));
+        }
+        else if (id == R.id.nav_logout){
             SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.clear();
             editor.commit();
             if(isLoggedIn())
-            LoginManager.getInstance().logOut();
+                LoginManager.getInstance().logOut();
             startActivity(new Intent(Dashboard.this, LoginActivity.class));
         }
+        else if (id == R.id.nav_chat) {
 
+        } else if (id == R.id.nav_invitefriends) {
+
+        }
+
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_container_wrapper, fragment);
+        transaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        assert drawer != null;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -1,15 +1,20 @@
-package com.example.user.fitai;
+package com.example.user.fitai.fragment;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-public class TrainingPrograms extends AppCompatActivity {
+import com.example.user.fitai.adapter.CustomGrid;
+import com.example.user.fitai.R;
+
+public class TrainingProgramsFragment extends TabsFragment{
     GridView grid;
+    public TrainingProgramsFragment() {
+    }
     String[] web = {
             "Leg",
             "Shoulder",
@@ -46,23 +51,22 @@ public class TrainingPrograms extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_training_programs);
-
-        CustomGrid adapter = new CustomGrid(TrainingPrograms.this, web, imageId);
-        grid=(GridView)findViewById(R.id.grid);
+        View view = inflater.inflate(R.layout.activity_training_programs, container, false);
+        CustomGrid adapter = new CustomGrid(getActivity(), web, imageId);
+        grid = view.findViewById(R.id.grid);
         grid.setAdapter(adapter);
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(TrainingPrograms.this, "You Clicked at " +web[+ position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "You Clicked at " +web[+ position], Toast.LENGTH_SHORT).show();
 
             }
         });
+        return view;
 
     }
-
 }

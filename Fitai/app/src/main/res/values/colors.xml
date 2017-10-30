@@ -7,7 +7,7 @@
     <color name="colorDarkBlue">#000033</color>
     <color name="colorRed">#0099ff</color>
     <color name="black_overlay">#66000000</color>
-    <color name="ColorPrimary">#00897B</color>
-    <color name="ColorPrimaryDark">#00695C</color>
     <color name="Transparent">#0000ffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name = "fillMenuIcon">#424242</color>
 </resources>

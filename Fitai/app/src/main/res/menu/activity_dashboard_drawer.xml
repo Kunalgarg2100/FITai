@@ -3,37 +3,42 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/ic_menu_home"
+            android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_workout_plan"
+            android:icon="@mipmap/ic_menu_progress"
+            android:title="Workout Plans" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_training_programs"
+            android:icon="@mipmap/ic_menu_note"
+            android:title="Training Programs" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_schedule"
+            android:icon="@mipmap/ic_menu_my_calendar"
+            android:title="Schedule" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@mipmap/ic_menu_preferences"
+            android:title="Settings" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/ic_menu_logout"
             android:title="Logout" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_chat"
+                android:icon="@mipmap/ic_menu_start_conversation"
+                android:title="Chat" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_invitefriends"
+                android:icon="@mipmap/ic_menu_invite"
+                android:title="Invite Friends" />
         </menu>
     </item>
 

@@ -26,37 +26,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gym1"/>
+                    android:src="@mipmap/gym1"/>
                 <ImageView
                     android:id="@+id/image2"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gym2"/>
+                    android:src="@mipmap/gym2"/>
                 <ImageView
                     android:id="@+id/image3"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gym3"/>
+                    android:src="@mipmap/gym3"/>
                 <ImageView
                     android:id="@+id/image4"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gym4"/>
+                    android:src="@mipmap/gym4"/>
                 <ImageView
                     android:id="@+id/image5"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gym5"/>
+                    android:src="@mipmap/gym5"/>
                 <ImageView
                     android:id="@+id/image6"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/gym6"/>
+                    android:src="@mipmap/gym6"/>
             </ViewFlipper>
         </LinearLayout>
         <ImageButton

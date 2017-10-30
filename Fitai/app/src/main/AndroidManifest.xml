@@ -66,7 +66,6 @@
             android:theme="@style/AppTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -76,7 +75,6 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="com.example.user.fitai.SignUpActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -91,24 +89,21 @@
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="com.example.user.fitai.fragment.TrainingPrograms" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+
         <activity
             android:name=".VerifyEmail"
             android:parentActivityName=".SignUpActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Profile"
+            android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".TrainingPrograms"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".Dashboard">
 
-            <intent-filter>
-                <action android:name="com.example.user.fitai.TrainingPrograms" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
     </application>
-
 </manifest>
