@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.user.fitai.fragment.HomeFragment;
 import com.example.user.fitai.fragment.TrainingProgramsFragment;
+import com.example.user.fitai.fragment.WorkoutFragment;
+
 public class CustomFragmentPageAdapter extends FragmentPagerAdapter{
     private static final String TAG = CustomFragmentPageAdapter.class.getSimpleName();
     private static final int FRAGMENT_COUNT = 3;
@@ -18,7 +20,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter{
             case 0:
                 return new HomeFragment();
             case 1:
-                return new TrainingProgramsFragment();
+                return new WorkoutFragment();
             case 2:
                 return new TrainingProgramsFragment();
         }

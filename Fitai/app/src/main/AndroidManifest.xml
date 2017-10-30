@@ -91,9 +91,13 @@
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar">
         <intent-filter>
-            <action android:name="com.example.user.fitai.fragment.TrainingPrograms" />
+            <action android:name="com.example.user.fitai.fragment.TrainingProgramsFragment" />
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.user.fitai.fragment.WorkoutFragment" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity
