@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 //import static com.example.user.fitai.R.id.thing_proto;
 
@@ -21,13 +23,13 @@ import android.widget.LinearLayout;
 public class SetProfile extends AppCompatActivity implements View.OnClickListener{
 
     private ViewPager mPager;
-    private int[] layouts = {R.layout.activity_screen0, R.layout.activity_screen1, R.layout.activity_screen2, R.layout.activity_screen3, R.layout.activity_screen4, R.layout.activity_screen5};
+    private int[] layouts = {R.layout.activity_screen1, R.layout.activity_screen2, R.layout.activity_screen3, R.layout.activity_screen4, R.layout.activity_screen5};
     private MpagerAdapter mpagerAdapter;
     private LinearLayout Dots_layout;
     private ImageView[] dots;
     private Button BnNext, BnSkip;
-    public ImageView Bmale, Bfemale;
     public SharedPreferences sharedprefs;
+    //TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +48,6 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
         mPager.setAdapter(mpagerAdapter);
         sharedprefs = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedprefs.edit();
-        // /TextView text = (TextView) findViewById(R.id.gender_text);
-        //text.setText("hello");
-
         Dots_layout = (LinearLayout)findViewById(R.id.dotsLayout);
         BnNext = (Button)findViewById(R.id.bnNext);
         BnSkip = (Button)findViewById(R.id.bnSkip);
@@ -75,39 +74,6 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
                     BnSkip.setVisibility(View.VISIBLE);
                 }
 
-                if(position == 0){
-
-                    Bmale = (ImageView) findViewById(R.id.male_btn);
-                    Bfemale = (ImageView)findViewById(R.id.female_btn);
-                    String gender= sharedprefs.getString(LoginActivity.Gender, "");
-                    if(gender == "male"){
-                        Bmale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.male));
-                    }
-                    else if(gender == "female"){
-                        Bfemale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.female));
-                    }
-                    Bmale.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            SharedPreferences.Editor editor = sharedprefs.edit();
-                            editor.putString(LoginActivity.Gender, "male");
-                            editor.commit();
-                            Bmale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.male));
-                            Bfemale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.female_black));
-                        }
-                    });
-
-                    Bfemale.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            SharedPreferences.Editor editor = sharedprefs.edit();
-                            editor.putString(LoginActivity.Gender, "female");
-                            editor.commit();
-                            Bmale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.male_black));
-                            Bfemale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.female));
-                        }
-                    });
-                }
             }
 
             @Override
@@ -116,31 +82,9 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        /*int current_slide = mPager.getCurrentItem();
-
-        if (current_slide == 1) {
-            Log.d("slide", "first");
-            Bmale = (ImageView) findViewById(R.id.male_btn);
-            Bfemale = (ImageView)findViewById(R.id.female_btn);
-
-            Bmale.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bmale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.male));
-                    Bfemale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.female_black));
-                }
-            });
-
-            Bfemale.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bmale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.male_black));
-                    Bfemale.setImageDrawable(ContextCompat.getDrawable(SetProfile.this, R.drawable.female));
-                }
-            });
-        }*/
 
     }
+
 
     private void createDots(int current_position)
     {
