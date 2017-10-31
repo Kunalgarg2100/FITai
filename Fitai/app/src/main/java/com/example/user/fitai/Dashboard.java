@@ -57,7 +57,8 @@ public class Dashboard extends AppCompatActivity
         String uemail = sharedpreferences.getString("emailKey", "");
         String upass = sharedpreferences.getString("passKey", "");
         String uphoto = sharedpreferences.getString("photoKey", "");
-        byte[] photoByte = Base64.decode(uphoto, Base64.DEFAULT);
+        String fblogin = sharedpreferences.getString("loginKey", "");
+        //byte[] photoByte = Base64.decode(uphoto, Base64.DEFAULT);
 
         Float height = null, weight = null;
         Integer dob = null;
@@ -119,6 +120,16 @@ public class Dashboard extends AppCompatActivity
         useremail.setText(uemail);
         //String personPhotoUrl = sharedpreferences.getString("photoKey", "");
         ImageView imgProfilePic = (ImageView)header.findViewById(R.id.dashboard_image);
+        if(fblogin == "yes"){
+            Glide.with(getApplicationContext()).load(uphoto)
+                .thumbnail(0.3f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imgProfilePic);
+        }else if(fblogin == "no"){
+            byte[] photoByte = Base64.decode(uphoto, Base64.DEFAULT);
+            imgProfilePic.setImageBitmap(Utils.getImage(photoByte));
+        }
         //ImageView myImage = (ImageView) findViewById(R.id.imageView);
 
         /*Glide.with(getApplicationContext()).load(personPhotoUrl)
@@ -126,8 +137,7 @@ public class Dashboard extends AppCompatActivity
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProfilePic);*/
-        imgProfilePic.setImageBitmap(Utils.getImage(photoByte));
-        //myImage.setImageBitmap(Utils.getImage(photoByte));
+        //imgProfilePic.setImageBitmap(Utils.getImage(photoByte));
     }
 
     @Override

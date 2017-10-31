@@ -56,8 +56,13 @@ import com.google.android.gms.common.api.Status;
 
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -82,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String Height = "heightKey";
     public static final String Weight = "weightKey";
     public static final String DOB = "dobKey";
+    public static final String FBLOGIN = "loginKey";
     private static final String TAG = "MyActivity";
     private static final int REQUEST_READ_CONTACTS = 0;
 
@@ -132,10 +138,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                         } else {
                                             String user_lastname = me.optString("last_name");
                                             String user_firstname = me.optString("first_name");
+                                            String user_name = user_firstname + user_lastname;
                                             String id = me.optString("id");
                                             String user_gender = me.optString("gender");
 
                                             URL profile_pic = null;
+                                            Uri user_image = null;
+                                            byte[] inputData = null;
                                             try {
                                                 profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
                                                 Log.i("profile_pic", profile_pic + "");
@@ -143,12 +152,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                                 e.printStackTrace();
                                             }
                                             String user_email = response.getJSONObject().optString("email");
+
+                                            /*try {
+                                                user_image = Uri.parse( profile_pic.toURI().toString() );
+                                            } catch (URISyntaxException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Log.d("user_image", user_image.toString());
+                                            try {
+                                                InputStream iStream = getContentResolver().openInputStream(user_image);
+                                                inputData = Utils.getBytes(iStream);
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                            try {
+                                                inputData = Utils.downloadImage(profile_pic);
+                                            }  catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                            Log.d("input_data", inputData.toString());*/
+                                            boolean verify_signup = LoginActivity.myDB.verifySignup(user_email, user_name);
+                                            if(verify_signup == true) {
+                                                boolean signup = LoginActivity.myDB.insertData(user_name, user_email, null, null);
+                                            }
+
                                             SharedPreferences.Editor editor = sharedpreferences.edit();
                                             editor.clear();
                                             editor.putString(Name, user_firstname + " " + user_lastname);
                                             editor.putString(Email, user_email);
                                             editor.putString(PhotoUrl, profile_pic.toString());
-                                            editor.putString(Gender, user_gender);
+                                            editor.putString(FBLOGIN, "yes");
+                                            //String encoded = Base64.encodeToString(inputData, Base64.DEFAULT);
+                                            //editor.putString(PhotoUrl, encoded);
+                                            //editor.putString(Gender, user_gender);
 
                                             editor.commit();
                                             Log.d("rt", user_email);
@@ -382,6 +418,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 editor.putString(Pass, pass);
                 String encoded = Base64.encodeToString(blob, Base64.DEFAULT);
                 editor.putString(PhotoUrl, encoded);
+                editor.putString(FBLOGIN, "no");
                 editor.commit();
                 Log.d("suri", encoded);
                 startActivity(new Intent(LoginActivity.this, Dashboard.class));

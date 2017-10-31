@@ -443,5 +443,11 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             showProgress(false);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+        finish();
+    }
 }
 

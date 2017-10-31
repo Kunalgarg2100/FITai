@@ -213,6 +213,7 @@ public class VerifyEmail extends AppCompatActivity {
                 ver_code = ver_code.trim();
                 //String ver_code1 = code;
                 Uri profile_pic = Uri.parse("android.resource://com.example.user.fitai/drawable/profile");
+                Log.d("profile_pic", profile_pic.toString());
                 if(ver_code.equals(code)){
                     //textView.setText("yes "+ver_code+" "+code);
                     boolean signup = false;

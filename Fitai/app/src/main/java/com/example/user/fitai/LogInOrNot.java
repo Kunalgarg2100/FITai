@@ -15,7 +15,7 @@ public class LogInOrNot extends AppCompatActivity {
         SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         String username = sharedpreferences.getString("nameKey",null);
         String password = sharedpreferences.getString("passKey",null);
-        if(username != null && password != null){
+        if(username != null){
             startActivity(new Intent(LogInOrNot.this, Dashboard.class));
             finish();
         } else{
