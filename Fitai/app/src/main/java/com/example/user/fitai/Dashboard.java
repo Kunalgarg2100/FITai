@@ -258,6 +258,7 @@ public class Dashboard extends AppCompatActivity
             alert.show();
             }
         else if (id == R.id.nav_chat) {
+            startActivity(new Intent(this, ChatActivity.class));
         } else if (id == R.id.nav_invitefriends) {
 
         }

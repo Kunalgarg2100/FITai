@@ -117,10 +117,13 @@
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme2" />
 
+        <activity android:name=".ChatActivity"
+            android:label="ChatBot"
+            android:theme="@style/AppTheme" />
+
         <activity
             android:name=".WorkoutActivity"
             android:label="@string/title_activity_workout"
-
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
 
