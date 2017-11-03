@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.user.fitai.fragment.GraphFragment;
+import com.example.user.fitai.fragment.ScheduleFragment;
 import com.example.user.fitai.fragment.TabsFragment;
 import com.example.user.fitai.fragment.TrainingProgramsFragment;
 import com.facebook.AccessToken;
@@ -94,8 +96,25 @@ public class Dashboard extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Dashboard.this);
+                builder.setCancelable(false);
+                builder.setMessage("Start Chat?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user pressed "yes", then he is allowed to exit from application
+                        startActivity(new Intent(Dashboard.this, ChatActivity.class));
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user select "No", just cancel this dialog and continue with app
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 
@@ -214,13 +233,16 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            startActivity(new Intent(this, HomeActivity.class));
+        }else if(id == R.id.nav_dashboard){
             fragment = new TabsFragment();
-            getSupportActionBar().setTitle("FITAI");
-        } else if (id == R.id.nav_workout_plan) {
+            getSupportActionBar().setTitle("Dashboard");
+        }
+        else if (id == R.id.nav_workout_plan) {
             startActivity(new Intent(this, WorkoutActivity.class));
         } else if (id == R.id.nav_training_programs) {
-            fragment = new TrainingProgramsFragment();
-            getSupportActionBar().setTitle("Training Programs");
+            fragment = new ScheduleFragment();
+            getSupportActionBar().setTitle("Dashboard");
         } else if (id == R.id.nav_schedule) {
             disp();
         }
@@ -257,10 +279,10 @@ public class Dashboard extends AppCompatActivity
             AlertDialog alert = builder.create();
             alert.show();
             }
-        else if (id == R.id.nav_chat) {
+        else if (id == R.id.nav_support) {
             startActivity(new Intent(this, ChatActivity.class));
-        } else if (id == R.id.nav_invitefriends) {
-
+        } else if (id == R.id.nav_faqs) {
+            startActivity(new Intent(this, GraphActivity.class));
         }
 
 

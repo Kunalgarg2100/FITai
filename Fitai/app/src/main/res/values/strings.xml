@@ -9,6 +9,11 @@
     <string name="signup_page_btn">SIgnUp page</string>
     <string name="title_activity_login">Sign in</string>
 
+    <!-- Strings related to transition page -->
+    <string name="app_logo">App Logo</string>
+    <string name="logo_subtitle1">Variance.AI</string>
+    <string name="logo_subtitle2">Making Fitness a habit</string>
+
     <!-- Strings related to login -->
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>

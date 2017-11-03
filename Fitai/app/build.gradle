@@ -30,6 +30,7 @@ android {
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -49,6 +50,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:1.2.1'
     compile 'com.android.support:cardview-v7:26.+'
     compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'me.himanshusoni.chatmessageview:chat-message-view:1.0.3'
     testCompile 'junit:junit:4.12'
 }
