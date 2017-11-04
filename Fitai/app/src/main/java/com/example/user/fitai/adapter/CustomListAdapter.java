@@ -1,4 +1,4 @@
-package com.example.user.fitai;
+package com.example.user.fitai.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.user.fitai.R;
 
 /**
  * Created by mohit on 3/11/17.
@@ -36,7 +38,7 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         TextView extratxt = (TextView) rowView.findViewById(R.id.textView1);
 
         txtTitle.setText(itemname[position]);
-        imageView.setImageResource(imgid[position]);
+//        imageView.setImageResource(imgid[position]);
         extratxt.setText("Description "+itemname[position]);
         return rowView;
 

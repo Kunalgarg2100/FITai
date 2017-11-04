@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import com.example.user.fitai.adapter.MpagerAdapter;
 
 //import static com.example.user.fitai.R.id.thing_proto;
 
@@ -44,7 +44,7 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_set_profile);
 
         mPager = (ViewPager) findViewById(R.id.viewPager);
-        mpagerAdapter = new MpagerAdapter(layouts,this);
+        mpagerAdapter = new MpagerAdapter(layouts,this,SetProfile.this);
         mPager.setAdapter(mpagerAdapter);
         sharedprefs = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedprefs.edit();
