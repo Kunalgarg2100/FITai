@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String Weight = "weightKey";
     public static final String DOB = "dobKey";
     public static final String FBLOGIN = "loginKey";
+    public static final String PLACE = "placeKey";
     private static final String TAG = "MyActivity";
     private static final int REQUEST_READ_CONTACTS = 0;
 

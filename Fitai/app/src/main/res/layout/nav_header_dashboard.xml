@@ -18,8 +18,8 @@
         android:layout_height="90dp"
         android:id="@+id/dashboard_image"
         android:src="@drawable/profile"
-        app:border_color="@android:color/black"
-        app:border_width="2dp" />
+        app:border_color="@android:color/white"
+        app:border_width="3dp" />
 
     <LinearLayout
         android:layout_width="246dp"

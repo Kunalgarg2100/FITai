@@ -26,7 +26,7 @@
     <color name="dot_dark_screen5">#3E2723</color>
 
     <color name="dot_light_screen1">#F8BBD0</color>
-    <color name="dot_light_screen2">#E1BEE7</color>
+    <color name="dot_light_screen2">#d4a2dd</color>
     <color name="dot_light_screen3">#B0CBC4</color>
     <color name="dot_light_screen4">#FFE0B2</color>
     <color name="dot_light_screen5">#A1887F</color>
@@ -48,5 +48,8 @@
     </array>
     <color name="active_dots">#fffafa</color>
     <color name="inactive_dots">#83878b</color>
+
+    <color name="inactive">#000066</color>
+    <color name="active">#ffffff</color>
 
 </resources>

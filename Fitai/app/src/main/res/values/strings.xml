@@ -44,4 +44,21 @@
     <string name="instruction_head">START</string>
     <string name="backdrop_title"> THE ONLY BAD WORKOUT IS THE WORKOUT YOU DID NOT DO</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
+
+    <string-array name="title">
+        <item>Weight loss</item>
+        <item>Flexibility</item>
+        <item>Muscles shaper</item>
+        <item>Regular fitness</item>
+        <item>Meditation</item>
+    </string-array>
+
+    <string-array name="title_descrition">
+        <item>Get yourself slim</item>
+        <item>Get yourself slim</item>
+        <item>Get yourself slim</item>
+        <item>Get yourself slim</item>
+        <item>Get yourself slim</item>
+    </string-array>
+
 </resources>
