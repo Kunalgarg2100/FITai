@@ -64,4 +64,24 @@
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
+    <style name="profile_textview1">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>/>
+        <item name="android:textSize">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/dot_dark_screen3</item>
+        <item name="android:textColor">#ffffff</item>/>
+    </style>
+
+    <style name="profile_textview2">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>/>
+        <item name="android:textSize">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/dot_dark_screen1</item>
+        <item name="android:textColor">#000</item>/>
+    </style>
+
 </resources>
