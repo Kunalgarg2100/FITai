@@ -1,6 +1,7 @@
 package com.example.user.fitai.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.user.fitai.GraphActivity;
 import com.example.user.fitai.R;
+import com.example.user.fitai.SignUpActivity;
+import com.example.user.fitai.VerifyEmail;
 
 import java.util.List;
 
@@ -77,8 +81,9 @@ public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyView
     }
     public void do_whatever_you_want(View view, Workout workout)
     {
-        Toast.makeText(view.getContext(),workout.getName()+" was clicked!!", Toast.LENGTH_LONG).show();
-
+        Intent intent = new Intent(view.getContext(), GraphActivity.class);
+        intent.putExtra("title", workout.getName());
+        mContext.startActivity(intent);
     }
 
 

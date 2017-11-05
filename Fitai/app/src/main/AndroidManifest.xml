@@ -137,19 +137,11 @@
         <activity
             android:name=".GraphActivity"
             android:label="Graphs"
-            android:parentActivityName=".Dashboard"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
 
         <activity
             android:name=".HomeActivity"
-            android:label="Home"
-            android:parentActivityName=".Dashboard"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/AppTheme" />
-
-        <activity
-            android:name=".fragment.ScheduleFragment"
             android:label="Home"
             android:parentActivityName=".Dashboard"
             android:configChanges="keyboardHidden|orientation|screenSize"

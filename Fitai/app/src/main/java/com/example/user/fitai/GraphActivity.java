@@ -5,8 +5,10 @@ package com.example.user.fitai;
  */
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 
@@ -19,11 +21,16 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 public class GraphActivity extends AppCompatActivity{
-
+    String title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        Intent intent = getIntent();
+        title = intent.getStringExtra("title");
+        ab.setTitle("Graph of " + title);
+
         BarChart chart = (BarChart) findViewById(R.id.chart);
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
