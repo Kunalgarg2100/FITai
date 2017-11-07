@@ -141,7 +141,7 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".AboutActivity"
             android:label="Home"
             android:parentActivityName=".Dashboard"
             android:configChanges="keyboardHidden|orientation|screenSize"
