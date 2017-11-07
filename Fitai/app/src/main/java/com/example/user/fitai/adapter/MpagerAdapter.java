@@ -218,7 +218,7 @@ public class MpagerAdapter extends PagerAdapter {
                         R.drawable.body7,
                         R.drawable.body8,
                 };
-                CustomListAdapter adapter=new CustomListAdapter(activity, itemname, imgid);
+                CustomCardAdapter adapter=new CustomCardAdapter(activity, itemname, imgid);
                 list=(ListView) view.findViewById(R.id.list);
                 list.setAdapter(adapter);
 

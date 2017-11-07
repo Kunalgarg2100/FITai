@@ -53,6 +53,7 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'me.himanshusoni.chatmessageview:chat-message-view:1.0.3'
     testCompile 'junit:junit:4.12'
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
 }
 
 configurations.all {

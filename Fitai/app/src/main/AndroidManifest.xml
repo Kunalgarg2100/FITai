@@ -146,6 +146,14 @@
             android:parentActivityName=".Dashboard"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name=".ListActivity"
+            android:theme="@style/AppTheme"
+            android:label="Videos"
+            android:parentActivityName=".WorkoutActivity"
+            />
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/AppTheme" />
     </application>
 </manifest>

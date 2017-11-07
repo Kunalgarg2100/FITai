@@ -1,5 +1,6 @@
 package com.example.user.fitai.adapter;
 
+import com.example.user.fitai.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -81,9 +82,14 @@ public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyView
     }
     public void do_whatever_you_want(View view, Workout workout)
     {
+        Intent intent = new Intent(view.getContext(), ListActivity.class);
+        intent.putExtra("ID_OF_CALLER","zumba.json");
+        mContext.startActivity(intent);
+        /*
         Intent intent = new Intent(view.getContext(), GraphActivity.class);
         intent.putExtra("title", workout.getName());
         mContext.startActivity(intent);
+        */
     }
 
 
