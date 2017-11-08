@@ -80,7 +80,29 @@ public class ChatActivity extends AppCompatActivity{
             mimicOtherMessage("Hello! How can I help you?");
         }
         else if(message.equals("Goodbye") || message.equals("goodbye")) {
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(false);
+            builder.setMessage("Exit Chat?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user pressed "yes", then he is allowed to exit from application
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+            //finish();
+        }
+        else if(message.equals("Who is chutiya?") || message.equals("gandu kaun h?")) {
+            mimicOtherMessage("Kunal k sivaay kaun ho sakta h");
         }
         else {
             mimicOtherMessage("I am Fitai :-)");

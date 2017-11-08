@@ -17,18 +17,23 @@ import android.widget.LinearLayout;
 
 import com.example.user.fitai.adapter.MpagerAdapter;
 
+import java.util.Calendar;
+
 //import static com.example.user.fitai.R.id.thing_proto;
 
 
 public class SetProfile extends AppCompatActivity implements View.OnClickListener{
 
     private ViewPager mPager;
-    private int[] layouts = {R.layout.activity_screen1, R.layout.activity_screen2, R.layout.activity_screen3, R.layout.activity_screen4, R.layout.activity_screen5};
+    private int[] layouts = {R.layout.activity_screen1, R.layout.activity_screen2, R.layout.activity_screen3};
     private MpagerAdapter mpagerAdapter;
     private LinearLayout Dots_layout;
     private ImageView[] dots;
     private Button BnNext, BnSkip;
     public SharedPreferences sharedprefs;
+    int year_x,month_x,day_x;
+    static final int DIALOG_ID = 0;
+    public String weight_unit, weight_val, height_unit, height_val, user, age_val;
     //TextView text;
 
     @Override
@@ -127,10 +132,18 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
     }
 
     private void loadHome(){
-        SharedPreferences.Editor editor = sharedprefs.edit();
-        editor.putString(LoginActivity.Gender, null);
-        editor.commit();
         startActivity(new Intent(this, Dashboard.class));
+        finish();
+    }
+
+    private void loadGoals(){
+        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+        user= sharedprefs.getString(LoginActivity.Name, "");
+        age_val = sharedprefs.getString(LoginActivity.DOB, "");
+        startActivity(new Intent(this, GoalsActivity.class));
         finish();
     }
 
@@ -140,7 +153,15 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
             mPager.setCurrentItem(next_slide);
         }
         else{
-            loadHome();
+            loadGoals();
         }
+    }
+
+    public void dateUpdate(View view) {
+        final Calendar cal = Calendar.getInstance();
+        year_x = cal.get(Calendar.YEAR);
+        month_x = cal.get(Calendar.MONTH);
+        day_x = cal.get(Calendar.DAY_OF_MONTH);
+        showDialog(DIALOG_ID);
     }
 }
