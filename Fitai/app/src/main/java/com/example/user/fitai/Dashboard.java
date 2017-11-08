@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -28,10 +27,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.user.fitai.fragment.GraphFragment;
 import com.example.user.fitai.fragment.ScheduleFragment;
 import com.example.user.fitai.fragment.TabsFragment;
-import com.example.user.fitai.fragment.TrainingProgramsFragment;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 
@@ -233,7 +230,7 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, AboutActivity.class));
         }else if(id == R.id.nav_dashboard){
             fragment = new TabsFragment();
             getSupportActionBar().setTitle("Dashboard");

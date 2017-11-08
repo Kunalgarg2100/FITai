@@ -1,6 +1,5 @@
 package com.example.user.fitai.adapter;
 
-import com.example.user.fitai.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -9,22 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.user.fitai.GraphActivity;
+import com.example.user.fitai.ListActivity;
 import com.example.user.fitai.R;
-import com.example.user.fitai.SignUpActivity;
-import com.example.user.fitai.VerifyEmail;
 
 import java.util.List;
 
 /**
- * Created by nirvan on 25/10/17.
+ * Created by kunal on 8/11/17.
  */
 
-public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyViewHolder> {
-
+public class CustomWorkoutsAdapter extends RecyclerView.Adapter<CustomWorkoutsAdapter.MyViewHolder> {
     private Context mContext;
     private List<Workout> workoutList;
 
@@ -50,21 +46,21 @@ public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyView
     }
 
 
-    public WorkoutsAdapter(Context mContext, List<Workout> workoutList) {
+    public CustomWorkoutsAdapter(Context mContext, List<Workout> workoutList) {
         this.mContext = mContext;
         this.workoutList = workoutList;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CustomWorkoutsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.album_card, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new CustomWorkoutsAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final CustomWorkoutsAdapter.MyViewHolder holder, int position) {
         final Workout workout = workoutList.get(position);
         holder.title.setText(workout.getName());
         holder.descript.setText(workout.getDescription());
@@ -85,12 +81,9 @@ public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyView
         Intent intent = new Intent(view.getContext(), ListActivity.class);
         intent.putExtra("ID_OF_CALLER","zumba.json");
         mContext.startActivity(intent);
-        /*
-        Intent intent = new Intent(view.getContext(), GraphActivity.class);
-        intent.putExtra("title", workout.getName());
-        mContext.startActivity(intent);
-        */
+
     }
+
 
 
     @Override

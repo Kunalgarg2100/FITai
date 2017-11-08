@@ -139,11 +139,10 @@
             android:name=".GraphActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Graphs"
-            android:parentActivityName=".Dashboard"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".HomeActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name=".AboutActivity"
             android:label="Home"
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
