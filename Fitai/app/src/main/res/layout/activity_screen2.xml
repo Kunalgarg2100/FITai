@@ -46,16 +46,16 @@
                     android:layout_marginLeft="8dp" />
 
             </android.support.constraint.ConstraintLayout>
+
             <TextView
                 android:id="@+id/text_age"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@color/dot_light_screen2"
+                android:gravity="center"
                 android:text="20"
                 android:textColor="#000066"
-                android:textSize="40sp"
-                android:gravity="center"
-                android:onClick="dateUpdate"
-                android:background="@color/dot_light_screen2"/>
+                android:textSize="40sp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="30dp" />
@@ -127,7 +127,6 @@
                 android:layout_height="50dp"
                 android:background="@color/dot_light_screen2"
                 android:gravity="center"
-                android:onClick="weightUpdate"
                 android:text="20"
                 android:textColor="#000066"
                 android:textSize="40sp" />
@@ -188,7 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="INCH"
+                    android:text="FEET"
                     android:gravity="center"
                     android:textSize="30dp"
                     android:textColor="#ffffff"
@@ -207,7 +206,6 @@
                 android:textColor="#000066"
                 android:textSize="40sp"
                 android:gravity="center"
-                android:onClick="weightUpdate"
                 android:background="@color/dot_light_screen2"/>
 
         </LinearLayout>

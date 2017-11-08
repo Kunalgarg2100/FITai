@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -40,27 +40,27 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/app_icon"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="com.example.user.fitai.MainActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="com.example.user.fitai.LoginActivity" />
 
@@ -72,16 +72,18 @@
             android:theme="@style/AppTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:parentActivityName=".LoginActivity"
             android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="com.example.user.fitai.SignUpActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -94,63 +96,78 @@
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter>
-            <action android:name="com.example.user.fitai.fragment.TrainingProgramsFragment" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.user.fitai.fragment.TrainingProgramsFragment" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="com.example.user.fitai.fragment.WorkoutFragment" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".VerifyEmail"
             android:parentActivityName=".SignUpActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Profile"
-            android:label="@string/title_activity_profile"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_profile"
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".LogInOrNot"
             android:theme="@style/AppTheme" />
-
-        <activity android:name=".SetProfile"
+        <activity
+            android:name=".SetProfile"
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme2" />
-
-        <activity android:name=".ChatActivity"
-            android:label="ChatBot"
+        <activity
+            android:name=".ChatActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="ChatBot"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".WorkoutActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_workout"
             android:parentActivityName=".Dashboard"
-            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".GraphActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Graphs"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".AboutActivity"
             android:label="Home"
             android:parentActivityName=".Dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".fragment.ScheduleFragment"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Home"
+            android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ListActivity"
+            android:name=".GoalsActivity"
+            android:label="Fitness Goals"
+            android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".VideoActivity"
+            android:name=".RecommendActivity"
+            android:label="Recommended Workouts"
+            android:parentActivityName=".GoalsActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ProgramActivity"
+            android:parentActivityName=".RecommendActivity"
+            android:label="Programs"
             android:theme="@style/AppTheme" />
     </application>
+
 </manifest>

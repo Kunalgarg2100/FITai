@@ -84,9 +84,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String Email = "emailKey";
     public static final String PhotoUrl = "photoKey";
     public static final String Gender = "genderKey";
-    public static final String Height = "heightKey";
-    public static final String Weight = "weightKey";
+    //public static final String Height = "heightKey";
+    //public static final String Weight = "weightKey";
     public static final String DOB = "dobKey";
+    public static final String WEIGHT_UNIT = "weightUnitKey";
+    public static final String WEIGHT_VAL = "weightValKey";
+    public static final String HEIGHT_UNIT = "heightUnitKey";
+    public static final String HEIGHT_VAL = "heightValKey";
     public static final String FBLOGIN = "loginKey";
     public static final String PLACE = "placeKey";
     private static final String TAG = "MyActivity";
@@ -618,9 +622,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             SharedPreferences.Editor editor = sharedpreferences.edit();
             GoogleSignInAccount acct = result.getSignInAccount();
-
+            /*Uri photo_uri = acct.getPhotoUrl();
+            Log.d("photo_uri", photo_uri.toString());
+            InputStream iStream = null;
+            byte[] inputData = null;
+            try {
+                iStream = getContentResolver().openInputStream(photo_uri);
+                inputData = Utils.getBytes(iStream);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String encoded = Base64.encodeToString(inputData, Base64.DEFAULT);*/
             editor.putString(Email, acct.getEmail());
             editor.putString(Name, acct.getDisplayName());
+            //editor.putString(PhotoUrl, encoded);
+            //editor.putString(FBLOGIN, "no");
 
             editor.commit();
             startActivity(new Intent(LoginActivity.this, Dashboard.class));
