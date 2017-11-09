@@ -3,6 +3,7 @@ package com.example.user.fitai;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,6 +34,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -127,6 +131,37 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        final Button terms_button = (Button) findViewById(R.id.tnc_button);
+        terms_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog d = new Dialog(SignUpActivity.this);
+                d.setContentView(R.layout.terms_and_conditions);
+                Button b = (Button) d.findViewById(R.id.exit_tnc_button);
+                TextView textview = (TextView) d.findViewById(R.id.display_tnc);
+                String text = "";
+                try {
+                    InputStream is = getAssets().open("terms-and-conditions-template.txt");
+                    int size = is.available();
+                    byte[] buffer = new byte[size];
+                    is.read(buffer);
+                    is.close();
+                    text = new String(buffer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                b.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        d.dismiss();
+                    }
+                });
+                textview.setText(text);
+                textview.setGravity(Gravity.CENTER);
+                d.show();
             }
         });
 
