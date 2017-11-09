@@ -56,7 +56,7 @@ public class GoalsActivity extends AppCompatActivity {
                                     int position, long id) {
                 // TODO Auto-generated method stub
                 String Slecteditem= itemname[position].trim();
-                //Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
                 if (Goals.contains(Slecteditem)) {
                     parent.getChildAt(position).setBackgroundResource(R.drawable.list_element);
                     Goals.remove(Slecteditem);
