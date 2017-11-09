@@ -137,7 +137,6 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".GraphActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Graphs"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
@@ -146,12 +145,7 @@
             android:label="Home"
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".fragment.ScheduleFragment"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="Home"
-            android:parentActivityName=".Dashboard"
-            android:theme="@style/AppTheme" />
+
         <activity
             android:name=".GoalsActivity"
             android:label="Fitness Goals"
@@ -168,6 +162,14 @@
             android:parentActivityName=".RecommendActivity"
             android:label="Programs"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ListActivity"
+            android:theme="@style/AppTheme"
+            android:label="Videos"
+            android:parentActivityName=".WorkoutActivity" />
+        <activity
+            android:name=".VideoActivity"/>
+
     </application>
 
 </manifest>
