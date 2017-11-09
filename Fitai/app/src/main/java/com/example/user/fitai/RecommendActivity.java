@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.user.fitai.adapter.CustomGoalsAdapter;
 import com.example.user.fitai.adapter.CustomListAdapter;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class RecommendActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommend);
-        CustomListAdapter adapter=new CustomListAdapter(this, itemname, imgid);
+        CustomGoalsAdapter adapter=new CustomGoalsAdapter(this, itemname, imgid);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 
@@ -51,7 +52,7 @@ public class RecommendActivity extends AppCompatActivity {
                 Intent intent = new Intent(RecommendActivity.this, ProgramActivity.class);
                 intent.putExtra("workout", Slecteditem);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }

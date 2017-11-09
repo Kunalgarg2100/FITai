@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
 
 public class CustomListAdapter extends ArrayAdapter<String>{
 

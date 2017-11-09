@@ -79,6 +79,14 @@ public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyView
             }
         });
 
+        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startgraphactivity(view, workout);
+            }
+        });
+
+
     }
     public void do_whatever_you_want(View view, Workout workout)
     {
@@ -90,6 +98,13 @@ public class WorkoutsAdapter extends RecyclerView.Adapter<WorkoutsAdapter.MyView
         intent.putExtra("title", workout.getName());
         mContext.startActivity(intent);
         */
+    }
+
+    public void startgraphactivity(View view, Workout workout)
+    {
+        Intent intent = new Intent(view.getContext(), GraphActivity.class);
+        intent.putExtra("title", workout.getName());
+        mContext.startActivity(intent);
     }
 
 

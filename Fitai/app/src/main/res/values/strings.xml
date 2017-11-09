@@ -66,4 +66,16 @@
         <item>Get yourself slim</item>
     </string-array>
 
+    <string-array name="programs">
+        <item>21 Day Program</item>
+        <item>45 Day Program</item>
+        <item>60 Day Program</item>
+    </string-array>
+
+    <string-array name="programs_des">
+        <item>21 Day Program description</item>
+        <item>45 Day Program description</item>
+        <item>60 Day Program description</item>
+    </string-array>
+
 </resources>

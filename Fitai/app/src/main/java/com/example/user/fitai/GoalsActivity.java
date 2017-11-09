@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.user.fitai.adapter.CustomGoalsAdapter;
 import com.example.user.fitai.adapter.CustomListAdapter;
 
 import java.util.ArrayList;
@@ -28,32 +29,22 @@ public class GoalsActivity extends AppCompatActivity {
             "General Fitness",
             "Stress Relief",
             "Improve overall health",
-            "Physical Fitness",
-            "Strength",
-            "Mental Health",
-            "Weight loss" ,
-            "Spiritual Development" ,
-            "Yoga Therepy"
+            "Physical Fitness"
     };
 
     Integer[] imgid={
             R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body,
-            R.drawable.body
+            R.drawable.body1,
+            R.drawable.body2,
+            R.drawable.body3,
+            R.drawable.body4
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
-        CustomListAdapter adapter=new CustomListAdapter(this, itemname, imgid);
+        CustomGoalsAdapter adapter=new CustomGoalsAdapter(this, itemname, imgid);
         setGoals = (Button) findViewById(R.id.set_goals);
         setGoals.setVisibility(View.GONE);
         list=(ListView)findViewById(R.id.list);
@@ -85,7 +76,7 @@ public class GoalsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(GoalsActivity.this, RecommendActivity.class));
-                finish();
+                //finish();
             }
         });
     }
