@@ -27,7 +27,7 @@ public class VideoActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         Intent new_intent = getIntent();
-        link = new_intent.getStringExtra("LINK");
+        link = new_intent.getStringExtra("link");
         button = (Button) findViewById(R.id.play);
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.ypv);
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {

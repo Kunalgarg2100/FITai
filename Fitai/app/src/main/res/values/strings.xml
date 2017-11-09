@@ -8,7 +8,9 @@
     <string name="form_pass2_text">Re-type your password</string>
     <string name="signup_page_btn">SIgnUp page</string>
     <string name="title_activity_login">Sign in</string>
-
+    <string name="terms">I Agree to the terms and Conditions.</string>
+    <string name="read_tnc">Terms and Conditions</string>
+    <string name="exit_from_tnc">Exit this window</string>
     <!-- Strings related to transition page -->
     <string name="app_logo">App Logo</string>
     <string name="logo_subtitle1">Variance.AI</string>

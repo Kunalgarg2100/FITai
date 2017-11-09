@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -25,6 +26,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,7 +96,27 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
-        Button mEmailSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
+        final Button mEmailSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
+        mEmailSignUpButton.setEnabled(false);
+        mEmailSignUpButton.setBackgroundColor(Color.parseColor("#b8b894"));
+        CheckBox chk = (CheckBox) findViewById(R.id.checkBox);
+        chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // TODO Auto-generated method stub
+
+                if (isChecked) {
+                    mEmailSignUpButton.setEnabled(true);
+                    mEmailSignUpButton.setBackgroundResource(R.drawable.red_button);
+                } else {
+                    mEmailSignUpButton.setEnabled(false);
+                    mEmailSignUpButton.setBackgroundColor(Color.parseColor("#b8b894"));
+                }
+
+            }
+        });
+
         mEmailSignUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
