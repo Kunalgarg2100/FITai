@@ -12,12 +12,10 @@ public class AboutActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        TextView textView = (TextView) findViewById(R.id.travi_description);
+        TextView textView1 = (TextView) findViewById(R.id.gruvi_description);
+        int height = textView.getHeight();
+        textView1.setHeight(height);
 
-        TextView about_title  = (TextView) findViewById(R.id.app_about_header);
-        TextView about_description  = (TextView) findViewById(R.id.app_about_description);
-        ImageView about_fitailogo   = (ImageView) findViewById(R.id.app_about_image);
-
-        about_title.setText("This is Fitai . Welcome to Fitai .  Be like Fitai");
-        about_description.setText(" Hello guys this is the app before the launch of the actusl fitai device ");
     }
 }
