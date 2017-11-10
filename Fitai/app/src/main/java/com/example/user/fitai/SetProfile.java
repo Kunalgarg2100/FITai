@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.user.fitai.adapter.MpagerAdapter;
+import com.facebook.login.Login;
 
 import java.util.Calendar;
 
@@ -71,6 +74,7 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
             public void onPageSelected(int position) {
                 createDots(position);
                 if(position == layouts.length-1){
+                    SharedPreferences sharedprefs = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
                     String weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
                     String weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
                     String height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
@@ -78,8 +82,15 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
                     String age_val = sharedprefs.getString(LoginActivity.DOB, "");
                     String gender = sharedprefs.getString(LoginActivity.Gender, "");
                     String place = sharedprefs.getString(LoginActivity.PLACE, "");
+                    Log.d("gender",gender);
+                    Log.d("weight_unit",weight_unit);
+                    Log.d("weight_val",weight_val);
+                    Log.d("height_unit",height_unit);
+                    Log.d("height_val",height_val);
+                    Log.d("age_val",age_val);
                     if(weight_unit == null || weight_val == null || height_unit==null || height_val == null || age_val==null || gender==null || place == null){
                         BnNext.setVisibility(View.INVISIBLE);
+                        //BnNext.setClickable(false);
                     }else
                         BnNext.setText("Start");
                     BnSkip.setVisibility(View.INVISIBLE);
@@ -142,19 +153,43 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
     }
 
     private void loadHome(){
+        SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.remove(LoginActivity.Gender);
+        editor.remove(LoginActivity.WEIGHT_VAL);
+        editor.remove(LoginActivity.WEIGHT_UNIT);
+        editor.remove(LoginActivity.HEIGHT_VAL);
+        editor.remove(LoginActivity.HEIGHT_UNIT);
+        editor.remove(LoginActivity.DOB);
+        editor.remove(LoginActivity.PLACE);
+
+        editor.commit();
         startActivity(new Intent(this, Dashboard.class));
         finish();
     }
 
     private void loadGoals(){
-        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
-        user= sharedprefs.getString(LoginActivity.Name, "");
-        age_val = sharedprefs.getString(LoginActivity.DOB, "");
-        startActivity(new Intent(this, GoalsActivity.class));
-        finish();
+        SharedPreferences sharedprefs = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        String weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+        String weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+        String height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+        String height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+        String age_val = sharedprefs.getString(LoginActivity.DOB, "");
+        String gender = sharedprefs.getString(LoginActivity.Gender, "");
+        String place = sharedprefs.getString(LoginActivity.PLACE, "");
+        Log.d("gender",gender);
+        Log.d("weight_unit",weight_unit);
+        Log.d("weight_val",weight_val);
+        Log.d("height_unit",height_unit);
+        Log.d("height_val",height_val);
+        Log.d("age_val",age_val);
+        Log.d("place",age_val);
+        if(!weight_unit.equals("") && !weight_val.equals("") && !height_unit.equals("") && !height_val.equals("") && !age_val.equals("") && !gender.equals("") && !place.equals("")) {
+            startActivity(new Intent(this, GoalsActivity.class));
+            finish();
+        }else{
+            Toast.makeText(SetProfile.this, "Complete your Profile first", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loadNextSlide(){
