@@ -1,27 +1,27 @@
 {
   "list":[
     {
-      "question": "Why can't I lose weight?",
-      "answer": "You are not eating at a calorie deficit.Either you are over-estimating the amount of calories your body is using, or under-estimating the amount that you are eating.We strongly recommend reading this extensive article about difficulties losing weight, as well as this article about fat loss from the same site.It's easy to get tripped up, discouraged, or confused when you are trying very hard and not seeing results, but it is important to remember that weight loss is all about achieving a calorie deficit and nothing else, and the scale does not lie. You can be as meticulous in your tracking and calculating as humanly possible, but if you are not losing weight, you need to eat less.Keep perspective, though - bodyweight can fluctuate by up to 5 pounds in a day due to food, urine/feces, water retention, and glycogen, and you should be tracking a trend over at least a month before worrying.If you are absolutely certain that you are eating in a way that should cause you to lose weight, but you have not over a long period of time, then you should consult with a doctor, as the only alternative is a disease or disorder that r/Fitness cannot help you with."
+      "question": "Q1: Why can't I lose weight?",
+      "answer": "You are not eating at a calorie deficit.Either you are over-estimating the amount of calories your body is using, or under-estimating the amount that you are eating.We strongly recommend reading this extensive article about difficulties losing weight, as well as this article about fat loss from the same site."
     },
     {
-      "question":"Why am I not losing body fat?",
-      "answer":"As it turns out, the expensive thing you (probably) bought to measure your body fat percentage doesn't actually work that well. Consumer grade methods of measuring body fat percentage are not precise or accurate enough to be reliable measures of weight or fat loss. A multitude of factors that cannot be effectively controlled outside of a clinical environment can mean your actual body fat percentage is 5% (or more) greater or less than the number you get. Just because you see 20.7% one day and 21.4% the next doesn't mean you actually gained 0.7% bodyfat in a day.You'll unfortunately just have to trust the trend you see on the scale and know without being able to measure it directly that you're losing fat. Unless you have a serious and rare medical issue, if you're losing weight, you can't not be losing fat as part of it. If you want to maximize your results and look your best when you get down to a lower weight, you should make sure to do resistance training to help spare your muscle (and possibly gain a little as well) as you lose weight."
+      "question":"Q2: Why am I not losing body fat?",
+      "answer":"As it turns out, the expensive thing you (probably) bought to measure your body fat percentage doesn't actually work that well. Consumer grade methods of measuring body fat percentage are not precise or accurate enough to be reliable measures of weight or fat loss."
     },
     {
-      "question":"Why can't I gain weight?",
+      "question":"Q3: Why can't I gain weight?",
       "answer":"You are not eating enough and are not at a calorie surplus. Eat more. It does not matter how much you think you're eating. If you're not gaining weight or getting bigger, it's not enough.If you are absolutely certain that you are eating in a way that should cause you to gain weight, but you have not over a long period of time, then you should consult with a doctor, as the only alternative is a disease or disorder that r/Fitness cannot help you with."
     },
     {
-      "question":"Can I lose fat and build muscle at the same time?",
-      "answer":"The ability to gain muscle while losing fat is dependent on the relationship between your fatness and muscularity. An overly-fat and under-trained person will be able to achieve simultaneous fat loss and muscle gain. A very lean person near his/her limit for muscle growth will not. As one moves away from the overly-fat, under-trained status towards a leaner, more muscular body this ability is diminished. At some point, the vast majority of people will see better/quicker results by choosing to do one or the other (gain muscle, lose fat - often referred to as 'bulking' and 'cutting', respectively) at a time. For a highly general rule of thumb: if you have been training effectively for a year or more, you're better off with a bulk/cut cycle. See Lyle McDonald's Adding Muscle While Losing Fat - Q&A for more discussion.A 2011 paper suggests a weekly rate of body-weight loss of 0.7% can permit muscle gain in both men and women while losing fat mass. Women were also able to increase muscle while losing fat at a weekly rate of body-weight loss of 1.0-1.4%. Men, however, lost muscle mass at this increased rate.In real terms, 0.7% body-weight loss was achieved via a daily deficit of 3.2 calories per lb of total bodyweight (or 7 calories per kg of total bodyweight). At this rate, your goal calorie intake = TDEE - [BWlb x 3.2kcal] (or TDEE - [BWkg x 7kcal]). This is a good place to start. The 1.0-1.4% range works out to a daily deficit of 4.5-6.4 calories per lb of total bodyweight (or 10-14 calories per kg of total bodyweight). "
+      "question":"Q4: Can I lose fat and build muscle at the same time?",
+      "answer":"The ability to gain muscle while losing fat is dependent on the relationship between your fatness and muscularity. An overly-fat and under-trained person will be able to achieve simultaneous fat loss and muscle gain."
     },
     {
-      "question":"How fast can I lose fat without losing muscle?",
-      "answer":"There is a theoretical maximum amount of fat loss your body can endure, before it starts losing muscle. That amount is 31 calories/day/lb of fat (Note that the author revised this number from 31 to 22 cal an email exchange with Redditor, Chr0me). Be aware, though, that this data comes from the Minnesota Starvation Experiment, and uses subjects under severe dietary restriction that did not strength train. So the information should be taken with a grain of salt. See Lyle McDonald's take on this study for more."
+      "question":"Q5: How fast can I lose fat without losing muscle?",
+      "answer":"There is a theoretical maximum amount of fat loss your body can endure, before it starts losing muscle. That amount is 31 calories/day/lb of fat (Note that the author revised this number from 31 to 22 cal an email exchange with Redditor, Chr0me)."
     },
     {
-      "question":"Should I be lifting if I am trying to lose body fat?",
+      "question":"Q6: Should I be lifting if I am trying to lose body fat?",
       "answer":"Yes. Lifting helps spare muscle while eating a deficit. This has the two-fold advantage of reducing body fat faster and giving you a stronger starting point once you start bulking."
     }
   ]

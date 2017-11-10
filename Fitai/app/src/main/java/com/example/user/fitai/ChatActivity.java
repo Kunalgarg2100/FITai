@@ -1,12 +1,15 @@
 package com.example.user.fitai;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -48,7 +51,7 @@ public class ChatActivity extends AppCompatActivity{
                 mListView.setSelection(mAdapter.getCount() - 1);
             }
         });
-        mimicOtherMessage("Hello I am Fitai");
+        mimicOtherMessage("Not sure how Fitai works? \n " + "Feel free to ask anything");
     }
 
     @Override
@@ -76,8 +79,46 @@ public class ChatActivity extends AppCompatActivity{
     private void sendMessage(String message) {
         ChatMessage chatMessage = new ChatMessage(message, true, false);
         mAdapter.add(chatMessage);
-        if(message.equals("Hello") || message.equals("hello")) {
+        if(message.equals("Hello") || message.equals("hello") || message.equals("hi") ||
+                message.equals("Hi")) {
             mimicOtherMessage("Hello! How can I help you?");
+        }
+
+
+        else if(message.equals("Workouts") || message.equals("workouts") || message.equals("workout") || message.equals("Workout")){
+            mimicOtherMessage("There are 4 workouts featured \nby our app");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mimicOtherMessage("Yoga");
+                    mimicOtherMessage("Zumba");
+                    mimicOtherMessage("Pilates");
+                    mimicOtherMessage("Aerobics");
+                }
+            },2000);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mimicOtherMessage("Which one would you like to try out?");
+                }
+            },1000);
+
+
+        }
+        else if(message.equals("Training Programs") || message.equals("training programs") ||
+                message.equals("programs") || message.equals("Programs") || message.equals("training program")
+                || message.equals("program")){
+            mimicOtherMessage("There are 3 different training programs \nfeatured by our app");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mimicOtherMessage("21-day-plan");
+                    mimicOtherMessage("45-day-plan");
+                    mimicOtherMessage("60-day-plan");
+                }
+            },2000);
+
         }
         else if(message.equals("Goodbye") || message.equals("goodbye")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -103,7 +144,7 @@ public class ChatActivity extends AppCompatActivity{
         }
 
         else {
-            mimicOtherMessage("I am Fitai :-)");
+            mimicOtherMessage("Sorry, I could not understand\n what you are trying to say.");
         }
 
     }

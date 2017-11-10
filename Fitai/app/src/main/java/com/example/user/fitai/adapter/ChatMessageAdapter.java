@@ -68,7 +68,7 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
         convertView.findViewById(R.id.chatMessageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Onclick" , Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"Onclick" , Toast.LENGTH_SHORT).show();
             }
         });
 

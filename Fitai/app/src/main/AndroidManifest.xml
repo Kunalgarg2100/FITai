@@ -127,6 +127,7 @@
         <activity
             android:name=".ChatActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".WorkoutActivity"
             android:label="ChatBot"
             android:theme="@style/AppTheme" />
         <activity
@@ -138,6 +139,7 @@
         <activity
             android:name=".GraphActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".Dashboard"
             android:label="Graphs"
             android:theme="@style/AppTheme" />
         <activity
@@ -166,7 +168,11 @@
             android:parentActivityName=".WorkoutActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".VideoActivity" />
-        <activity android:name=".FrequentlyAskedQuestionsActivity"></activity>
+        <activity android:name=".FrequentlyAskedQuestionsActivity"
+            android:parentActivityName=".Dashboard"
+            android:label="FAQs"
+            android:theme="@style/AppTheme"
+            ></activity>
     </application>
 
 </manifest>
