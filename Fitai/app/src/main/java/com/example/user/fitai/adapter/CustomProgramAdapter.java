@@ -35,14 +35,14 @@ public class CustomProgramAdapter extends ArrayAdapter<String> {
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.mylist3, null,true);
+        View rowView=inflater.inflate(R.layout.mylist2, null,true);
 
         txtTitle = (TextView) rowView.findViewById(R.id.item);
         imageView = (ImageView) rowView.findViewById(R.id.goals_image);
-       // extratxt = (TextView) rowView.findViewById(R.id.textView1);
+        extratxt = (TextView) rowView.findViewById(R.id.textView1);
 
         txtTitle.setText(itemname[position]);
-       // extratxt.setText(imgid[position]);
+        extratxt.setText(imgid[position]);
         if(position==0)
             rowView.setBackgroundResource(R.drawable.program1);
         else if(position==1)

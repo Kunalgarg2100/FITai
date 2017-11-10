@@ -3,6 +3,7 @@ package com.example.user.fitai;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -10,8 +11,10 @@ import android.widget.ListView;
 
 import com.example.user.fitai.adapter.CustomGoalsAdapter;
 import com.example.user.fitai.adapter.CustomListAdapter;
+import com.example.user.fitai.adapter.Workout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RecommendActivity extends AppCompatActivity {
@@ -32,6 +35,11 @@ public class RecommendActivity extends AppCompatActivity {
             R.drawable.body1,
             R.drawable.body2,
             R.drawable.body3,
+            R.drawable.body4,
+            R.drawable.body4,
+            R.drawable.body4,
+            R.drawable.body4,
+            R.drawable.body4,
             R.drawable.body4
     };
 
@@ -39,8 +47,81 @@ public class RecommendActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommend);
+        Bundle b=this.getIntent().getExtras();
+        String[] array=b.getStringArray("goals");
+        //Log.d("string", array[0]);
+        List<String> work = new ArrayList<>();
+
+        if(Arrays.asList(array).contains("Mental Health")){
+            //itemname = new String[]{"Brain Yoga", "Meditation"};
+            if(!work.contains("Brain Yoga")){
+                work.add("Brain Yoga");
+            }
+            if(!work.contains("Meditation")) {
+                work.add("Meditation");
+            }
+        }
+
+        if(Arrays.asList(array).contains("Weight Loss")){
+            if(!work.contains("Pilates")){
+                work.add("Pilates");
+            }
+            if(!work.contains("Zumba")) {
+                work.add("Zumba");
+            }
+            if(!work.contains("Aerobics")) {
+                work.add("Aerobics");
+            }
+            if(!work.contains("Suryanamaskar Yoga")) {
+                work.add("Suryanamaskar Yoga");
+            }
+        }
+
+        if(Arrays.asList(array).contains("Medical Condition")){
+            if(!work.contains("Meditation")){
+                work.add("Meditation");
+            }
+        }
+
+        if(Arrays.asList(array).contains("Stress Relief")){
+            if(!work.contains("Zumba")){
+                work.add("Zumba");
+            }
+            if(!work.contains("Face Yoga")){
+                work.add("Face Yoga");
+            }
+            if(!work.contains("Meditation")){
+                work.add("Meditation");
+            }
+        }
+
+        if(Arrays.asList(array).contains("Physical Fitness")){
+            if(!work.contains("Pilates")){
+                work.add("Pilates");
+            }
+            if(!work.contains("Zumba")) {
+                work.add("Zumba");
+            }
+            if(!work.contains("Suryanamaskar Yoga")) {
+                work.add("Suryanamaskar Yoga");
+            }
+            if(!work.contains("Brain Yoga")){
+                work.add("Brain Yoga");
+            }
+        }
+
+        if(Arrays.asList(array).contains("Spiritual Development")){
+            if(!work.contains("Meditation")){
+                work.add("Meditation");
+            }
+        }
+
+        itemname = work.toArray(new String[0]);
+
         CustomGoalsAdapter adapter=new CustomGoalsAdapter(this, itemname, imgid);
         list=(ListView)findViewById(R.id.list);
+
+
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

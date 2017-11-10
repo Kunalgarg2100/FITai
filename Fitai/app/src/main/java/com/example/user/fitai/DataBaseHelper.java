@@ -28,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     public DataBaseHelper(Context context) {
-        super(context, DB_NAME, null, 6);
+        super(context, DB_NAME, null, 7);
     }
 
     @Override
@@ -96,10 +96,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor1 = db.query(TABLE_NAME, null, "USERNAME = ?", new String []{user}, null, null, null);
         Cursor cursor2 = db.query(TABLE_NAME, null, "EMAIL = ?", new String []{user}, null, null, null);
         if(cursor1 != null) {
+            Log.d("yes", "yes");
             return cursor1;
         } else if(cursor2 != null){
+            Log.d("yes", "no");
             return cursor2;
         } else{
+            Log.d("yes", "veryno");
             return null;
         }
     }
@@ -135,7 +138,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public void updateProfile(double height, double weight, String dob, String gender, String user){
+    public void updateProfile(double height, double weight, String gender, String dob, String user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL_6, height);

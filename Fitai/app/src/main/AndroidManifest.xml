@@ -159,7 +159,6 @@
 
         <activity
             android:name=".ProgramActivity"
-            android:parentActivityName=".RecommendActivity"
             android:label="Programs"
             android:theme="@style/AppTheme" />
         <activity
@@ -169,6 +168,11 @@
             android:parentActivityName=".WorkoutActivity" />
         <activity
             android:name=".VideoActivity"/>
+        <activity
+            android:name=".GoalActivity1"
+            android:parentActivityName=".Dashboard"
+            android:label="Fitness Goals"
+            android:theme="@style/AppTheme" />
 
     </application>
 

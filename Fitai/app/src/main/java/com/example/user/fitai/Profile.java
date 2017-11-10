@@ -33,6 +33,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -53,11 +54,15 @@ public class Profile extends AppCompatActivity {
     static final Integer CAMERA = 0x5;
     int year_x,month_x,day_x;
     static final int DIALOG_ID = 0;
-    Button b;
+    Button b1, b2, b3, b4,b;
     final String height_unit[] = {"cm", "inch"};
     final String weight_unit[] = {"kg", "lbs"};
     Button gender;
     String pictureName = String.format("%d.jpg", System.currentTimeMillis()), pic_name;
+    Cursor user_info;
+    Double height, weight;
+    String dob, sex;
+    byte[] image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +77,35 @@ public class Profile extends AppCompatActivity {
         viewFlipper.setFlipInterval(1000);
         viewFlipper.startFlipping();
         img = (ImageButton) findViewById(R.id.imageButton);
+
+        SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        String uname = sharedpreferences.getString("nameKey", "");
+        Log.d("user_name", uname);
+        user_info = LoginActivity.myDB.getEmail(uname);
+        if (user_info.moveToFirst()) {
+            image = user_info.getBlob(4);
+            height = user_info.getDouble(5);
+            weight = user_info.getDouble(6);
+            dob = user_info.getString(7);
+            sex = user_info.getString(8);
+        }
+        else if (user_info == null){
+            Toast.makeText(Profile.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
+        }
+        //TextView userInfo = (TextView) findViewById(R.id.userName);
+        //userInfo.setText(height.toString()+weight.toString()+dob+sex);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        SharedPreferences sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES,Context.MODE_PRIVATE);
         String image_string = sp.getString(LoginActivity.PhotoUrl,"");
         String weight_string = sp.getString("user_weight", "");
         String height_string = sp.getString("user_height", "");
         String dateOfBirth = sp.getString("user_dob", "");
         String gender_string = sp.getString("user_gender", "");
+        //SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        //String uname = sharedpreferences.getString("nameKey", "");
         if(!image_string.equals("")){
+            Log.d("image_string", image_string);
             Bitmap resized = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(image_string), 310, 310);
             ImageView image = (ImageView) findViewById(R.id.imageButton);
             image.setImageBitmap(resized);
@@ -90,20 +115,33 @@ public class Profile extends AppCompatActivity {
             imageView.setImageResource(R.drawable.profilepic);
         }
         if(!weight_string.equals("")){
-            b = (Button) findViewById(R.id.button_weight);
-            b.setText(weight_string);
+            b1 = (Button) findViewById(R.id.button_weight);
+            b1.setText(weight_string);
         }
         if(!height_string.equals("")){
-            b = (Button) findViewById(R.id.button_height);
-            b.setText(height_string);
+            b2 = (Button) findViewById(R.id.button_height);
+            b2.setText(height_string);
         }
         if(!dateOfBirth.equals("")){
-            b = (Button) findViewById(R.id.button_dateOfBirth);
-            b.setText(dateOfBirth);
+            b3 = (Button) findViewById(R.id.button_dateOfBirth);
+            b3.setText(dateOfBirth);
         }
         if(!gender_string.equals("")){
-            b = (Button) findViewById(R.id.button_gender);
-            b.setText(gender_string);
+            b4 = (Button) findViewById(R.id.button_gender);
+            b4.setText(gender_string);
+        }
+
+        if(!height.equals("")){
+            b1.setText(height.toString()+" cm");
+        }
+        if(!weight.equals("")){
+            b2.setText(weight.toString());
+        }
+        if(!dob.equals("")){
+            b3.setText(dob);
+        }
+        if(!sex.equals("")){
+            b4.setText(sex);
         }
     }
 

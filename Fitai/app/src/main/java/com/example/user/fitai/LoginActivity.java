@@ -145,7 +145,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                             String user_firstname = me.optString("first_name");
                                             String user_name = user_firstname + user_lastname;
                                             String id = me.optString("id");
-                                            String user_gender = me.optString("gender");
+                                            //String user_gender = me.optString("gender");
+                                            Cursor info = null;
+                                            Double height = null;
+                                            Double weight = null;
+                                            String gender = null;
+                                            String dob = null;
 
                                             URL profile_pic = null;
                                             Uri user_image = null;
@@ -178,7 +183,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                             Log.d("input_data", inputData.toString());*/
                                             boolean verify_signup = LoginActivity.myDB.verifySignup(user_email, user_name);
                                             if(verify_signup == true) {
+                                                Log.d("already", "yes");
                                                 boolean signup = LoginActivity.myDB.insertData(user_name, user_email, null, null);
+                                            }else{
+                                                Log.d("already", "no");
+                                                info = LoginActivity.myDB.getEmail(user_name);
+                                                if (info.moveToFirst()) {
+                                                    height = info.getDouble(5);
+                                                    weight = info.getDouble(6);
+                                                    dob = info.getString(7);
+                                                    gender = info.getString(8);
+                                                    Log.d("height", height.toString());
+                                                    Log.d("weight", weight.toString());
+                                                    //Log.d("dob", dob);
+                                                    //Log.d("gender", gender);
+                                                }
+                                                else if (info == null){
+                                                    Toast.makeText(LoginActivity.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
+                                                }
                                             }
 
                                             SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -187,17 +209,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                             editor.putString(Email, user_email);
                                             editor.putString(PhotoUrl, profile_pic.toString());
                                             editor.putString(FBLOGIN, "yes");
+                                            editor.putString(HEIGHT_VAL, height.toString());
+                                            editor.putString(WEIGHT_VAL, weight.toString());
+                                            editor.putString(Gender, dob);
+                                            editor.putString(DOB, gender);
                                             //String encoded = Base64.encodeToString(inputData, Base64.DEFAULT);
                                             //editor.putString(PhotoUrl, encoded);
                                             //editor.putString(Gender, user_gender);
 
                                             editor.commit();
-                                            Log.d("rt", user_email);
-                                            Log.d("ii", sharedpreferences.getString("nameKey", ""));
-                                            Log.d("ii", sharedpreferences.getString("emailKey", ""));
-                                            Log.d("ii", sharedpreferences.getString("photoKey", ""));
-                                            Log.d("ii", sharedpreferences.getString("genderKey", ""));
-
                                             startActivity(new Intent(LoginActivity.this, Dashboard.class));
                                             finish();
 
@@ -367,6 +387,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         String user = null;
         String uemail = null;
         String pass = null;
+        Double height = null;
+        Double weight = null;
+        String dob = null;
+        String sex = null;
         byte[] blob = null;
 
         boolean cancel = false;
@@ -404,6 +428,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     user = info.getString(1);
                     uemail = info.getString(2);
                     pass = info.getString(3);
+                    height = info.getDouble(5);
+                    weight = info.getDouble(6);
+                    dob = info.getString(7);
+                    sex = info.getString(8);
                 }
                 if (info == null){
                     Toast.makeText(LoginActivity.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
@@ -421,6 +449,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 editor.putString(Name, user);
                 editor.putString(Email, uemail);
                 editor.putString(Pass, pass);
+                editor.putString(HEIGHT_VAL, height.toString());
+                editor.putString(WEIGHT_VAL, weight.toString());
+                editor.putString(Gender, sex);
+                editor.putString(DOB, dob);
                 String encoded = Base64.encodeToString(blob, Base64.DEFAULT);
                 editor.putString(PhotoUrl, encoded);
                 editor.putString(FBLOGIN, "no");

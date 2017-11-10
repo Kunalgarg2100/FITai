@@ -134,12 +134,12 @@ public class MpagerAdapter extends PagerAdapter {
                 textAge = (TextView) view.findViewById(R.id.text_age);
                 textHeight = (TextView) view.findViewById(R.id.text_height);
                 textWeight = (TextView) view.findViewById(R.id.text_weight);
-                weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-                weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-                height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-                height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
-                user= sharedprefs.getString(LoginActivity.Name, "");
-                age_val = sharedprefs.getString(LoginActivity.DOB, "");
+                weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, null);
+                weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, null);
+                height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, null);
+                height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, null);
+                user= sharedprefs.getString(LoginActivity.Name, null);
+                age_val = sharedprefs.getString(LoginActivity.DOB, null);
 
                 if(age_val == null){
                     textAge.setText("11/15/17");
@@ -171,11 +171,11 @@ public class MpagerAdapter extends PagerAdapter {
                     editor.commit();
                 }
 
-                weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-                weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-                height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-                height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
-                age_val = sharedprefs.getString(LoginActivity.DOB, "");
+                weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, null);
+                weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, null);
+                height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, null);
+                height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, null);
+                age_val = sharedprefs.getString(LoginActivity.DOB, null);
 
                 if(weight_val!=null){
                     textWeight.setText(weight_val);
@@ -304,10 +304,10 @@ public class MpagerAdapter extends PagerAdapter {
                     @Override
                     public void onClick(View v) {
                         //b = (Button) findViewById(R.id.button_height);
-                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, null);
+                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, null);
+                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, null);
+                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, null);
 
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your height");
@@ -357,10 +357,10 @@ public class MpagerAdapter extends PagerAdapter {
                     @Override
                     public void onClick(View v) {
                         //b = (Button) findViewById(R.id.button_height);
-                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, null);
+                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, null);
+                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, null);
+                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, null);
 
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your Weight");
@@ -390,7 +390,7 @@ public class MpagerAdapter extends PagerAdapter {
                                 String s2 = String.valueOf(np1.getValue())+"."+String.valueOf(np2.getValue());
                                 textWeight.setText(s2);
                                 SharedPreferences.Editor editor = sharedprefs.edit();
-                                editor.putString(LoginActivity.HEIGHT_VAL, s2);
+                                editor.putString(LoginActivity.WEIGHT_VAL, s2);
                                 editor.commit();
                                 d.dismiss();
                             }
