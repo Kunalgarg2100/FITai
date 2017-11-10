@@ -101,9 +101,7 @@ public class ChatActivity extends AppCompatActivity{
             alert.show();
             //finish();
         }
-        else if(message.equals("Who is chutiya?") || message.equals("gandu kaun h?")) {
-            mimicOtherMessage("Kunal k sivaay kaun ho sakta h");
-        }
+
         else {
             mimicOtherMessage("I am Fitai :-)");
         }

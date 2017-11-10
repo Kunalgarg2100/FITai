@@ -71,7 +71,17 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
             public void onPageSelected(int position) {
                 createDots(position);
                 if(position == layouts.length-1){
-                    BnNext.setText("Start");
+                    String weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+                    String weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+                    String height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+                    String height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+                    String age_val = sharedprefs.getString(LoginActivity.DOB, "");
+                    String gender = sharedprefs.getString(LoginActivity.Gender, "");
+                    String place = sharedprefs.getString(LoginActivity.PLACE, "");
+                    if(weight_unit == null || weight_val == null || height_unit==null || height_val == null || age_val==null || gender==null || place == null){
+                        BnNext.setVisibility(View.INVISIBLE);
+                    }else
+                        BnNext.setText("Start");
                     BnSkip.setVisibility(View.INVISIBLE);
                 }
                 else{

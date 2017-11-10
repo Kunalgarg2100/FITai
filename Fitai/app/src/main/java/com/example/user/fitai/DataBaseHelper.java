@@ -28,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     public DataBaseHelper(Context context) {
-        super(context, DB_NAME, null, 5);
+        super(context, DB_NAME, null, 6);
     }
 
     @Override
@@ -46,6 +46,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN WEIGHT REAL");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN DOB TEXT");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN GENDER TEXT");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN PROGRAM INTEGER");
         }
     }
 

@@ -268,10 +268,6 @@ public class MpagerAdapter extends PagerAdapter {
                     }
                 });
 
-                weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-                weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-                height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-                height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
 
                 final Calendar myCalendar = Calendar.getInstance();
 
@@ -312,6 +308,11 @@ public class MpagerAdapter extends PagerAdapter {
                     @Override
                     public void onClick(View v) {
                         //b = (Button) findViewById(R.id.button_height);
+                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your height");
                         d.setContentView(R.layout.profile_dialog);
@@ -360,6 +361,11 @@ public class MpagerAdapter extends PagerAdapter {
                     @Override
                     public void onClick(View v) {
                         //b = (Button) findViewById(R.id.button_height);
+                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your Weight");
                         d.setContentView(R.layout.profile_dialog);
