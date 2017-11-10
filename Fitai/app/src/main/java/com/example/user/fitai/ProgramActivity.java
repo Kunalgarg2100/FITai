@@ -22,9 +22,9 @@ public class ProgramActivity extends AppCompatActivity {
             "60 Day Program"
     };
     String[] programsDes ={
-            "21 Day Program description",
-            "45 Day Program description",
-            "60 Day Program description"
+            "21 day program is mainly for new users who want to try out Fitai",
+            "45 day program is mainly for users who are already familiar with Fitai",
+            "60 day program is for users who already have tried out short programs and interested in more workouts"
     };
 
 
@@ -42,7 +42,7 @@ public class ProgramActivity extends AppCompatActivity {
                                     int position, long id) {
                 // TODO Auto-generated method stub
                 String Slecteditem = programs[position].trim();
-                Intent intent = new Intent(ProgramActivity.this, ProgramActivity.class);
+                Intent intent = new Intent(ProgramActivity.this, Dashboard.class);
                 intent.putExtra("workout", Slecteditem);
                 startActivity(intent);
                 finish();

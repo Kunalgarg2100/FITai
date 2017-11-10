@@ -54,15 +54,10 @@ public class Dashboard extends AppCompatActivity
         SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         String uname = sharedpreferences.getString("nameKey", "");
         String uemail = sharedpreferences.getString("emailKey", "");
-        String upass = sharedpreferences.getString("passKey", "");
         String uphoto = sharedpreferences.getString("photoKey", "");
         String fblogin = sharedpreferences.getString("loginKey", "");
         //byte[] photoByte = Base64.decode(uphoto, Base64.DEFAULT);
 
-        Float height = null, weight = null;
-        Integer dob = null;
-        String gender = null;
-        Log.d("user",uname);
         /*Cursor userInfo = LoginActivity.myDB.getEmail(uemail);
         if (userInfo.moveToFirst()) {
             height = userInfo.getFloat(5);
@@ -237,14 +232,14 @@ public class Dashboard extends AppCompatActivity
         }
         else if (id == R.id.nav_workout_plan) {
             startActivity(new Intent(this, WorkoutActivity.class));
-        } else if (id == R.id.nav_training_programs) {
-            fragment = new ScheduleFragment();
-            getSupportActionBar().setTitle("Dashboard");
-        } else if (id == R.id.nav_schedule) {
+        }else if (id == R.id.nav_schedule) {
             disp();
         }
         else if (id == R.id.nav_settings){
             startActivity(new Intent(this, Profile.class));
+        }
+        else if (id == R.id.nav_fitness_goals){
+            startActivity(new Intent(this, GoalActivity1.class));
         }
         else if (id == R.id.nav_logout)
         {

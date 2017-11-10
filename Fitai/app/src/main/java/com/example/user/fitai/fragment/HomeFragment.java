@@ -1,6 +1,8 @@
 package com.example.user.fitai.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.user.fitai.LoginActivity;
 import com.example.user.fitai.ProgramActivity;
 import com.example.user.fitai.R;
 import com.example.user.fitai.SetProfile;
@@ -37,33 +41,37 @@ import java.util.Date;
 import java.util.List;
 
 public class HomeFragment extends TabsFragment{
-    TextView setProfile;
-    ListView list;
-    String[] programs ={
-            "21 Day Program",
-            "45 Day Program",
-            "60 Day Program"
-    };
-    String[] programsDes ={
-            "21 Day Program description",
-            "45 Day Program description",
-            "60 Day Program description"
-    };
-
+    TextView setProfile, userInfo;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.activity_home, container, false);
-
         setProfile = (TextView) view.findViewById(R.id.set_profile);
+        userInfo = (TextView) view.findViewById(R.id.user_info);
 
-        setProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SetProfile.class));
-            }
-        });
-        
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        String uname = sharedpreferences.getString(LoginActivity.Name, "");
+        String height = sharedpreferences.getString(LoginActivity.HEIGHT_VAL, "");
+        String weight = sharedpreferences.getString(LoginActivity.WEIGHT_VAL, "");
+        String gender = sharedpreferences.getString(LoginActivity.Gender, "");
+        String dob = sharedpreferences.getString(LoginActivity.DOB, "");
+        Log.d("name", uname);
+        Log.d("height", height);
+        Log.d("weight", weight);
+        Log.d("gender", gender);
+        Log.d("dob", dob);
+
+        if(!height.equals("") && !weight.equals("") && !gender.equals("") && !dob.equals("")) {
+            setProfile.setVisibility(view.GONE);
+            userInfo.setText("weight" + weight+" gender"+gender+"dob "+dob);
+        }else{
+            setProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), SetProfile.class));
+                }
+            });
+        }
         BarChart chart = (BarChart) view.findViewById(R.id.chart);
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
@@ -72,7 +80,7 @@ public class HomeFragment extends TabsFragment{
         chart.invalidate();
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar)
                 ;
-       CircularProgressBar circularProgressBar = (CircularProgressBar)view.findViewById(R.id.yourCircularProgressbar);
+        CircularProgressBar circularProgressBar = (CircularProgressBar)view.findViewById(R.id.yourCircularProgressbar);
 
         circularProgressBar.setColor(ContextCompat.getColor(getContext(), R.color.progressBarColor));
         circularProgressBar.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.backgroundProgressBarColor));

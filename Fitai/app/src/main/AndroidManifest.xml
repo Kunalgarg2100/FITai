@@ -165,7 +165,12 @@
         <activity
             android:name=".ListActivity"
             android:label="Videos"
-            android:parentActivityName=".WorkoutActivity"
+            android:theme="@style/AppTheme" 
+            android:parentActivityName=".WorkoutActivity" />
+        <activity
+            android:name=".GoalActivity1"
+            android:parentActivityName=".Dashboard"
+            android:label="Fitness Goals"
             android:theme="@style/AppTheme" />
         <activity android:name=".VideoActivity" />
         <activity android:name=".FrequentlyAskedQuestionsActivity"

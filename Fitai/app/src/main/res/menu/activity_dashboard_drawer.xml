@@ -21,9 +21,9 @@
             android:title="Workouts" />
 
         <item
-            android:id="@+id/nav_training_programs"
+            android:id="@+id/nav_fitness_goals"
             android:icon="@mipmap/ic_menu_note"
-            android:title="Programs" />
+            android:title="Fitness Goals" />
 
         <item
             android:id="@+id/nav_settings"
