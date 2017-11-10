@@ -39,6 +39,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/activation.jar')
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.android.support:appcompat-v7:26.+'
@@ -54,7 +55,6 @@ dependencies {
     compile 'com.mikhaellopez:circularprogressbar:1.1.1'
     compile 'me.himanshusoni.chatmessageview:chat-message-view:1.0.3'
     testCompile 'junit:junit:4.12'
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
 }
 
 configurations.all {
