@@ -63,10 +63,7 @@ public class HomeFragment extends TabsFragment{
                 startActivity(new Intent(getActivity(), SetProfile.class));
             }
         });
-        CustomProgramAdapter adapter=new CustomProgramAdapter(getActivity(), programs, programsDes);
-        list=(ListView) view.findViewById(R.id.list);
-        list.setAdapter(adapter);
-
+        
         BarChart chart = (BarChart) view.findViewById(R.id.chart);
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
@@ -75,7 +72,7 @@ public class HomeFragment extends TabsFragment{
         chart.invalidate();
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar)
                 ;
-   /*     CircularProgressBar circularProgressBar = (CircularProgressBar)view.findViewById(R.id.yourCircularProgressbar);
+       CircularProgressBar circularProgressBar = (CircularProgressBar)view.findViewById(R.id.yourCircularProgressbar);
 
         circularProgressBar.setColor(ContextCompat.getColor(getContext(), R.color.progressBarColor));
         circularProgressBar.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.backgroundProgressBarColor));
@@ -83,7 +80,7 @@ public class HomeFragment extends TabsFragment{
         circularProgressBar.setBackgroundProgressBarWidth(getResources().getDimension(R.dimen.backgroundProgressBarWidth));
         int animationDuration = 2500; // 2500ms = 2,5s
         circularProgressBar.setProgressWithAnimation(65, animationDuration); // Default duration = 1500ms
-*/
+
 
         try {
             Glide.with(this).load(R.drawable.cover).into((ImageView) view.findViewById(R.id.backdrop));
