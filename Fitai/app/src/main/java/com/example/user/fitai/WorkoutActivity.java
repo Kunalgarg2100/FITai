@@ -109,26 +109,26 @@ public class WorkoutActivity extends AppCompatActivity {
 
         };
 
-        Workout a = new Workout("Pushups", "This is a must if you want to increase your strength", covers[0]);
+        Workout a = new Workout("Pilates", "This is a must if you want to increase your strength", covers[0]);
         workoutList.add(a);
 
-        a = new Workout("Leg lifts", "Improves strengthening of leg and thigh muscles", covers[1]);
+        a = new Workout("Zumba", "Improves strengthening of leg and thigh muscles", covers[1]);
         workoutList.add(a);
 
-        a = new Workout("Squats", "Really important part of a workout", covers[2]);
+        a = new Workout("Suryanamaskar", "Really important part of a workout", covers[2]);
         workoutList.add(a);
 
-        a = new Workout("Pull ups", "Improves muscle strength ", covers[3]);
+        a = new Workout("Aerobics", "Improves muscle strength ", covers[3]);
         workoutList.add(a);
-        a = new Workout("Dumbles", "For getting an edge over others :D", covers[4]);
+        a = new Workout("Yoga", "For getting an edge over others :D", covers[4]);
         workoutList.add(a);
-        a = new Workout("Stretch", "Improves flexibility and relaxes joints", covers[5]);
+        a = new Workout("Brain Yoga", "Improves flexibility and relaxes joints", covers[5]);
         workoutList.add(a);
         a = new Workout("Desk Yoga", "Desk yoga and relaxes joints", covers[6]);
         workoutList.add(a);
-        a = new Workout("On flight Yoga", "Desk yoga and relaxes joints", covers[7]);
+        a = new Workout("On flight Yoga", "On flight yoga and relaxes joints", covers[7]);
         workoutList.add(a);
-        a = new Workout("On flight Yoga", "Desk yoga and relaxes joints", covers[8]);
+        a = new Workout("Meditation", "Meditation gives peace of mind", covers[8]);
         workoutList.add(a);
 
 
