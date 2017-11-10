@@ -64,9 +64,9 @@ public class WorkoutFragment extends Fragment {
 
     private void prepareWorkouts() {
         int[] covers = new int[]{
-                R.drawable.pushup,
-                R.drawable.leglifts,
-                R.drawable.stretch,
+                R.drawable.pilates,
+                R.drawable.zumba,
+                R.drawable.brainyoga,
         };
 
         Workout a = new Workout("Pushups", "This is a must if you want to increase your strength", covers[0]);

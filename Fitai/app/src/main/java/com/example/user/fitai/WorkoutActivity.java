@@ -96,12 +96,16 @@ public class WorkoutActivity extends AppCompatActivity {
      */
     private void prepareWorkouts() {
         int[] covers = new int[]{
-                R.drawable.pushup,
-                R.drawable.leglifts,
-                R.drawable.squat,
-                R.drawable.pullups,
-                R.drawable.dumbles,
-                R.drawable.stretch,
+                R.drawable.pilates,
+                R.drawable.zumba,
+                R.drawable.suryanamaskar,
+                R.drawable.aerobics,
+                R.drawable.yoga,
+                R.drawable.brainyoga,
+                R.drawable.deskyoga,
+                R.drawable.onflightyoga,
+                R.drawable.meditation ,
+
 
         };
 
@@ -120,7 +124,12 @@ public class WorkoutActivity extends AppCompatActivity {
         workoutList.add(a);
         a = new Workout("Stretch", "Improves flexibility and relaxes joints", covers[5]);
         workoutList.add(a);
-
+        a = new Workout("Desk Yoga", "Desk yoga and relaxes joints", covers[6]);
+        workoutList.add(a);
+        a = new Workout("On flight Yoga", "Desk yoga and relaxes joints", covers[7]);
+        workoutList.add(a);
+        a = new Workout("On flight Yoga", "Desk yoga and relaxes joints", covers[8]);
+        workoutList.add(a);
 
 
 
