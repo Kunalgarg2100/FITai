@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import static android.R.attr.id;
+
 /**
  * Created by mohit on 28/8/17.
  */
@@ -26,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     public DataBaseHelper(Context context) {
-        super(context, DB_NAME, null, 4);
+        super(context, DB_NAME, null, 5);
     }
 
     @Override
@@ -36,13 +38,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
         if (newVersion > oldVersion) {
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN IMAGE BLOB");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN HEIGHT REAL");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN WEIGHT REAL");
-            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN DOB INTEGER");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN DOB TEXT");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN GENDER TEXT");
         }
     }
@@ -130,5 +132,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from " + TABLE_NAME);
         return true;
+    }
+
+    public void updateProfile(double height, double weight, String dob, String gender, String user){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COL_6, height);
+        cv.put(COL_7, weight);
+        cv.put(COL_8, dob);
+        cv.put(COL_9, gender);
+        db.update(TABLE_NAME, cv, "USERNAME = ?", new String []{user});
     }
 }
