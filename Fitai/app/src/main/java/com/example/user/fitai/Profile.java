@@ -75,7 +75,7 @@ public class Profile extends AppCompatActivity {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         SharedPreferences sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
-        String image_string = sp.getString("uphoto","");
+        String image_string = sp.getString(LoginActivity.PhotoUrl,"");
         String weight_string = sp.getString("user_weight", "");
         String height_string = sp.getString("user_height", "");
         String dateOfBirth = sp.getString("user_dob", "");
@@ -206,7 +206,7 @@ public class Profile extends AppCompatActivity {
                     npp.setMaxValue(9);
                     npp.setMinValue(0);
                 }
-                else{
+                else {
                     np.setMaxValue(882);
                     np.setMinValue(88);
                     npp.setMaxValue(9);
@@ -400,7 +400,7 @@ public class Profile extends AppCompatActivity {
             img.setImageBitmap(resized);
             SharedPreferences sp = getSharedPreferences("prof",MODE_PRIVATE);
             SharedPreferences.Editor ed = sp.edit();
-            ed.putString("uphoto",picture.getAbsolutePath());
+            ed.putString(LoginActivity.PhotoUrl,picture.getAbsolutePath());
             ed.commit();
             Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
             Uri uri = Uri.fromFile(picture);
@@ -432,7 +432,7 @@ public class Profile extends AppCompatActivity {
             img.setImageBitmap(tempbm);
             SharedPreferences sharedPref  = getSharedPreferences("prof", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("uphoto", img_str);
+            editor.putString(LoginActivity.PhotoUrl, img_str);
             editor.commit();
         }
     }
