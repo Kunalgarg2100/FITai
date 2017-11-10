@@ -127,8 +127,8 @@
         <activity
             android:name=".ChatActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".WorkoutActivity"
             android:label="ChatBot"
+            android:parentActivityName=".WorkoutActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".WorkoutActivity"
@@ -139,8 +139,8 @@
         <activity
             android:name=".GraphActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:parentActivityName=".Dashboard"
             android:label="Graphs"
+            android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".AboutActivity"
@@ -165,19 +165,23 @@
         <activity
             android:name=".ListActivity"
             android:label="Videos"
-            android:theme="@style/AppTheme" 
-            android:parentActivityName=".WorkoutActivity" />
+            android:parentActivityName=".WorkoutActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".GoalActivity1"
-            android:parentActivityName=".Dashboard"
             android:label="Fitness Goals"
+            android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
         <activity android:name=".VideoActivity" />
-        <activity android:name=".FrequentlyAskedQuestionsActivity"
-            android:parentActivityName=".Dashboard"
+        <activity
+            android:name=".FrequentlyAskedQuestionsActivity"
             android:label="FAQs"
-            android:theme="@style/AppTheme"
-            ></activity>
+            android:parentActivityName=".Dashboard"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SupportActivity"
+            android:label="About Us"
+            android:parentActivityName=".Dashboard"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

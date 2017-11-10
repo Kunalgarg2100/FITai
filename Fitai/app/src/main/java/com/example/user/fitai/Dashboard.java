@@ -8,9 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.*;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -272,7 +270,7 @@ public class Dashboard extends AppCompatActivity
             alert.show();
             }
         else if (id == R.id.nav_support) {
-            startActivity(new Intent(this, ChatActivity.class));
+            startActivity(new Intent(this, SupportActivity.class));
         } else if (id == R.id.nav_faqs) {
             startActivity(new Intent(this, FrequentlyAskedQuestionsActivity.class));
         }
