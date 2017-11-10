@@ -12,10 +12,5 @@ public class AboutActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        TextView textView = (TextView) findViewById(R.id.travi_description);
-        TextView textView1 = (TextView) findViewById(R.id.gruvi_description);
-        int height = textView.getHeight();
-        textView1.setHeight(height);
-
     }
 }

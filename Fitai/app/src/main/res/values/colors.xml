@@ -54,5 +54,7 @@
 
     <color name="inactive">#000066</color>
     <color name="active">#ffffff</color>
+    <color name="backgroundProgressBarColor">@color/colorBlue</color>
+    <color name="progressBarColor">@color/colorDarkBlue</color>
 
 </resources>

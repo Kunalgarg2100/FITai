@@ -141,10 +141,6 @@ public class MpagerAdapter extends PagerAdapter {
                 user= sharedprefs.getString(LoginActivity.Name, "");
                 age_val = sharedprefs.getString(LoginActivity.DOB, "");
 
-                Log.d("weight_unit",weight_unit);
-                Log.d("weight_val",weight_val);
-                Log.d("height_unit",height_unit);
-                Log.d("height_val",height_val);
                 if(age_val == null){
                     textAge.setText("11/15/17");
                     SharedPreferences.Editor editor = sharedprefs.edit();
@@ -268,10 +264,6 @@ public class MpagerAdapter extends PagerAdapter {
                     }
                 });
 
-                weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
-                weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
-                height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
-                height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
 
                 final Calendar myCalendar = Calendar.getInstance();
 
@@ -312,6 +304,11 @@ public class MpagerAdapter extends PagerAdapter {
                     @Override
                     public void onClick(View v) {
                         //b = (Button) findViewById(R.id.button_height);
+                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your height");
                         d.setContentView(R.layout.profile_dialog);
@@ -360,6 +357,11 @@ public class MpagerAdapter extends PagerAdapter {
                     @Override
                     public void onClick(View v) {
                         //b = (Button) findViewById(R.id.button_height);
+                        weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
+                        weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, "");
+                        height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, "");
+                        height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, "");
+
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your Weight");
                         d.setContentView(R.layout.profile_dialog);
@@ -388,7 +390,7 @@ public class MpagerAdapter extends PagerAdapter {
                                 String s2 = String.valueOf(np1.getValue())+"."+String.valueOf(np2.getValue());
                                 textWeight.setText(s2);
                                 SharedPreferences.Editor editor = sharedprefs.edit();
-                                editor.putString(LoginActivity.WEIGHT_VAL, s2);
+                                editor.putString(LoginActivity.HEIGHT_VAL, s2);
                                 editor.commit();
                                 d.dismiss();
                             }

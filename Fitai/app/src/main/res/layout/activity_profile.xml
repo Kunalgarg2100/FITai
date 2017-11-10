@@ -156,7 +156,7 @@
             android:id="@+id/userName4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="1dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="11dp"
@@ -168,7 +168,19 @@
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintLeft_toRightOf="@+id/view"
             app:layout_constraintRight_toLeftOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/userName" />
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            android:layout_marginEnd="8dp" />
+
+        <LinearLayout
+            android:id="@+id/mLlayoutBottomButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="243dp"
+            tools:layout_editor_absoluteX="0dp">
+
+        </LinearLayout>
 
         <View
             android:id="@+id/view2"
@@ -179,5 +191,22 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userName" />
 
+        <Button
+            android:id="@+id/set_goals"
+            android:layout_width="388dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/colorBlue"
+            android:text="Continue"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteY="484dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
+
 </ScrollView>

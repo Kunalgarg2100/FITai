@@ -20,23 +20,4 @@
         android:layout_marginTop="15dp" >
     </ListView>
 
-    <LinearLayout
-        android:id="@+id/mLlayoutBottomButtons"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/set_goals"
-            android:background="@color/colorBlue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="20dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/white"
-            android:text= "Lets Go" />
-    </LinearLayout>
-
 </RelativeLayout>
