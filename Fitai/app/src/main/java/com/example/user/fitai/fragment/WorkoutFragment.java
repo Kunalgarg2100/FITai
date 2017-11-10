@@ -64,16 +64,16 @@ public class WorkoutFragment extends Fragment {
 
     private void prepareWorkouts() {
         int[] covers = new int[]{
-                R.drawable.pushup,
-                R.drawable.leglifts,
-                R.drawable.stretch,
+                R.drawable.pilates,
+                R.drawable.zumba,
+                R.drawable.suryanamaskar,
         };
 
-        Workout a = new Workout("Pushups", "This is a must if you want to increase your strength", covers[0]);
+        Workout a = new Workout("Pilates", "This is a must if you want to increase your strength", covers[0]);
         workoutList.add(a);
-        a = new Workout("Leg lifts", "Improves strengthening of leg and thigh muscles", covers[1]);
+        a = new Workout("Zumba", "Improves strengthening of leg and thigh muscles", covers[1]);
         workoutList.add(a);
-        a = new Workout("Stretch", "Improves flexibility and relaxes joints", covers[2]);
+        a = new Workout("Surya Namaskar", "Improves peace of mind", covers[2]);
         workoutList.add(a);
         adapter.notifyDataSetChanged();
     }

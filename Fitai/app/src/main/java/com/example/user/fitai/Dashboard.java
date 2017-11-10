@@ -274,7 +274,7 @@ public class Dashboard extends AppCompatActivity
         else if (id == R.id.nav_support) {
             startActivity(new Intent(this, ChatActivity.class));
         } else if (id == R.id.nav_faqs) {
-            startActivity(new Intent(this, GraphActivity.class));
+            startActivity(new Intent(this, FrequentlyAskedQuestionsActivity.class));
         }
 
 
