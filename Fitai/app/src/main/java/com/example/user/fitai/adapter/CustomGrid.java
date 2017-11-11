@@ -50,12 +50,12 @@ public class CustomGrid extends BaseAdapter {
 
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.grid_single, null);
-            TextView textView = (TextView) grid.findViewById(R.id.grid_text);
-            ImageView imageView = (ImageView) grid.findViewById(R.id.grid_image);
+            TextView textView = grid.findViewById(R.id.grid_text);
+            ImageView imageView = grid.findViewById(R.id.grid_image);
             textView.setText(web[position]);
             imageView.setImageResource(Imageid[position]);
         } else {
-            grid = (View) convertView;
+            grid = convertView;
         }
 
         return grid;

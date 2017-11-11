@@ -157,11 +157,11 @@ public class Profile extends AppCompatActivity {
         final Dialog d = new Dialog(Profile.this);
         d.setTitle("NumberPicker");
         d.setContentView(R.layout.dialog);
-        Button b1 = (Button) d.findViewById(R.id.button1);
-        Button b2 = (Button) d.findViewById(R.id.button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
-        final NumberPicker npp = (NumberPicker) d.findViewById(R.id.numberPicker);
-        final NumberPicker np2 = (NumberPicker) d.findViewById(R.id.numberPicker2);
+        Button b1 = d.findViewById(R.id.button1);
+        Button b2 = d.findViewById(R.id.button2);
+        final NumberPicker np = d.findViewById(R.id.numberPicker1);
+        final NumberPicker npp = d.findViewById(R.id.numberPicker);
+        final NumberPicker np2 = d.findViewById(R.id.numberPicker2);
         np2.setMinValue(0);
         np2.setMaxValue(1);
         np2.setDisplayedValues(height_unit);
@@ -215,11 +215,11 @@ public class Profile extends AppCompatActivity {
         final Dialog d = new Dialog(Profile.this);
         d.setTitle("NumberPicker");
         d.setContentView(R.layout.dialog);
-        Button b1 = (Button) d.findViewById(R.id.button1);
-        Button b2 = (Button) d.findViewById(R.id.button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
-        final NumberPicker npp = (NumberPicker) d.findViewById(R.id.numberPicker);
-        final NumberPicker np2 = (NumberPicker) d.findViewById(R.id.numberPicker2);
+        Button b1 = d.findViewById(R.id.button1);
+        Button b2 = d.findViewById(R.id.button2);
+        final NumberPicker np = d.findViewById(R.id.numberPicker1);
+        final NumberPicker npp = d.findViewById(R.id.numberPicker);
+        final NumberPicker np2 = d.findViewById(R.id.numberPicker2);
         np2.setMinValue(0);
         np2.setMaxValue(1);
         np2.setDisplayedValues(weight_unit);
@@ -273,10 +273,10 @@ public class Profile extends AppCompatActivity {
         gender = (Button) findViewById(R.id.button_gender);
         d.setTitle("Choose Your Gender");
         d.setContentView(R.layout.gender);
-        Button b1 = (Button) d.findViewById(R.id.confirm_gender);
-        Button b2 = (Button) d.findViewById(R.id.cancel_gender);
-        final RadioButton r1 = (RadioButton) d.findViewById(R.id.button_male);
-        final RadioButton r2 = (RadioButton) d.findViewById(R.id.button_female);
+        Button b1 = d.findViewById(R.id.confirm_gender);
+        Button b2 = d.findViewById(R.id.cancel_gender);
+        final RadioButton r1 = d.findViewById(R.id.button_male);
+        final RadioButton r2 = d.findViewById(R.id.button_female);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -476,7 +476,6 @@ public class Profile extends AppCompatActivity {
         // RESIZE THE BIT MAP
         matrix.postScale(scaleWidth, scaleHeight);
         // "RECREATE" THE NEW BITMAP
-        Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
-        return resizedBitmap;
+        return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
     }
 }

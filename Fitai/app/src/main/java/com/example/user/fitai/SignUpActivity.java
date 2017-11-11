@@ -141,8 +141,8 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             public void onClick(View view) {
                 final Dialog d = new Dialog(SignUpActivity.this);
                 d.setContentView(R.layout.terms_and_conditions);
-                Button b = (Button) d.findViewById(R.id.exit_tnc_button);
-                TextView textview = (TextView) d.findViewById(R.id.display_tnc);
+                Button b = d.findViewById(R.id.exit_tnc_button);
+                TextView textview = d.findViewById(R.id.display_tnc);
                 String text = "";
                 try {
                     InputStream is = getAssets().open("terms-and-conditions-template.txt");
@@ -179,7 +179,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         deleteData.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (LoginActivity.myDB.deleteData() == true) {
+                if (LoginActivity.myDB.deleteData()) {
                     Toast.makeText(SignUpActivity.this, "Database deleted successfully!", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(SignUpActivity.this, "Error deleting database!", Toast.LENGTH_LONG).show();
@@ -301,7 +301,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
 
-            if (LoginActivity.myDB.verifySignup(email, user) == true) {
+            if (LoginActivity.myDB.verifySignup(email, user)) {
                 showProgress(true);
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);
@@ -332,9 +332,8 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
     private String generateCode() {
         SecureRandom random = new SecureRandom();
         int num = random.nextInt(100000);
-        String formatted = String.format("%05d", num);
         //System.out.println(formatted);
-        return formatted;
+        return String.format("%05d", num);
     }
 
     private boolean isEmailValid(String email) {

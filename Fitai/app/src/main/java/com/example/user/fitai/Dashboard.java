@@ -120,12 +120,12 @@ public class Dashboard extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
-        TextView username = (TextView) header.findViewById(R.id.dashboard_username);
-        TextView useremail = (TextView) header.findViewById(R.id.dashboard_email);
+        TextView username = header.findViewById(R.id.dashboard_username);
+        TextView useremail = header.findViewById(R.id.dashboard_email);
         username.setText(uname);
         useremail.setText(uemail);
         //String personPhotoUrl = sharedpreferences.getString("photoKey", "");
-        ImageView imgProfilePic = (ImageView) header.findViewById(R.id.dashboard_image);
+        ImageView imgProfilePic = header.findViewById(R.id.dashboard_image);
         if (fblogin == "yes") {
             Glide.with(getApplicationContext()).load(uphoto)
                     .thumbnail(0.3f)

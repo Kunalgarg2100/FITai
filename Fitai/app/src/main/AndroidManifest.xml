@@ -180,7 +180,7 @@
             android:name=".SupportActivity"
             android:label="About Us"
             android:parentActivityName=".Dashboard"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

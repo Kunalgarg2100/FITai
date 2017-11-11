@@ -66,26 +66,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean verifySignup(String email, String user) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(TABLE_NAME, null, " EMAIL = ? or USERNAME = ?", new String[]{email, user}, null, null, null);
-        if (cursor.getCount() > 0)
-            return false;
-        else
-            return true;
+        return cursor.getCount() <= 0;
     }
 
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
-        return res;
+        return db.rawQuery("select * from " + TABLE_NAME, null);
     }
 
     public boolean verifyLogin(String user, String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor1 = db.query(TABLE_NAME, null, " USERNAME = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
         Cursor cursor2 = db.query(TABLE_NAME, null, " EMAIL = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
-        if (cursor1.getCount() == 1 || cursor2.getCount() == 1)
-            return true;
-        else
-            return false;
+        return cursor1.getCount() == 1 || cursor2.getCount() == 1;
     }
 
     public Cursor getEmail(String user) {

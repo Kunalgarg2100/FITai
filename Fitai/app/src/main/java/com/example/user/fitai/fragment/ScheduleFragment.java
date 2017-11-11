@@ -15,7 +15,6 @@ import com.example.user.fitai.R;
 public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View view = inflater.inflate(R.layout.activity_home, container, false);
-        return view;
+        return inflater.inflate(R.layout.activity_home, container, false);
     }
 }

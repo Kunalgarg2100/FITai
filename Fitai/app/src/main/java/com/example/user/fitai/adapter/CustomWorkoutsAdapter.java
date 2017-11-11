@@ -29,10 +29,10 @@ public class CustomWorkoutsAdapter extends RecyclerView.Adapter<CustomWorkoutsAd
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            instruct = (TextView) view.findViewById(R.id.instructionheader);
-            descript = (TextView) view.findViewById(R.id.descript);
-            thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            title = view.findViewById(R.id.title);
+            instruct = view.findViewById(R.id.instructionheader);
+            descript = view.findViewById(R.id.descript);
+            thumbnail = view.findViewById(R.id.thumbnail);
             /*
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

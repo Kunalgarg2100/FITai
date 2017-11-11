@@ -84,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
                             pass1_text.setError("Passwords do not match!");
                             return;
                         }
-                        if (myDB.verifySignup(email, username) == true) {
+                        if (myDB.verifySignup(email, username)) {
                             byte[] image = null;
                             boolean signup = myDB.insertData(username, email, pass1, image);
-                            if (signup == true)
+                            if (signup)
                                 Toast.makeText(MainActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                             else
                                 Toast.makeText(MainActivity.this, "SignUp not successfull", Toast.LENGTH_LONG).show();

@@ -50,13 +50,13 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
         if (viewType == MY_MESSAGE) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_mine_message, parent, false);
 
-            TextView textView = (TextView) convertView.findViewById(R.id.text);
+            TextView textView = convertView.findViewById(R.id.text);
             textView.setText(getItem(position).getContent());
 
         } else if (viewType == OTHER_MESSAGE) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_other_message, parent, false);
 
-            TextView textView = (TextView) convertView.findViewById(R.id.text);
+            TextView textView = convertView.findViewById(R.id.text);
             textView.setText(getItem(position).getContent());
         } else if (viewType == MY_IMAGE) {
             //convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_mine_image, parent, false);

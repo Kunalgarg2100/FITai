@@ -34,8 +34,8 @@ public class HomeFragment extends TabsFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.activity_home, container, false);
-        setProfile = (TextView) view.findViewById(R.id.set_profile);
-        userInfo = (TextView) view.findViewById(R.id.user_info);
+        setProfile = view.findViewById(R.id.set_profile);
+        userInfo = view.findViewById(R.id.user_info);
 
         SharedPreferences sharedpreferences = getActivity().getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         String uname = sharedpreferences.getString(LoginActivity.Name, "");
@@ -62,15 +62,15 @@ public class HomeFragment extends TabsFragment {
                 }
             });
         }
-        BarChart chart = (BarChart) view.findViewById(R.id.chart);
+        BarChart chart = view.findViewById(R.id.chart);
         img = view.findViewById(R.id.imageView2);
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
         chart.setDescription("Yoga");
         chart.animateXY(2000, 2000);
         chart.invalidate();
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        CircularProgressBar circularProgressBar = (CircularProgressBar) view.findViewById(R.id.yourCircularProgressbar);
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        CircularProgressBar circularProgressBar = view.findViewById(R.id.yourCircularProgressbar);
 
         circularProgressBar.setColor(ContextCompat.getColor(getContext(), R.color.progressBarColor));
         circularProgressBar.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.backgroundProgressBarColor));

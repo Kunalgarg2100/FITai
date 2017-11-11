@@ -77,9 +77,9 @@ public class MpagerAdapter extends PagerAdapter {
             case 0:
                 //Log.d("page","1");
                 view = layoutInflater.inflate(R.layout.activity_screen1, null, false);
-                Bmale = (ImageView) view.findViewById(R.id.male_btn);
-                Bfemale = (ImageView) view.findViewById(R.id.female_btn);
-                text = (TextView) view.findViewById(R.id.gender_text);
+                Bmale = view.findViewById(R.id.male_btn);
+                Bfemale = view.findViewById(R.id.female_btn);
+                text = view.findViewById(R.id.gender_text);
                 String gender = sharedprefs.getString(LoginActivity.Gender, "");
                 user = sharedprefs.getString(LoginActivity.Name, "");
                 text.setText("Hey " + user + ", Select your Gender");
@@ -116,16 +116,16 @@ public class MpagerAdapter extends PagerAdapter {
 
                 view = layoutInflater.inflate(R.layout.activity_screen2, null, false);
 
-                age = (TextView) view.findViewById(R.id.text_age);
-                weight1 = (TextView) view.findViewById(R.id.weight1);
-                weight2 = (TextView) view.findViewById(R.id.weight2);
-                weight = (TextView) view.findViewById(R.id.text_weight);
-                height1 = (TextView) view.findViewById(R.id.height1);
-                height2 = (TextView) view.findViewById(R.id.height2);
-                height = (TextView) view.findViewById(R.id.text_height);
-                textAge = (TextView) view.findViewById(R.id.text_age);
-                textHeight = (TextView) view.findViewById(R.id.text_height);
-                textWeight = (TextView) view.findViewById(R.id.text_weight);
+                age = view.findViewById(R.id.text_age);
+                weight1 = view.findViewById(R.id.weight1);
+                weight2 = view.findViewById(R.id.weight2);
+                weight = view.findViewById(R.id.text_weight);
+                height1 = view.findViewById(R.id.height1);
+                height2 = view.findViewById(R.id.height2);
+                height = view.findViewById(R.id.text_height);
+                textAge = view.findViewById(R.id.text_age);
+                textHeight = view.findViewById(R.id.text_height);
+                textWeight = view.findViewById(R.id.text_weight);
                 weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, null);
                 weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, null);
                 height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, null);
@@ -304,8 +304,8 @@ public class MpagerAdapter extends PagerAdapter {
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your height");
                         d.setContentView(R.layout.profile_dialog);
-                        Button b1 = (Button) d.findViewById(R.id.save);
-                        Button b2 = (Button) d.findViewById(R.id.cancel);
+                        Button b1 = d.findViewById(R.id.save);
+                        Button b2 = d.findViewById(R.id.cancel);
                         np1 = d.findViewById(R.id.num1);
                         np2 = d.findViewById(R.id.num2);
                         if (height_unit == "cm") {
@@ -354,8 +354,8 @@ public class MpagerAdapter extends PagerAdapter {
                         final Dialog d = new Dialog(activity);
                         d.setTitle("Select your Weight");
                         d.setContentView(R.layout.profile_dialog);
-                        Button b1 = (Button) d.findViewById(R.id.save);
-                        Button b2 = (Button) d.findViewById(R.id.cancel);
+                        Button b1 = d.findViewById(R.id.save);
+                        Button b2 = d.findViewById(R.id.cancel);
                         np1 = d.findViewById(R.id.num1);
                         np2 = d.findViewById(R.id.num2);
                         if (weight_unit == "kg") {
@@ -397,9 +397,9 @@ public class MpagerAdapter extends PagerAdapter {
             case 2:
                 //Log.d("page","1");
                 view = layoutInflater.inflate(R.layout.activity_screen3, null, false);
-                Bhome = (ImageView) view.findViewById(R.id.home_btn);
-                Bgym = (ImageView) view.findViewById(R.id.gym_btn);
-                text = (TextView) view.findViewById(R.id.workout_text);
+                Bhome = view.findViewById(R.id.home_btn);
+                Bgym = view.findViewById(R.id.gym_btn);
+                text = view.findViewById(R.id.workout_text);
                 String place = sharedprefs.getString(LoginActivity.PLACE, "");
                 user = sharedprefs.getString(LoginActivity.Name, "");
                 text.setText(user + ", Where do you workout?");
@@ -460,7 +460,7 @@ public class MpagerAdapter extends PagerAdapter {
             year_x = year;
             month_x = month + 1;
             day_x = day;
-            Button bt = (Button) view.findViewById(R.id.button_dateOfBirth);
+            Button bt = view.findViewById(R.id.button_dateOfBirth);
             String date = day_x + "/" + month_x + "/" + year_x;
             bt.setText(date);
             SharedPreferences date_sp = context.getSharedPreferences("prof", Context.MODE_PRIVATE);

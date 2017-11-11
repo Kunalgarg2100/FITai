@@ -226,7 +226,7 @@ public class VerifyEmail extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     //ins_image = saveImageInDB(profile_pic);
-                    if (signup == true) {
+                    if (signup) {
                         Toast.makeText(VerifyEmail.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(VerifyEmail.this, LoginActivity.class));
                         finish();

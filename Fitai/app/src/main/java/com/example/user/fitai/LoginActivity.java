@@ -177,7 +177,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                             }
                                             Log.d("input_data", inputData.toString());*/
                                     boolean verify_signup = LoginActivity.myDB.verifySignup(user_email, user_name);
-                                    if (verify_signup == true) {
+                                    if (verify_signup) {
                                         Log.d("already", "yes");
                                         boolean signup = LoginActivity.myDB.insertData(user_name, user_email, null, null);
                                     } else {

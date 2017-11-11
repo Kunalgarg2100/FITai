@@ -35,9 +35,9 @@ public class CustomGoalsAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.mylist, null, true);
 
-        txtTitle = (TextView) rowView.findViewById(R.id.item);
-        imageView = (ImageView) rowView.findViewById(R.id.goals_image);
-        extratxt = (TextView) rowView.findViewById(R.id.textView1);
+        txtTitle = rowView.findViewById(R.id.item);
+        imageView = rowView.findViewById(R.id.goals_image);
+        extratxt = rowView.findViewById(R.id.textView1);
 
         txtTitle.setText(itemname[position]);
         imageView.setImageResource(imgid[position]);

@@ -32,7 +32,7 @@ public class GraphFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.activity_graph, container, false);
-        BarChart chart = (BarChart) view.findViewById(R.id.chart);
+        BarChart chart = view.findViewById(R.id.chart);
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
         chart.setDescription("My Chart");
