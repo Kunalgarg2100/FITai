@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.example.user.fitai.R;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by kunal on 9/11/17.
@@ -52,8 +50,6 @@ public class CustomProgramAdapter extends ArrayAdapter<String> {
         return rowView;
 
     }
-
-    ;
 
 
 }

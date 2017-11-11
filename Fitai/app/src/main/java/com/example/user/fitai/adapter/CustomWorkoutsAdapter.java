@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.user.fitai.GraphActivity;
 import com.example.user.fitai.ListActivity;
 import com.example.user.fitai.R;
 

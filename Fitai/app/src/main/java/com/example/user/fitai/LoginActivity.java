@@ -56,13 +56,8 @@ import com.google.android.gms.common.api.Status;
 
 import org.json.JSONObject;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -100,8 +95,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     LoginButton loginButton;
     TextView textView;
 
-    private SignInButton signinbutton;
-    private GoogleSignInOptions gso;
     public GoogleApiClient mGoogleApiClient;
     private int RC_SIGN_IN = 100;
 
@@ -244,7 +237,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Toast.makeText(LoginActivity.this, "Check your internet connection!!", Toast.LENGTH_LONG).show();
             }
         });
-        signinbutton = (SignInButton) findViewById(R.id.googlesigninbutton);
+        SignInButton signinbutton = (SignInButton) findViewById(R.id.googlesigninbutton);
         signinbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -313,7 +306,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mGoogleApiClient.disconnect();
         }
 
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)

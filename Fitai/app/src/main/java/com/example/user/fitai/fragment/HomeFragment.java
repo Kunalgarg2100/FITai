@@ -3,34 +3,21 @@ package com.example.user.fitai.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.user.fitai.GoalsActivity;
 import com.example.user.fitai.LoginActivity;
-import com.example.user.fitai.ProgramActivity;
 import com.example.user.fitai.R;
-import com.example.user.fitai.RecommendActivity;
 import com.example.user.fitai.SetProfile;
 import com.example.user.fitai.WorkoutActivity;
-import com.example.user.fitai.adapter.CustomProgramAdapter;
-import com.example.user.fitai.adapter.Workout;
-import com.example.user.fitai.adapter.WorkoutsAdapter;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -39,9 +26,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class HomeFragment extends TabsFragment {
     TextView setProfile, userInfo;

@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.user.fitai.adapter.MpagerAdapter;
-import com.facebook.login.Login;
 
 import java.util.Calendar;
 
@@ -29,9 +28,7 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
 
     private ViewPager mPager;
     private int[] layouts = {R.layout.activity_screen1, R.layout.activity_screen2, R.layout.activity_screen3};
-    private MpagerAdapter mpagerAdapter;
     private LinearLayout Dots_layout;
-    private ImageView[] dots;
     private Button BnNext, BnSkip;
     public SharedPreferences sharedprefs;
     int year_x, month_x, day_x;
@@ -51,7 +48,7 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_set_profile);
 
         mPager = (ViewPager) findViewById(R.id.viewPager);
-        mpagerAdapter = new MpagerAdapter(layouts, this, SetProfile.this);
+        MpagerAdapter mpagerAdapter = new MpagerAdapter(layouts, this, SetProfile.this);
         mPager.setAdapter(mpagerAdapter);
         sharedprefs = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedprefs.edit();
@@ -114,7 +111,7 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
         if (Dots_layout != null)
             Dots_layout.removeAllViews();
 
-        dots = new ImageView[layouts.length];
+        ImageView[] dots = new ImageView[layouts.length];
 
         for (int i = 0; i < layouts.length; i++) {
 

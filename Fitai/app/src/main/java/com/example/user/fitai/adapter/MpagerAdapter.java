@@ -6,29 +6,22 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.fitai.LoginActivity;
-import com.example.user.fitai.Profile;
 import com.example.user.fitai.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import static android.app.PendingIntent.getActivity;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by mohit on 29/10/17.

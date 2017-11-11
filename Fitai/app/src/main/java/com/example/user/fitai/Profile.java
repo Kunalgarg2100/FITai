@@ -1,6 +1,5 @@
 package com.example.user.fitai;
 
-import android.*;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -33,7 +32,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 

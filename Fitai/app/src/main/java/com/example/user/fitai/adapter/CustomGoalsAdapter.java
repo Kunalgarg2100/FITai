@@ -46,7 +46,5 @@ public class CustomGoalsAdapter extends ArrayAdapter<String> {
 
     }
 
-    ;
-
 
 }

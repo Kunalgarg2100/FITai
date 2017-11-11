@@ -4,11 +4,6 @@ package com.example.user.fitai;
  * Created by mohit on 13/10/17.
  */
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInstaller;
-import android.os.AsyncTask;
-
 /**
  * Created by mohit on 24/9/17.
  */
@@ -32,7 +27,6 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
 
     //Declaring Variables
     private Context context;
-    private Session session;
 
     //Information to send email
     private String email;
@@ -82,7 +76,7 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
         props.put("mail.smtp.port", "465");
 
         //Creating a new session
-        session = Session.getDefaultInstance(props,
+        Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     //Authenticating the password
                     protected PasswordAuthentication getPasswordAuthentication() {

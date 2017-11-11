@@ -1,6 +1,5 @@
 package com.example.user.fitai;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;

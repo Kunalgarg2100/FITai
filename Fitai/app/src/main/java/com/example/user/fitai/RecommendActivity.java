@@ -3,15 +3,11 @@ package com.example.user.fitai;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.user.fitai.adapter.CustomGoalsAdapter;
-import com.example.user.fitai.adapter.CustomListAdapter;
-import com.example.user.fitai.adapter.Workout;
 
 import java.util.ArrayList;
 import java.util.Arrays;

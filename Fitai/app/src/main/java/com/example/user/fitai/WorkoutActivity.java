@@ -19,14 +19,12 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.user.fitai.adapter.CustomWorkoutsAdapter;
 import com.example.user.fitai.adapter.Workout;
-import com.example.user.fitai.adapter.WorkoutsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private CustomWorkoutsAdapter adapter;
     private List<Workout> workoutList;
 
@@ -39,7 +37,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
         //initCollapsingToolbar();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         workoutList = new ArrayList<>();
         adapter = new CustomWorkoutsAdapter(this, workoutList);

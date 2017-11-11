@@ -1,15 +1,10 @@
 package com.example.user.fitai;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,9 +20,7 @@ import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
     private ListView mListView;
-    private ImageView mButtonSend;
     private EditText mEditTextMessage;
-    private ImageView mImageView;
     private ChatMessageAdapter mAdapter;
 
     @Override
@@ -35,9 +28,9 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         mListView = (ListView) findViewById(R.id.listView);
-        mButtonSend = (ImageView) findViewById(R.id.btn_send);
+        ImageView mButtonSend = (ImageView) findViewById(R.id.btn_send);
         mEditTextMessage = (EditText) findViewById(R.id.et_message);
-        mImageView = (ImageView) findViewById(R.id.iv_image);
+        ImageView mImageView = (ImageView) findViewById(R.id.iv_image);
         mAdapter = new ChatMessageAdapter(this, new ArrayList<ChatMessage>());
         mListView.setAdapter(mAdapter);
 

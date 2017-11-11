@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.user.fitai.adapter.CustomGoalsAdapter;
 import com.example.user.fitai.adapter.CustomProgramAdapter;
 
 import java.io.IOException;

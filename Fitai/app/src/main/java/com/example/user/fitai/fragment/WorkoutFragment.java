@@ -28,7 +28,6 @@ import java.util.List;
 
 public class WorkoutFragment extends Fragment {
 
-    private RecyclerView recyclerView;
     private WorkoutsAdapter adapter;
     private List<Workout> workoutList;
 
@@ -41,7 +40,7 @@ public class WorkoutFragment extends Fragment {
 
         //initCollapsingToolbar();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
         workoutList = new ArrayList<>();
         adapter = new WorkoutsAdapter(getContext(), workoutList);

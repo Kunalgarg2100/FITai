@@ -10,13 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.user.fitai.GraphActivity;
 import com.example.user.fitai.R;
-import com.example.user.fitai.SignUpActivity;
-import com.example.user.fitai.VerifyEmail;
 
 import java.util.List;
 

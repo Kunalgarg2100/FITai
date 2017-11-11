@@ -18,7 +18,6 @@ public class CustomCardAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final String[] itemname;
-    private final Integer[] imgid;
 
     public CustomCardAdapter(Activity context, String[] itemname, Integer[] imgid) {
         super(context, R.layout.mylist, itemname);
@@ -26,7 +25,7 @@ public class CustomCardAdapter extends ArrayAdapter<String> {
 
         this.context = context;
         this.itemname = itemname;
-        this.imgid = imgid;
+        Integer[] imgid1 = imgid;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -44,5 +43,4 @@ public class CustomCardAdapter extends ArrayAdapter<String> {
 
     }
 
-    ;
 }

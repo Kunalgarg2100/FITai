@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 public class Transition extends AppCompatActivity {
-    private static int time_out = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transition);
+        int time_out = 1000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
