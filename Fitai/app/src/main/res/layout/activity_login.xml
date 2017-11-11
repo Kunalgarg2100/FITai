@@ -79,6 +79,9 @@
                 android:background="@drawable/red_button"
                 android:text="@string/action_sign_in"
                 android:textStyle="" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
 
             <Button
                 android:id="@+id/email_sign_up_button"
@@ -87,9 +90,21 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:background="#e62e00"
+                android:background="@drawable/blue_button"
                 android:text="@string/action_sign_up"
                 android:textStyle="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Or Login Using"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -114,7 +129,7 @@
                     facebook:layout_constraintLeft_toLeftOf="parent"
                     facebook:layout_constraintRight_toRightOf="parent"
                     facebook:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="42dp"
+                    android:layout_marginTop="8dp"
                     facebook:layout_constraintHorizontal_bias="0.6" />
 
 

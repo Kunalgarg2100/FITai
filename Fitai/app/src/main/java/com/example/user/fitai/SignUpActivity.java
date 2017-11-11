@@ -34,6 +34,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -134,8 +136,9 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
-        final Button terms_button = (Button) findViewById(R.id.tnc_button);
-        terms_button.setOnClickListener(new OnClickListener() {
+        //final Button terms_button = (Button) findViewById(R.id.tnc_button);
+        TextView tnc = (TextView) findViewById(R.id.TandC);
+        tnc.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Dialog d = new Dialog(SignUpActivity.this);

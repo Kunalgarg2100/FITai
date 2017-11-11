@@ -79,7 +79,6 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName=".LoginActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="com.example.user.fitai.SignUpActivity" />
@@ -160,7 +159,6 @@
         <activity
             android:name=".ProgramActivity"
             android:label="Programs"
-            android:parentActivityName=".RecommendActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ListActivity"

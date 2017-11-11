@@ -5,6 +5,6 @@ package com.example.user.fitai;
  */
 
 public class Config {
-    public static final String EMAIL ="ms892075@gmail.com";
-    public static final String PASSWORD ="pranjaldon";
+    public static final String EMAIL ="fitaifitness@gmail.com";
+    public static final String PASSWORD ="fitnessapp";
 }

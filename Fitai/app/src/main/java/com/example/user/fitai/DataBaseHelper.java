@@ -28,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     public DataBaseHelper(Context context) {
-        super(context, DB_NAME, null, 9);
+        super(context, DB_NAME, null, 10);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
-        if (newVersion > 1) {
+        if (newVersion > oldVersion) {
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN IMAGE BLOB");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN HEIGHT REAL");
             db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN WEIGHT REAL");

@@ -209,4 +209,10 @@ public class SetProfile extends AppCompatActivity implements View.OnClickListene
         day_x = cal.get(Calendar.DAY_OF_MONTH);
         showDialog(DIALOG_ID);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SetProfile.this, Dashboard.class));
+        finish();
+    }
 }

@@ -67,13 +67,14 @@ public class HomeFragment extends TabsFragment{
 
         if(!height.equals("") && !weight.equals("") && !gender.equals("") && !dob.equals("")) {
             setProfile.setVisibility(view.GONE);
-            userInfo.setText("Height " + height +"\n" + "Weight " + weight);
+            userInfo.setText("Height " + height +"\n" + "Weight " + weight+"\n" + "Gender " + gender+"\n" + "Dob " + dob);
         }else{
             userInfo.setVisibility(view.GONE);
             setProfile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(getActivity(), SetProfile.class));
+                    getActivity().finish();
                 }
             });
         }

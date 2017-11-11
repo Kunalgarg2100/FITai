@@ -209,10 +209,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                             editor.putString(Email, user_email);
                                             editor.putString(PhotoUrl, profile_pic.toString());
                                             editor.putString(FBLOGIN, "yes");
-                                            editor.putString(HEIGHT_VAL, height.toString());
-                                            editor.putString(WEIGHT_VAL, weight.toString());
-                                            editor.putString(Gender, dob);
-                                            editor.putString(DOB, gender);
+                                            if(height!=null && weight!=null && gender!=null && dob!=null) {
+                                                editor.putString(HEIGHT_VAL, height.toString());
+                                                editor.putString(WEIGHT_VAL, weight.toString());
+                                                editor.putString(Gender, gender);
+                                                editor.putString(DOB, dob);
+                                            }
                                             //String encoded = Base64.encodeToString(inputData, Base64.DEFAULT);
                                             //editor.putString(PhotoUrl, encoded);
                                             //editor.putString(Gender, user_gender);
