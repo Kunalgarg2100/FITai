@@ -47,11 +47,10 @@ public class VideoActivity extends YouTubeBaseActivity {
             @Override
             public void onClick(View view) {
                 boolean check_connection = isNetworkConnected(getApplicationContext());
-                if(check_connection) {
+                if (check_connection) {
                     youTubePlayerView.initialize(PlayerConfig.API_KEY, onInitializedListener);
-                }
-                else
-                    Toast.makeText(getApplicationContext(),"Please connect to a working internet " +
+                } else
+                    Toast.makeText(getApplicationContext(), "Please connect to a working internet " +
                             "connection", Toast.LENGTH_SHORT).show();
             }
         });
@@ -60,6 +59,6 @@ public class VideoActivity extends YouTubeBaseActivity {
     public static boolean isNetworkConnected(Context c) {
         ConnectivityManager conManager = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conManager.getActiveNetworkInfo();
-        return ( netInfo != null && netInfo.isConnected() );
+        return (netInfo != null && netInfo.isConnected());
     }
 }

@@ -11,10 +11,12 @@ import android.widget.Toast;
 import com.example.user.fitai.adapter.CustomGrid;
 import com.example.user.fitai.R;
 
-public class TrainingProgramsFragment extends TabsFragment{
+public class TrainingProgramsFragment extends TabsFragment {
     GridView grid;
+
     public TrainingProgramsFragment() {
     }
+
     String[] web = {
             "DeskYoga",
             "OnFlightYoga",
@@ -28,11 +30,11 @@ public class TrainingProgramsFragment extends TabsFragment{
             "Yoga",
             "Brainyoga",
             "Deskyoga",
-    } ;
+    };
     int[] imageId = {
             R.drawable.deskyoga,
             R.drawable.onflightyoga,
-            R.drawable.meditation ,
+            R.drawable.meditation,
             R.drawable.yoga,
             R.drawable.zumba,
             R.drawable.pilates,
@@ -45,7 +47,7 @@ public class TrainingProgramsFragment extends TabsFragment{
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.activity_training_programs, container, false);
         CustomGrid adapter = new CustomGrid(getActivity(), web, imageId);
@@ -56,7 +58,7 @@ public class TrainingProgramsFragment extends TabsFragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getActivity(), "You Clicked at " +web[+ position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
 
             }
         });

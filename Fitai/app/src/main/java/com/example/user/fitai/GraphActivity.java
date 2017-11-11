@@ -21,8 +21,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-public class GraphActivity extends AppCompatActivity{
+public class GraphActivity extends AppCompatActivity {
     String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +32,10 @@ public class GraphActivity extends AppCompatActivity{
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
         ab.setTitle("Graph of " + title);
-        Log.d("Title",title);
+        Log.d("Title", title);
         BarChart chart = (BarChart) findViewById(R.id.chart);
         BarData data;
-        if(title.equals("Pushups"))
+        if (title.equals("Pushups"))
             data = new BarData(getXAxisValues(), getDataSet());
         else
             data = new BarData(getXAxisValues1(), getDataSet1());

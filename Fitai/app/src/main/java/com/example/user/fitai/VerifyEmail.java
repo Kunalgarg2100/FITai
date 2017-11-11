@@ -27,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
 public class VerifyEmail extends AppCompatActivity {
     private static final String TAG = "MyActivity";
     TextView textView, resend_btn, error;
-    EditText c1,c2,c3,c4,c5;
+    EditText c1, c2, c3, c4, c5;
     Button verify_btn;
     String code, subject, message, user, email, password;
     byte[] inputData;
@@ -47,13 +47,13 @@ public class VerifyEmail extends AppCompatActivity {
         resend_btn = (TextView) findViewById(R.id.resend);
         error = (TextView) findViewById(R.id.error);
         //textView.setText(code);
-        Log.d("ii",user);
-        Log.d("hi",email);
-        Log.d("hi",code);
+        Log.d("ii", user);
+        Log.d("hi", email);
+        Log.d("hi", code);
         subject = "Email Cofirmation";
-        message = "Hello "+user + "!!!\nThanks for registering on Fitai Fitness App.\n"+
-                "Your Verification code is-\n"+
-                code+"\nUse this code to verify your Enail address!!";
+        message = "Hello " + user + "!!!\nThanks for registering on Fitai Fitness App.\n" +
+                "Your Verification code is-\n" +
+                code + "\nUse this code to verify your Enail address!!";
         SendMail sm = new SendMail(this, email, subject, message);
         sm.execute();
         c1 = (EditText) findViewById(R.id.editText7);
@@ -75,15 +75,15 @@ public class VerifyEmail extends AppCompatActivity {
 
         c1.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start,int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
-                if(c1.getText().toString().length()==1)     //size as per your requirement
+                if (c1.getText().toString().length() == 1)     //size as per your requirement
                 {
                     c2.requestFocus();
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -98,19 +98,19 @@ public class VerifyEmail extends AppCompatActivity {
 
         c2.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start,int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
-                if(c2.getText().toString().length()==1)     //size as per your requirement
+                if (c2.getText().toString().length() == 1)     //size as per your requirement
                 {
                     c3.requestFocus();
                 }
-                if(c2.getText().toString().length()==0)     //size as per your requirement
+                if (c2.getText().toString().length() == 0)     //size as per your requirement
                 {
                     c1.requestFocus();
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -125,19 +125,19 @@ public class VerifyEmail extends AppCompatActivity {
 
         c3.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start,int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
-                if(c3.getText().toString().length()==1)     //size as per your requirement
+                if (c3.getText().toString().length() == 1)     //size as per your requirement
                 {
                     c4.requestFocus();
                 }
-                if(c3.getText().toString().length()==0)     //size as per your requirement
+                if (c3.getText().toString().length() == 0)     //size as per your requirement
                 {
                     c2.requestFocus();
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -152,19 +152,19 @@ public class VerifyEmail extends AppCompatActivity {
 
         c4.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start,int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
-                if(c4.getText().toString().length()==1)     //size as per your requirement
+                if (c4.getText().toString().length() == 1)     //size as per your requirement
                 {
                     c5.requestFocus();
                 }
-                if(c4.getText().toString().length()==0)     //size as per your requirement
+                if (c4.getText().toString().length() == 0)     //size as per your requirement
                 {
                     c3.requestFocus();
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -179,15 +179,15 @@ public class VerifyEmail extends AppCompatActivity {
 
         c5.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start,int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
-                if(c5.getText().toString().length()==0)     //size as per your requirement
+                if (c5.getText().toString().length() == 0)     //size as per your requirement
                 {
                     c4.requestFocus();
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -203,18 +203,17 @@ public class VerifyEmail extends AppCompatActivity {
     }
 
 
-
-    public void check_code() throws UnsupportedEncodingException, NoSuchAlgorithmException{
+    public void check_code() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         verify_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Uri profile_pic = null;
-                String ver_code = c1.getText().toString().trim() +c2.getText().toString().trim() +c3.getText().toString().trim() +c4.getText().toString().trim()+c5.getText().toString().trim();
+                String ver_code = c1.getText().toString().trim() + c2.getText().toString().trim() + c3.getText().toString().trim() + c4.getText().toString().trim() + c5.getText().toString().trim();
                 ver_code = ver_code.trim();
                 //String ver_code1 = code;
                 Uri profile_pic = Uri.parse("android.resource://com.example.user.fitai/drawable/profile");
                 Log.d("profile_pic", profile_pic.toString());
-                if(ver_code.equals(code)){
+                if (ver_code.equals(code)) {
                     //textView.setText("yes "+ver_code+" "+code);
                     boolean signup = false;
                     boolean ins_image;
@@ -232,15 +231,14 @@ public class VerifyEmail extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     //ins_image = saveImageInDB(profile_pic);
-                    if(signup == true) {
+                    if (signup == true) {
                         Toast.makeText(VerifyEmail.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(VerifyEmail.this, LoginActivity.class));
                         finish();
-                    }
-                    else
+                    } else
                         Toast.makeText(VerifyEmail.this, "SignUp not successfull", Toast.LENGTH_LONG).show();
 
-                } else{
+                } else {
                     error.setText("Verification code is invalid. Please try one more time!");
                 }
             }

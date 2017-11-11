@@ -3,6 +3,7 @@ package com.example.user.fitai.adapter;
 /**
  * Created by kunal on 7/11/17.
  */
+
 import com.example.user.fitai.PlayerConfig;
 import com.example.user.fitai.R;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageView;
 
-public class CustomListAdapter extends ArrayAdapter<String>{
+public class CustomListAdapter extends ArrayAdapter<String> {
 
     private YouTubeThumbnailLoader youTubeThumbnailLoader;
     private String link_list[];
@@ -43,7 +44,7 @@ public class CustomListAdapter extends ArrayAdapter<String>{
         final String video_id = link_list[position];
         txt.setText(title_name);
         YouTubeThumbnailView.OnInitializedListener onInitializedListener = new YouTubeThumbnailView.
-                OnInitializedListener(){
+                OnInitializedListener() {
 
             @Override
             public void onInitializationFailure(YouTubeThumbnailView thumbnailView,

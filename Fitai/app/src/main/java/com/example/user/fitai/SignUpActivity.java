@@ -80,11 +80,11 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         setContentView(R.layout.activity_sign_up);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mUserView = (AutoCompleteTextView)findViewById(R.id.user);
+        mUserView = (AutoCompleteTextView) findViewById(R.id.user);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mAgainPasswordView = (EditText)findViewById(R.id.againpassword);
+        mAgainPasswordView = (EditText) findViewById(R.id.againpassword);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -168,7 +168,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
-        Button mEmailSignInButton= (Button)findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,10 +181,9 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         deleteData.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(LoginActivity.myDB.deleteData()==true){
+                if (LoginActivity.myDB.deleteData() == true) {
                     Toast.makeText(SignUpActivity.this, "Database deleted successfully!", Toast.LENGTH_LONG).show();
-                }
-                else{
+                } else {
                     Toast.makeText(SignUpActivity.this, "Error deleting database!", Toast.LENGTH_LONG).show();
                 }
             }
@@ -264,7 +263,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
 
         // Check for a valid password, if the user entered one.
 
-        if(!isPasswordValid(password)){
+        if (!isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -290,7 +289,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             focusView = mEmailView;
             cancel = true;
         }
-        if(!isUserValid(user)){
+        if (!isUserValid(user)) {
             mUserView.setError(getString(R.string.error_invalid_user));
             focusView = mUserView;
             cancel = true;
@@ -304,7 +303,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
 
-            if(LoginActivity.myDB.verifySignup(email, user)==true){
+            if (LoginActivity.myDB.verifySignup(email, user) == true) {
                 showProgress(true);
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);
@@ -326,14 +325,13 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
                     Toast.makeText(SignUpActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                 else
                     Toast.makeText(SignUpActivity.this, "SignUp not successfull", Toast.LENGTH_LONG).show();*/
-            }
-            else{
+            } else {
                 Toast.makeText(SignUpActivity.this, "Username or Email already exists!!", Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    private String generateCode(){
+    private String generateCode() {
         SecureRandom random = new SecureRandom();
         int num = random.nextInt(100000);
         String formatted = String.format("%05d", num);
@@ -351,7 +349,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         return password.length() > 4;
     }
 
-    private Boolean isUserValid(String user){
+    private Boolean isUserValid(String user) {
         boolean a = user.matches("[a-zA-Z0-9]*");
         boolean b = user.length() > 4;
         return (a && b);

@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class AboutActivity extends AppCompatActivity{
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

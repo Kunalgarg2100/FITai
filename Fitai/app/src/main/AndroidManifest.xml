@@ -176,7 +176,8 @@
             android:label="FAQs"
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SupportActivity"
+        <activity
+            android:name=".SupportActivity"
             android:label="About Us"
             android:parentActivityName=".Dashboard"
             android:theme="@style/AppTheme"></activity>

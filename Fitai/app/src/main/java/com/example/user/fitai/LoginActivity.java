@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public static DataBaseHelper myDB;
     SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "Session" ;
+    public static final String MyPREFERENCES = "Session";
     public static final String Name = "nameKey";
     public static final String Pass = "passKey";
     public static final String Email = "emailKey";
@@ -114,12 +114,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
     public boolean isOnline() {
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,39 +131,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
-            loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                @Override
-                public void onSuccess(LoginResult loginResult) {
-                    //    String nam,gend;
-                        GraphRequest request = GraphRequest.newMeRequest(
-                                loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(JSONObject me, GraphResponse response) {
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                //    String nam,gend;
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject me, GraphResponse response) {
 
-                                        if (response.getError() != null) {
-                                            // handle error
-                                        } else {
-                                            String user_lastname = me.optString("last_name");
-                                            String user_firstname = me.optString("first_name");
-                                            String user_name = user_firstname + user_lastname;
-                                            String id = me.optString("id");
-                                            //String user_gender = me.optString("gender");
-                                            Cursor info = null;
-                                            Double height = null;
-                                            Double weight = null;
-                                            String gender = null;
-                                            String dob = null;
+                                if (response.getError() != null) {
+                                    // handle error
+                                } else {
+                                    String user_lastname = me.optString("last_name");
+                                    String user_firstname = me.optString("first_name");
+                                    String user_name = user_firstname + user_lastname;
+                                    String id = me.optString("id");
+                                    //String user_gender = me.optString("gender");
+                                    Cursor info = null;
+                                    Double height = null;
+                                    Double weight = null;
+                                    String gender = null;
+                                    String dob = null;
 
-                                            URL profile_pic = null;
-                                            Uri user_image = null;
-                                            byte[] inputData = null;
-                                            try {
-                                                profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
-                                                Log.i("profile_pic", profile_pic + "");
-                                            } catch (MalformedURLException e) {
-                                                e.printStackTrace();
-                                            }
-                                            String user_email = response.getJSONObject().optString("email");
+                                    URL profile_pic = null;
+                                    Uri user_image = null;
+                                    byte[] inputData = null;
+                                    try {
+                                        profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
+                                        Log.i("profile_pic", profile_pic + "");
+                                    } catch (MalformedURLException e) {
+                                        e.printStackTrace();
+                                    }
+                                    String user_email = response.getJSONObject().optString("email");
 
                                             /*try {
                                                 user_image = Uri.parse( profile_pic.toURI().toString() );
@@ -181,68 +183,67 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                                 e.printStackTrace();
                                             }
                                             Log.d("input_data", inputData.toString());*/
-                                            boolean verify_signup = LoginActivity.myDB.verifySignup(user_email, user_name);
-                                            if(verify_signup == true) {
-                                                Log.d("already", "yes");
-                                                boolean signup = LoginActivity.myDB.insertData(user_name, user_email, null, null);
-                                            }else{
-                                                Log.d("already", "no");
-                                                info = LoginActivity.myDB.getEmail(user_name);
-                                                if (info.moveToFirst()) {
-                                                    height = info.getDouble(5);
-                                                    weight = info.getDouble(6);
-                                                    dob = info.getString(7);
-                                                    gender = info.getString(8);
-                                                    Log.d("height", height.toString());
-                                                    Log.d("weight", weight.toString());
-                                                    //Log.d("dob", dob);
-                                                    //Log.d("gender", gender);
-                                                }
-                                                else if (info == null){
-                                                    Toast.makeText(LoginActivity.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
-                                                }
-                                            }
-
-                                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                                            editor.clear();
-                                            editor.putString(Name, user_firstname + " " + user_lastname);
-                                            editor.putString(Email, user_email);
-                                            editor.putString(PhotoUrl, profile_pic.toString());
-                                            editor.putString(FBLOGIN, "yes");
-                                            if(height!=null && weight!=null && gender!=null && dob!=null) {
-                                                editor.putString(HEIGHT_VAL, height.toString());
-                                                editor.putString(WEIGHT_VAL, weight.toString());
-                                                editor.putString(Gender, gender);
-                                                editor.putString(DOB, dob);
-                                            }
-                                            //String encoded = Base64.encodeToString(inputData, Base64.DEFAULT);
-                                            //editor.putString(PhotoUrl, encoded);
-                                            //editor.putString(Gender, user_gender);
-
-                                            editor.commit();
-                                            startActivity(new Intent(LoginActivity.this, Dashboard.class));
-                                            finish();
-
+                                    boolean verify_signup = LoginActivity.myDB.verifySignup(user_email, user_name);
+                                    if (verify_signup == true) {
+                                        Log.d("already", "yes");
+                                        boolean signup = LoginActivity.myDB.insertData(user_name, user_email, null, null);
+                                    } else {
+                                        Log.d("already", "no");
+                                        info = LoginActivity.myDB.getEmail(user_name);
+                                        if (info.moveToFirst()) {
+                                            height = info.getDouble(5);
+                                            weight = info.getDouble(6);
+                                            dob = info.getString(7);
+                                            gender = info.getString(8);
+                                            Log.d("height", height.toString());
+                                            Log.d("weight", weight.toString());
+                                            //Log.d("dob", dob);
+                                            //Log.d("gender", gender);
+                                        } else if (info == null) {
+                                            Toast.makeText(LoginActivity.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
                                         }
                                     }
-                                });
 
-                        Bundle parameters = new Bundle();
-                        parameters.putString("fields", "last_name,first_name,id,gender,email");
-                        request.setParameters(parameters);
-                        request.executeAsync();
-                }
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.clear();
+                                    editor.putString(Name, user_firstname + " " + user_lastname);
+                                    editor.putString(Email, user_email);
+                                    editor.putString(PhotoUrl, profile_pic.toString());
+                                    editor.putString(FBLOGIN, "yes");
+                                    if (height != null && weight != null && gender != null && dob != null) {
+                                        editor.putString(HEIGHT_VAL, height.toString());
+                                        editor.putString(WEIGHT_VAL, weight.toString());
+                                        editor.putString(Gender, gender);
+                                        editor.putString(DOB, dob);
+                                    }
+                                    //String encoded = Base64.encodeToString(inputData, Base64.DEFAULT);
+                                    //editor.putString(PhotoUrl, encoded);
+                                    //editor.putString(Gender, user_gender);
 
-                @Override
-                public void onCancel() {
-                    Toast.makeText(LoginActivity.this, "Login attempt cancelled!!", Toast.LENGTH_LONG).show();
-                }
+                                    editor.commit();
+                                    startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                                    finish();
 
-                @Override
-                public void onError(FacebookException exception) {
-                    Toast.makeText(LoginActivity.this, "Check your internet connection!!", Toast.LENGTH_LONG).show();
-                }
-            });
+                                }
+                            }
+                        });
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "last_name,first_name,id,gender,email");
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(LoginActivity.this, "Login attempt cancelled!!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                Toast.makeText(LoginActivity.this, "Check your internet connection!!", Toast.LENGTH_LONG).show();
+            }
+        });
         signinbutton = (SignInButton) findViewById(R.id.googlesigninbutton);
         signinbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -294,7 +295,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignUpButton = (Button)findViewById(R.id.email_sign_up_button);
+        Button mEmailSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
         mEmailSignUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -419,7 +420,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            if(myDB.verifyLogin(email, SHA1(password))) {
+            if (myDB.verifyLogin(email, SHA1(password))) {
                 showProgress(true);
                 mAuthTask = new UserLoginTask(email, SHA1(password));
                 mAuthTask.execute((Void) null);
@@ -435,7 +436,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     dob = info.getString(7);
                     sex = info.getString(8);
                 }
-                if (info == null){
+                if (info == null) {
                     Toast.makeText(LoginActivity.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
                 }
 
@@ -462,8 +463,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Log.d("suri", encoded);
                 startActivity(new Intent(LoginActivity.this, Dashboard.class));
                 finish();
-            }
-            else{
+            } else {
                 Toast.makeText(LoginActivity.this, "Invalid username or password!!", Toast.LENGTH_LONG).show();
             }
         }
@@ -549,7 +549,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
-
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -616,6 +615,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
     private static String convertToHex(byte[] data) {
         StringBuilder buf = new StringBuilder();
         for (byte b : data) {
@@ -648,6 +648,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             handleGoogleSignInResult(result);
         }
     }
+
     //After the signing we are calling this function
     private void handleGoogleSignInResult(GoogleSignInResult result) {
         //If the login succeed
@@ -683,6 +684,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         }
     }
+
     private void GooglesignOut() {
 
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
@@ -693,6 +695,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                 });
     }
+
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

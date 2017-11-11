@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ypv"
-        android:layout_alignParentTop="true">
-    </com.google.android.youtube.player.YouTubePlayerView>
+        android:layout_alignParentTop="true"></com.google.android.youtube.player.YouTubePlayerView>
 
     <Button
         android:id="@+id/play"

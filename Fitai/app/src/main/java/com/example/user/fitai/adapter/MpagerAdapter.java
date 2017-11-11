@@ -48,7 +48,7 @@ public class MpagerAdapter extends PagerAdapter {
     public TextView weight1, weight2, weight, height1, height2, height, age, textWeight, textAge, textHeight;
     public String user;
     public ListView list;
-    int year_x,month_x,day_x;
+    int year_x, month_x, day_x;
     static final int DIALOG_ID = 0;
     public String weight_unit;
     public String weight_val;
@@ -57,7 +57,7 @@ public class MpagerAdapter extends PagerAdapter {
     public String age_val;
     public NumberPicker np1, np2;
 
-    public MpagerAdapter(int[] layouts, Context context, Activity activity){
+    public MpagerAdapter(int[] layouts, Context context, Activity activity) {
         this.layouts = layouts;
         this.context = context;
         this.activity = activity;
@@ -75,7 +75,7 @@ public class MpagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position){
+    public Object instantiateItem(ViewGroup container, int position) {
         View view = layoutInflater.inflate(layouts[position], container, false);
         sharedprefs = context.getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
@@ -87,13 +87,12 @@ public class MpagerAdapter extends PagerAdapter {
                 Bmale = (ImageView) view.findViewById(R.id.male_btn);
                 Bfemale = (ImageView) view.findViewById(R.id.female_btn);
                 text = (TextView) view.findViewById(R.id.gender_text);
-                String gender= sharedprefs.getString(LoginActivity.Gender, "");
-                user= sharedprefs.getString(LoginActivity.Name, "");
-                text.setText("Hey "+user+", Select your Gender");
-                if(gender == "male"){
+                String gender = sharedprefs.getString(LoginActivity.Gender, "");
+                user = sharedprefs.getString(LoginActivity.Name, "");
+                text.setText("Hey " + user + ", Select your Gender");
+                if (gender == "male") {
                     Bmale.setImageResource(images[0]);
-                }
-                else if(gender == "female"){
+                } else if (gender == "female") {
                     Bfemale.setImageResource(images[2]);
 
                 }
@@ -138,34 +137,34 @@ public class MpagerAdapter extends PagerAdapter {
                 weight_val = sharedprefs.getString(LoginActivity.WEIGHT_VAL, null);
                 height_unit = sharedprefs.getString(LoginActivity.HEIGHT_UNIT, null);
                 height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, null);
-                user= sharedprefs.getString(LoginActivity.Name, null);
+                user = sharedprefs.getString(LoginActivity.Name, null);
                 age_val = sharedprefs.getString(LoginActivity.DOB, null);
 
-                if(age_val == null){
+                if (age_val == null) {
                     textAge.setText("11/15/17");
                     SharedPreferences.Editor editor = sharedprefs.edit();
                     editor.putString(LoginActivity.DOB, "11/15/17");
                     editor.commit();
                 }
-                if(age_val!=null){
+                if (age_val != null) {
                     textAge.setText(age_val);
                 }
-                if(weight_unit==null){
+                if (weight_unit == null) {
                     SharedPreferences.Editor editor = sharedprefs.edit();
                     editor.putString(LoginActivity.WEIGHT_UNIT, "kg");
                     editor.commit();
                 }
-                if(weight_val==null){
+                if (weight_val == null) {
                     SharedPreferences.Editor editor = sharedprefs.edit();
                     editor.putString(LoginActivity.WEIGHT_VAL, "72");
                     editor.commit();
                 }
-                if(height_unit==null){
+                if (height_unit == null) {
                     SharedPreferences.Editor editor = sharedprefs.edit();
                     editor.putString(LoginActivity.HEIGHT_UNIT, "cm");
                     editor.commit();
                 }
-                if(height_val==null){
+                if (height_val == null) {
                     SharedPreferences.Editor editor = sharedprefs.edit();
                     editor.putString(LoginActivity.HEIGHT_VAL, "175");
                     editor.commit();
@@ -177,14 +176,14 @@ public class MpagerAdapter extends PagerAdapter {
                 height_val = sharedprefs.getString(LoginActivity.HEIGHT_VAL, null);
                 age_val = sharedprefs.getString(LoginActivity.DOB, null);
 
-                if(weight_val!=null){
+                if (weight_val != null) {
                     textWeight.setText(weight_val);
-                    if(weight_unit=="kg"){
+                    if (weight_unit == "kg") {
                         weight1.setBackgroundResource(R.drawable.profile_box2);
                         weight2.setBackgroundResource(R.drawable.profile_box);
                         weight1.setTextColor(context.getResources().getColorStateList(R.color.active));
                         weight2.setTextColor(context.getResources().getColorStateList(R.color.inactive));
-                    }else{
+                    } else {
                         weight1.setBackgroundResource(R.drawable.profile_box);
                         weight2.setBackgroundResource(R.drawable.profile_box2);
                         weight1.setTextColor(context.getResources().getColorStateList(R.color.inactive));
@@ -192,14 +191,14 @@ public class MpagerAdapter extends PagerAdapter {
                     }
                 }
 
-                if(height_val!=null){
+                if (height_val != null) {
                     textHeight.setText(height_val);
-                    if(height_unit=="cm"){
+                    if (height_unit == "cm") {
                         weight1.setBackgroundResource(R.drawable.profile_box2);
                         weight2.setBackgroundResource(R.drawable.profile_box);
                         weight1.setTextColor(context.getResources().getColorStateList(R.color.active));
                         weight2.setTextColor(context.getResources().getColorStateList(R.color.inactive));
-                    }else{
+                    } else {
                         height1.setBackgroundResource(R.drawable.profile_box);
                         height2.setBackgroundResource(R.drawable.profile_box2);
                         height1.setTextColor(context.getResources().getColorStateList(R.color.inactive));
@@ -282,7 +281,7 @@ public class MpagerAdapter extends PagerAdapter {
 
                         textAge.setText(sdf.format(myCalendar.getTime()));
                         SharedPreferences.Editor editor = sharedprefs.edit();
-                        editor.putString(LoginActivity.DOB,sdf.format(myCalendar.getTime()));
+                        editor.putString(LoginActivity.DOB, sdf.format(myCalendar.getTime()));
                         editor.commit();
 
                     }
@@ -316,13 +315,12 @@ public class MpagerAdapter extends PagerAdapter {
                         Button b2 = (Button) d.findViewById(R.id.cancel);
                         np1 = d.findViewById(R.id.num1);
                         np2 = d.findViewById(R.id.num2);
-                        if(height_unit == "cm"){
+                        if (height_unit == "cm") {
                             np1.setMaxValue(200);
                             np1.setMinValue(100);
                             np2.setMaxValue(9);
                             np2.setMinValue(0);
-                        }
-                        else{
+                        } else {
                             np1.setMaxValue(8);
                             np1.setMinValue(3);
                             np2.setMaxValue(11);
@@ -330,11 +328,10 @@ public class MpagerAdapter extends PagerAdapter {
                         }
                         np2.setWrapSelectorWheel(false);
                         np1.setWrapSelectorWheel(false);
-                        b1.setOnClickListener(new View.OnClickListener()
-                        {
+                        b1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                String s2 = String.valueOf(np1.getValue())+"."+String.valueOf(np2.getValue());
+                                String s2 = String.valueOf(np1.getValue()) + "." + String.valueOf(np2.getValue());
                                 textHeight.setText(s2);
                                 SharedPreferences.Editor editor = sharedprefs.edit();
                                 editor.putString(LoginActivity.HEIGHT_VAL, s2);
@@ -342,8 +339,7 @@ public class MpagerAdapter extends PagerAdapter {
                                 d.dismiss();
                             }
                         });
-                        b2.setOnClickListener(new View.OnClickListener()
-                        {
+                        b2.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 d.dismiss(); // dismiss the dialog
@@ -369,13 +365,12 @@ public class MpagerAdapter extends PagerAdapter {
                         Button b2 = (Button) d.findViewById(R.id.cancel);
                         np1 = d.findViewById(R.id.num1);
                         np2 = d.findViewById(R.id.num2);
-                        if(weight_unit == "kg"){
+                        if (weight_unit == "kg") {
                             np1.setMaxValue(200);
                             np1.setMinValue(30);
                             np2.setMaxValue(9);
                             np2.setMinValue(0);
-                        }
-                        else{
+                        } else {
                             np1.setMaxValue(440);
                             np1.setMinValue(66);
                             np2.setMaxValue(11);
@@ -383,11 +378,10 @@ public class MpagerAdapter extends PagerAdapter {
                         }
                         np1.setWrapSelectorWheel(false);
                         np2.setWrapSelectorWheel(false);
-                        b1.setOnClickListener(new View.OnClickListener()
-                        {
+                        b1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                String s2 = String.valueOf(np1.getValue())+"."+String.valueOf(np2.getValue());
+                                String s2 = String.valueOf(np1.getValue()) + "." + String.valueOf(np2.getValue());
                                 textWeight.setText(s2);
                                 SharedPreferences.Editor editor = sharedprefs.edit();
                                 editor.putString(LoginActivity.WEIGHT_VAL, s2);
@@ -395,8 +389,7 @@ public class MpagerAdapter extends PagerAdapter {
                                 d.dismiss();
                             }
                         });
-                        b2.setOnClickListener(new View.OnClickListener()
-                        {
+                        b2.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 d.dismiss(); // dismiss the dialog
@@ -414,13 +407,12 @@ public class MpagerAdapter extends PagerAdapter {
                 Bhome = (ImageView) view.findViewById(R.id.home_btn);
                 Bgym = (ImageView) view.findViewById(R.id.gym_btn);
                 text = (TextView) view.findViewById(R.id.workout_text);
-                String place= sharedprefs.getString(LoginActivity.PLACE, "");
-                user= sharedprefs.getString(LoginActivity.Name, "");
-                text.setText(user+", Where do you workout?");
-                if(place == "home"){
+                String place = sharedprefs.getString(LoginActivity.PLACE, "");
+                user = sharedprefs.getString(LoginActivity.Name, "");
+                text.setText(user + ", Where do you workout?");
+                if (place == "home") {
                     Bhome.setImageResource(images1[0]);
-                }
-                else if(place == "gym"){
+                } else if (place == "gym") {
                     Bgym.setImageResource(images1[2]);
 
                 }
@@ -457,29 +449,28 @@ public class MpagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
 
-        View view = (View)object;
+        View view = (View) object;
         container.removeView(view);
     }
 
-    protected Dialog onCreateDialog(int id){
-        if(id == DIALOG_ID){
+    protected Dialog onCreateDialog(int id) {
+        if (id == DIALOG_ID) {
             return new DatePickerDialog(activity, dpickerlistener, year_x, month_x, day_x);
-        }
-        else
+        } else
             return null;
     }
 
 
-    private DatePickerDialog.OnDateSetListener dpickerlistener = new DatePickerDialog.OnDateSetListener(){
+    private DatePickerDialog.OnDateSetListener dpickerlistener = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int month, int day){
+        public void onDateSet(DatePicker view, int year, int month, int day) {
             year_x = year;
             month_x = month + 1;
             day_x = day;
             Button bt = (Button) view.findViewById(R.id.button_dateOfBirth);
-            String date = day_x+"/"+month_x+"/"+year_x;
+            String date = day_x + "/" + month_x + "/" + year_x;
             bt.setText(date);
-            SharedPreferences date_sp = context.getSharedPreferences("prof",Context.MODE_PRIVATE);
+            SharedPreferences date_sp = context.getSharedPreferences("prof", Context.MODE_PRIVATE);
             SharedPreferences.Editor ed = date_sp.edit();
             ed.putString("user_dob", date);
             ed.commit();

@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Created by kunal on 2/11/17.
  */
 
-public class ChatActivity extends AppCompatActivity{
+public class ChatActivity extends AppCompatActivity {
     private ListView mListView;
     private ImageView mButtonSend;
     private EditText mEditTextMessage;
@@ -56,36 +56,34 @@ public class ChatActivity extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setCancelable(false);
-            builder.setMessage("Exit Chat?");
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //if user pressed "yes", then he is allowed to exit from application
-                    finish();
-                }
-            });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //if user select "No", just cancel this dialog and continue with app
-                    dialog.cancel();
-                }
-            });
-            AlertDialog alert = builder.create();
-            alert.show();
-        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Exit Chat?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user pressed "yes", then he is allowed to exit from application
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     private void sendMessage(String message) {
         ChatMessage chatMessage = new ChatMessage(message, true, false);
         mAdapter.add(chatMessage);
-        if(message.equals("Hello") || message.equals("hello") || message.equals("hi") ||
+        if (message.equals("Hello") || message.equals("hello") || message.equals("hi") ||
                 message.equals("Hi")) {
             mimicOtherMessage("Hello! How can I help you?");
-        }
-
-
-        else if(message.equals("Workouts") || message.equals("workouts") || message.equals("workout") || message.equals("Workout")){
+        } else if (message.equals("Workouts") || message.equals("workouts") || message.equals("workout") || message.equals("Workout")) {
             mimicOtherMessage("There are 4 workouts featured \nby our app");
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -95,20 +93,19 @@ public class ChatActivity extends AppCompatActivity{
                     mimicOtherMessage("Pilates");
                     mimicOtherMessage("Aerobics");
                 }
-            },2000);
+            }, 2000);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     mimicOtherMessage("Which one would you like to try out?");
                 }
-            },1000);
+            }, 1000);
 
 
-        }
-        else if(message.equals("Training Programs") || message.equals("training programs") ||
+        } else if (message.equals("Training Programs") || message.equals("training programs") ||
                 message.equals("programs") || message.equals("Programs") || message.equals("training program")
-                || message.equals("program")){
+                || message.equals("program")) {
             mimicOtherMessage("There are 3 different training programs \nfeatured by our app");
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -117,10 +114,9 @@ public class ChatActivity extends AppCompatActivity{
                     mimicOtherMessage("45-day-plan");
                     mimicOtherMessage("60-day-plan");
                 }
-            },2000);
+            }, 2000);
 
-        }
-        else if(message.equals("Goodbye") || message.equals("goodbye")) {
+        } else if (message.equals("Goodbye") || message.equals("goodbye")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setCancelable(false);
             builder.setMessage("Exit Chat?");
@@ -141,9 +137,7 @@ public class ChatActivity extends AppCompatActivity{
             AlertDialog alert = builder.create();
             alert.show();
             //finish();
-        }
-
-        else {
+        } else {
             mimicOtherMessage("Sorry, I could not understand\n what you are trying to say.");
         }
 

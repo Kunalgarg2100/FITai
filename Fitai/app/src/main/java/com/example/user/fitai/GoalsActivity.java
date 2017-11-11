@@ -30,7 +30,7 @@ public class GoalsActivity extends AppCompatActivity {
     List<String> Goals = new ArrayList<>();
     //String[] simpleArray = new String[ Goals.size() ];
     //Goals.toArray(simpleArray);
-    String[] itemname ={
+    String[] itemname = {
             "Weight Loss",
             "Mental Health",
             "Medical Condition",
@@ -44,7 +44,7 @@ public class GoalsActivity extends AppCompatActivity {
             "Physical Fitness"
     };
 
-    Integer[] imgid={
+    Integer[] imgid = {
             R.drawable.pilates,
             R.drawable.zumba,
             R.drawable.suryanamaskar,
@@ -53,7 +53,7 @@ public class GoalsActivity extends AppCompatActivity {
             R.drawable.brainyoga,
             R.drawable.deskyoga,
             R.drawable.onflightyoga,
-            R.drawable.meditation ,
+            R.drawable.meditation,
             R.drawable.yoga,
             R.drawable.zumba,
     };
@@ -62,10 +62,10 @@ public class GoalsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
-        CustomGoalsAdapter adapter=new CustomGoalsAdapter(this, itemname, imgid);
+        CustomGoalsAdapter adapter = new CustomGoalsAdapter(this, itemname, imgid);
         setGoals = (Button) findViewById(R.id.set_goals);
         setGoals.setVisibility(View.GONE);
-        list=(ListView)findViewById(R.id.list);
+        list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
         SharedPreferences sharedprefs = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         String weight_unit = sharedprefs.getString(LoginActivity.WEIGHT_UNIT, "");
@@ -75,20 +75,20 @@ public class GoalsActivity extends AppCompatActivity {
         String age_val = sharedprefs.getString(LoginActivity.DOB, "");
         String gender = sharedprefs.getString(LoginActivity.Gender, "");
         String user = sharedprefs.getString(LoginActivity.Name, "");
-        Log.d("gender",gender);
-        Log.d("weight_unit",weight_unit);
-        Log.d("weight_val",weight_val);
-        Log.d("height_unit",height_unit);
-        Log.d("height_val",height_val);
-        Log.d("age_val",age_val);
+        Log.d("gender", gender);
+        Log.d("weight_unit", weight_unit);
+        Log.d("weight_val", weight_val);
+        Log.d("height_unit", height_unit);
+        Log.d("height_val", height_val);
+        Log.d("age_val", age_val);
 
-        Double weight= Double.parseDouble(weight_val);
-        if(weight_unit.equals("lb"))
-            weight = weight/2.2;
+        Double weight = Double.parseDouble(weight_val);
+        if (weight_unit.equals("lb"))
+            weight = weight / 2.2;
 
-        Double height= Double.parseDouble(height_val);
-        if(height_unit.equals("inch"))
-            height = height*2.54;
+        Double height = Double.parseDouble(height_val);
+        if (height_unit.equals("inch"))
+            height = height * 2.54;
 
         /*Date age_date = null;
         SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
@@ -105,11 +105,11 @@ public class GoalsActivity extends AppCompatActivity {
 
         int temp;
         temp = second + (60 * minute) + (3600 * hour);*/
-        Log.d("height",height.toString());
-        Log.d("weight",weight.toString());
-        Log.d("age_val",age_val);
-        Log.d("gender",gender);
-        Log.d("user",user);
+        Log.d("height", height.toString());
+        Log.d("weight", weight.toString());
+        Log.d("age_val", age_val);
+        Log.d("gender", gender);
+        Log.d("user", user);
 
         LoginActivity.myDB.updateProfile(height, weight, age_val, gender, user);
 
@@ -118,18 +118,18 @@ public class GoalsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-                String Slecteditem= itemname[position].trim();
+                String Slecteditem = itemname[position].trim();
                 //Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
                 if (Goals.contains(Slecteditem)) {
                     parent.getChildAt(position).setBackgroundResource(R.drawable.list_element);
                     Goals.remove(Slecteditem);
-                }else{
+                } else {
                     parent.getChildAt(position).setBackgroundResource(R.drawable.active_list_element);
                     Goals.add(Slecteditem);
                 }
-                if(Goals.size()>0){
+                if (Goals.size() > 0) {
                     setGoals.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     setGoals.setVisibility(View.GONE);
                 }
             }
@@ -140,7 +140,7 @@ public class GoalsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GoalsActivity.this, RecommendActivity.class);
                 //String str = String.join(",", Goals);
-                Bundle b=new Bundle();
+                Bundle b = new Bundle();
                 String[] array = Goals.toArray(new String[0]);
                 b.putStringArray("goals", array);
                 intent.putExtras(b);

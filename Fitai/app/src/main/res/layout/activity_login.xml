@@ -1,5 +1,4 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,8 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:visibility="gone"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center" />
 
     <ScrollView
         android:id="@+id/login_form"
@@ -79,9 +77,10 @@
                 android:background="@drawable/red_button"
                 android:text="@string/action_sign_in"
                 android:textStyle="" />
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/email_sign_up_button"
@@ -104,7 +103,7 @@
                 android:gravity="center"
                 android:text="Or Login Using"
                 android:textSize="15dp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -113,10 +112,9 @@
                 android:weightSum="1"
                 tools:layout_editor_absoluteY="230dp"
                 tools:layout_editor_absoluteX="0dp"
-                tools:overrideLibrary= "">
+                tools:overrideLibrary="">
 
-                <com.facebook.login.widget.LoginButton
-                    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+                <com.facebook.login.widget.LoginButton xmlns:facebook="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/login_button"
                     style="@style/CustomFbButton"
                     android:layout_width="320dp"

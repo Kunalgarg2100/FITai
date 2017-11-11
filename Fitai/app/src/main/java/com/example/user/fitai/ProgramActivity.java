@@ -16,12 +16,12 @@ import java.io.InputStream;
 public class ProgramActivity extends AppCompatActivity {
 
     ListView list;
-    String[] programs ={
+    String[] programs = {
             "21 Day Program",
             "45 Day Program",
             "60 Day Program"
     };
-    String[] programsDes ={
+    String[] programsDes = {
             "21 day program is mainly for new users who want to try out Fitai",
             "45 day program is mainly for users who are already familiar with Fitai",
             "60 day program is for users who already have tried out short programs and interested in more workouts"
@@ -32,8 +32,8 @@ public class ProgramActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program);
-        CustomProgramAdapter adapter=new CustomProgramAdapter(this, programs, programsDes);
-        list=(ListView)findViewById(R.id.list);
+        CustomProgramAdapter adapter = new CustomProgramAdapter(this, programs, programsDes);
+        list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

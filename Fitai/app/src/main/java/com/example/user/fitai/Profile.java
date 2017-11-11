@@ -46,15 +46,15 @@ public class Profile extends AppCompatActivity {
     Animation Fade_in, Fade_out;
     ViewFlipper viewFlipper;
     final Context context = this;
-    final CharSequence[] items = {"Camera","Gallery"};
+    final CharSequence[] items = {"Camera", "Gallery"};
     public String TAG = "MyActivity";
     ImageButton img;
     static final Integer WRITE_EXST = 0x3;
     static final Integer READ_EXST = 0x4;
     static final Integer CAMERA = 0x5;
-    int year_x,month_x,day_x;
+    int year_x, month_x, day_x;
     static final int DIALOG_ID = 0;
-    Button b1, b2, b3, b4,b;
+    Button b1, b2, b3, b4, b;
     final String height_unit[] = {"cm", "inch"};
     final String weight_unit[] = {"kg", "lbs"};
     Button gender;
@@ -96,38 +96,37 @@ public class Profile extends AppCompatActivity {
         //userInfo.setText(height.toString()+weight.toString()+dob+sex);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        SharedPreferences sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("prof", Context.MODE_PRIVATE);
         //SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES,Context.MODE_PRIVATE);
-        String image_string = sp.getString(LoginActivity.PhotoUrl,"");
+        String image_string = sp.getString(LoginActivity.PhotoUrl, "");
         String weight_string = sp.getString("user_weight", "");
         String height_string = sp.getString("user_height", "");
         String dateOfBirth = sp.getString("user_dob", "");
         String gender_string = sp.getString("user_gender", "");
         //SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         //String uname = sharedpreferences.getString("nameKey", "");
-        if(!image_string.equals("")){
+        if (!image_string.equals("")) {
             Log.d("image_string", image_string);
             Bitmap resized = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(image_string), 310, 310);
             ImageView image = (ImageView) findViewById(R.id.imageButton);
             image.setImageBitmap(resized);
-        }
-        else{
+        } else {
             ImageView imageView = (ImageView) findViewById(R.id.imageButton);
             imageView.setImageResource(R.drawable.profilepic);
         }
-        if(!weight_string.equals("")){
+        if (!weight_string.equals("")) {
             b1 = (Button) findViewById(R.id.button_weight);
             b1.setText(weight_string);
         }
-        if(!height_string.equals("")){
+        if (!height_string.equals("")) {
             b2 = (Button) findViewById(R.id.button_height);
             b2.setText(height_string);
         }
-        if(!dateOfBirth.equals("")){
+        if (!dateOfBirth.equals("")) {
             b3 = (Button) findViewById(R.id.button_dateOfBirth);
             b3.setText(dateOfBirth);
         }
-        if(!gender_string.equals("")){
+        if (!gender_string.equals("")) {
             b4 = (Button) findViewById(R.id.button_gender);
             b4.setText(gender_string);
         }
@@ -144,9 +143,10 @@ public class Profile extends AppCompatActivity {
         if(!sex.equals("")){
             b4.setText(sex);
         }
-  */  }
+  */
+    }
 
-    public void dateUpdate(View v){
+    public void dateUpdate(View v) {
         final Calendar cal = Calendar.getInstance();
         year_x = cal.get(Calendar.YEAR);
         month_x = cal.get(Calendar.MONTH);
@@ -154,7 +154,7 @@ public class Profile extends AppCompatActivity {
         showDialog(DIALOG_ID);
     }
 
-    public void heightUpdate(View v){
+    public void heightUpdate(View v) {
         b = (Button) findViewById(R.id.button_height);
         final Dialog d = new Dialog(Profile.this);
         d.setTitle("NumberPicker");
@@ -177,14 +177,13 @@ public class Profile extends AppCompatActivity {
         np2.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                Log.i("value is",""+ String.valueOf(i1));
-                if(np2.getValue() == 0){
+                Log.i("value is", "" + String.valueOf(i1));
+                if (np2.getValue() == 0) {
                     np.setMaxValue(250);
                     np.setMinValue(140);
                     npp.setMaxValue(9);
                     npp.setMinValue(0);
-                }
-                else{
+                } else {
                     np.setMaxValue(100);
                     np.setMinValue(48);
                     npp.setMaxValue(11);
@@ -192,21 +191,19 @@ public class Profile extends AppCompatActivity {
                 }
             }
         });
-        b1.setOnClickListener(new View.OnClickListener()
-        {
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s2 = String.valueOf(np.getValue())+"."+String.valueOf(npp.getValue()) + " " + height_unit[np2.getValue()];
+                String s2 = String.valueOf(np.getValue()) + "." + String.valueOf(npp.getValue()) + " " + height_unit[np2.getValue()];
                 b.setText(s2);
-                SharedPreferences weight_sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+                SharedPreferences weight_sp = getSharedPreferences("prof", Context.MODE_PRIVATE);
                 SharedPreferences.Editor ed = weight_sp.edit();
                 ed.putString("user_height", s2);
                 ed.commit();
                 d.dismiss();
             }
         });
-        b2.setOnClickListener(new View.OnClickListener()
-        {
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 d.dismiss(); // dismiss the dialog
@@ -215,7 +212,7 @@ public class Profile extends AppCompatActivity {
         d.show();
     }
 
-    public void weightUpdate(View v){
+    public void weightUpdate(View v) {
         b = (Button) findViewById(R.id.button_weight);
         final Dialog d = new Dialog(Profile.this);
         d.setTitle("NumberPicker");
@@ -238,14 +235,13 @@ public class Profile extends AppCompatActivity {
         np2.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                Log.i("value is",""+ String.valueOf(i1));
-                if(np2.getValue() == 0){
+                Log.i("value is", "" + String.valueOf(i1));
+                if (np2.getValue() == 0) {
                     np.setMaxValue(400);
                     np.setMinValue(0);
                     npp.setMaxValue(9);
                     npp.setMinValue(0);
-                }
-                else {
+                } else {
                     np.setMaxValue(882);
                     np.setMinValue(88);
                     npp.setMaxValue(9);
@@ -253,21 +249,19 @@ public class Profile extends AppCompatActivity {
                 }
             }
         });
-        b1.setOnClickListener(new View.OnClickListener()
-        {
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s1 = String.valueOf(np.getValue())+"."+String.valueOf(npp.getValue()) + " " + weight_unit[np2.getValue()];
+                String s1 = String.valueOf(np.getValue()) + "." + String.valueOf(npp.getValue()) + " " + weight_unit[np2.getValue()];
                 b.setText(s1);
-                SharedPreferences weight_sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+                SharedPreferences weight_sp = getSharedPreferences("prof", Context.MODE_PRIVATE);
                 SharedPreferences.Editor ed = weight_sp.edit();
                 ed.putString("user_weight", s1);
                 ed.commit();
                 d.dismiss();
             }
         });
-        b2.setOnClickListener(new View.OnClickListener()
-        {
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 d.dismiss(); // dismiss the dialog
@@ -276,7 +270,7 @@ public class Profile extends AppCompatActivity {
         d.show();
     }
 
-    public void genderUpdate(View v){
+    public void genderUpdate(View v) {
         final Dialog d = new Dialog(Profile.this);
         gender = (Button) findViewById(R.id.button_gender);
         d.setTitle("Choose Your Gender");
@@ -285,27 +279,27 @@ public class Profile extends AppCompatActivity {
         Button b2 = (Button) d.findViewById(R.id.cancel_gender);
         final RadioButton r1 = (RadioButton) d.findViewById(R.id.button_male);
         final RadioButton r2 = (RadioButton) d.findViewById(R.id.button_female);
-        b1.setOnClickListener(new View.OnClickListener(){
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 String text;
-                if(r1.isChecked())
+                if (r1.isChecked())
                     text = (String) r1.getText();
-                else if(r2.isChecked())
+                else if (r2.isChecked())
                     text = (String) r2.getText();
                 else
                     text = "GENDER";
                 gender.setText(text);
-                SharedPreferences gender_sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+                SharedPreferences gender_sp = getSharedPreferences("prof", Context.MODE_PRIVATE);
                 SharedPreferences.Editor ed = gender_sp.edit();
                 ed.putString("user_gender", text);
                 ed.commit();
                 d.dismiss();
             }
         });
-        b2.setOnClickListener(new View.OnClickListener(){
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 d.dismiss();
             }
         });
@@ -313,24 +307,23 @@ public class Profile extends AppCompatActivity {
     }
 
     @Override
-    protected Dialog onCreateDialog(int id){
-        if(id == DIALOG_ID){
+    protected Dialog onCreateDialog(int id) {
+        if (id == DIALOG_ID) {
             return new DatePickerDialog(this, dpickerlistener, year_x, month_x, day_x);
-        }
-        else
+        } else
             return null;
     }
 
-    private DatePickerDialog.OnDateSetListener dpickerlistener = new DatePickerDialog.OnDateSetListener(){
+    private DatePickerDialog.OnDateSetListener dpickerlistener = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int month, int day){
+        public void onDateSet(DatePicker view, int year, int month, int day) {
             year_x = year;
             month_x = month + 1;
             day_x = day;
             Button bt = (Button) findViewById(R.id.button_dateOfBirth);
-            String date = day_x+"/"+month_x+"/"+year_x;
+            String date = day_x + "/" + month_x + "/" + year_x;
             bt.setText(date);
-            SharedPreferences date_sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+            SharedPreferences date_sp = getSharedPreferences("prof", Context.MODE_PRIVATE);
             SharedPreferences.Editor ed = date_sp.edit();
             ed.putString("user_dob", date);
             ed.commit();
@@ -343,11 +336,10 @@ public class Profile extends AppCompatActivity {
         AlertDialog.Builder builder = alertDialogBuilder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if(items[i] == "Camera"){
-                    askForPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE,WRITE_EXST);
-                }
-                else if(items[i] == "Gallery"){
-                    askForPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE,READ_EXST);
+                if (items[i] == "Camera") {
+                    askForPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, WRITE_EXST);
+                } else if (items[i] == "Gallery") {
+                    askForPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE, READ_EXST);
                 }
             }
         });
@@ -370,10 +362,10 @@ public class Profile extends AppCompatActivity {
             }
         } else {
             Toast.makeText(this, "" + permission + " is already granted.", Toast.LENGTH_SHORT).show();
-            if(requestCode == 3){
-                askForPermission(android.Manifest.permission.CAMERA,CAMERA);
+            if (requestCode == 3) {
+                askForPermission(android.Manifest.permission.CAMERA, CAMERA);
             }
-            if(requestCode == 5){
+            if (requestCode == 5) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
                 File picture = new File(pictureDirectory, pictureName);
@@ -382,8 +374,8 @@ public class Profile extends AppCompatActivity {
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
                 startActivityForResult(intent, 1);
             }
-            if(requestCode == 4){
-                Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            if (requestCode == 4) {
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 2);
             }
         }
@@ -392,15 +384,15 @@ public class Profile extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED){
+        if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
             switch (requestCode) {
                 //Write external Storage
                 case 3:
-                    askForPermission(android.Manifest.permission.CAMERA,CAMERA);
+                    askForPermission(android.Manifest.permission.CAMERA, CAMERA);
                     break;
                 //Read storage
                 case 4:
-                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 2);
                     //Camera
                 case 5:
@@ -415,43 +407,41 @@ public class Profile extends AppCompatActivity {
             }
 
             Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-
-    private boolean hasCamera(){
+    private boolean hasCamera() {
         return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == RESULT_OK){
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
             File picture = new File(pictureDirectory, pictureName);
             ImageView img = (ImageView) findViewById(R.id.imageButton);
-            Log.d("MAINACITYT",String.valueOf(img.getHeight()));
+            Log.d("MAINACITYT", String.valueOf(img.getHeight()));
             //img.setImageBitmap(getThumbnailBitmap(picture.getAbsolutePath(), 289));
             Bitmap resized = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(picture.getPath()), 310, 310);
             img.setImageBitmap(resized);
-            SharedPreferences sp = getSharedPreferences("prof",MODE_PRIVATE);
+            SharedPreferences sp = getSharedPreferences("prof", MODE_PRIVATE);
             SharedPreferences.Editor ed = sp.edit();
-            ed.putString(LoginActivity.PhotoUrl,picture.getAbsolutePath());
+            ed.putString(LoginActivity.PhotoUrl, picture.getAbsolutePath());
             ed.commit();
             Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
             Uri uri = Uri.fromFile(picture);
             intent.setData(uri);
             this.sendBroadcast(intent);
 
-        }
-        else if(requestCode == 2 && resultCode == RESULT_OK && null != data){
+        } else if (requestCode == 2 && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
-            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
@@ -469,7 +459,7 @@ public class Profile extends AppCompatActivity {
 
             //tempbm = getCircularBitmap(tempbm);
             img.setImageBitmap(tempbm);
-            SharedPreferences sharedPref  = getSharedPreferences("prof", Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = getSharedPreferences("prof", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(LoginActivity.PhotoUrl, img_str);
             editor.commit();

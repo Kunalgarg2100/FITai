@@ -63,34 +63,33 @@ public class WorkoutActivity extends AppCompatActivity {
      * Initializing collapsing toolbar
      * Will show and hide the toolbar title on scroll
 
-    private void initCollapsingToolbar() {
-        final CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(" ");
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
-        appBarLayout.setExpanded(true);
+     private void initCollapsingToolbar() {
+     final CollapsingToolbarLayout collapsingToolbar =
+     (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+     collapsingToolbar.setTitle(" ");
+     AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+     appBarLayout.setExpanded(true);
 
-        // hiding & showing the title when toolbar expanded & collapsed
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
+     // hiding & showing the title when toolbar expanded & collapsed
+     appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+     boolean isShow = false;
+     int scrollRange = -1;
 
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
+     @Override public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+     if (scrollRange == -1) {
+     scrollRange = appBarLayout.getTotalScrollRange();
+     }
+     if (scrollRange + verticalOffset == 0) {
 
-                    collapsingToolbar.setTitle(getString(R.string.app_name));
-                    isShow = true;
-                } else if (isShow) {
-                    collapsingToolbar.setTitle(" ");
-                    isShow = false;
-                }
-            }
-        });
-    }*/
+     collapsingToolbar.setTitle(getString(R.string.app_name));
+     isShow = true;
+     } else if (isShow) {
+     collapsingToolbar.setTitle(" ");
+     isShow = false;
+     }
+     }
+     });
+     }*/
 
     /**
      * Adding few workouts for testing
@@ -105,7 +104,7 @@ public class WorkoutActivity extends AppCompatActivity {
                 R.drawable.brainyoga,
                 R.drawable.deskyoga,
                 R.drawable.onflightyoga,
-                R.drawable.meditation ,
+                R.drawable.meditation,
 
 
         };
@@ -131,7 +130,6 @@ public class WorkoutActivity extends AppCompatActivity {
         workoutList.add(a);
         a = new Workout("Meditation", "Meditation gives peace of mind", covers[8]);
         workoutList.add(a);
-
 
 
         adapter.notifyDataSetChanged();

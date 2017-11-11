@@ -1,5 +1,4 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ChatActivity"
@@ -44,13 +43,13 @@
                 android:layout_marginRight="4dp"
                 android:layout_height="53dp"
                 android:layout_weight="0.94"
-                android:hint="Type your message"/>
+                android:hint="Type your message" />
 
             <ImageView
                 android:id="@+id/btn_send"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/send"/>
+                android:src="@drawable/send" />
         </LinearLayout>
 
     </RelativeLayout>

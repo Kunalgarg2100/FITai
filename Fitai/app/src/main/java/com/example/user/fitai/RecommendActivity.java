@@ -24,17 +24,17 @@ public class RecommendActivity extends AppCompatActivity {
     //List<String> Goals = new ArrayList<>();
     //String[] simpleArray = new String[ Goals.size() ];
     //Goals.toArray(simpleArray);
-    String[] itemname ={
+    String[] itemname = {
             "Yoga",
             "Pilates",
             "Zumba",
             "Aerobics"
     };
 
-    Integer[] imgid={
+    Integer[] imgid = {
             R.drawable.deskyoga,
             R.drawable.onflightyoga,
-            R.drawable.meditation ,
+            R.drawable.meditation,
             R.drawable.yoga,
             R.drawable.zumba,
             R.drawable.pilates,
@@ -50,79 +50,79 @@ public class RecommendActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommend);
-        Bundle b=this.getIntent().getExtras();
-        String[] array=b.getStringArray("goals");
+        Bundle b = this.getIntent().getExtras();
+        String[] array = b.getStringArray("goals");
         //Log.d("string", array[0]);
         List<String> work = new ArrayList<>();
 
-        if(Arrays.asList(array).contains("Mental Health")){
+        if (Arrays.asList(array).contains("Mental Health")) {
             //itemname = new String[]{"Brain Yoga", "Meditation"};
-            if(!work.contains("Brain Yoga")){
+            if (!work.contains("Brain Yoga")) {
                 work.add("Brain Yoga");
             }
-            if(!work.contains("Meditation")) {
+            if (!work.contains("Meditation")) {
                 work.add("Meditation");
             }
         }
 
-        if(Arrays.asList(array).contains("Weight Loss")){
-            if(!work.contains("Pilates")){
+        if (Arrays.asList(array).contains("Weight Loss")) {
+            if (!work.contains("Pilates")) {
                 work.add("Pilates");
             }
-            if(!work.contains("Zumba")) {
+            if (!work.contains("Zumba")) {
                 work.add("Zumba");
             }
-            if(!work.contains("Aerobics")) {
+            if (!work.contains("Aerobics")) {
                 work.add("Aerobics");
             }
-            if(!work.contains("Suryanamaskar Yoga")) {
+            if (!work.contains("Suryanamaskar Yoga")) {
                 work.add("Suryanamaskar Yoga");
             }
         }
 
-        if(Arrays.asList(array).contains("Medical Condition")){
-            if(!work.contains("Meditation")){
+        if (Arrays.asList(array).contains("Medical Condition")) {
+            if (!work.contains("Meditation")) {
                 work.add("Meditation");
             }
         }
 
-        if(Arrays.asList(array).contains("Stress Relief")){
-            if(!work.contains("Zumba")){
+        if (Arrays.asList(array).contains("Stress Relief")) {
+            if (!work.contains("Zumba")) {
                 work.add("Zumba");
             }
-            if(!work.contains("Face Yoga")){
+            if (!work.contains("Face Yoga")) {
                 work.add("Face Yoga");
             }
-            if(!work.contains("Meditation")){
+            if (!work.contains("Meditation")) {
                 work.add("Meditation");
             }
         }
 
-        if(Arrays.asList(array).contains("Physical Fitness")){
-            if(!work.contains("Pilates")){
+        if (Arrays.asList(array).contains("Physical Fitness")) {
+            if (!work.contains("Pilates")) {
                 work.add("Pilates");
             }
-            if(!work.contains("Zumba")) {
+            if (!work.contains("Zumba")) {
                 work.add("Zumba");
             }
-            if(!work.contains("Suryanamaskar Yoga")) {
+            if (!work.contains("Suryanamaskar Yoga")) {
                 work.add("Suryanamaskar Yoga");
             }
-            if(!work.contains("Brain Yoga")){
+            if (!work.contains("Brain Yoga")) {
                 work.add("Brain Yoga");
             }
         }
 
-        if(Arrays.asList(array).contains("Spiritual Development")){
-            if(!work.contains("Meditation")){
+        if (Arrays.asList(array).contains("Spiritual Development")) {
+            if (!work.contains("Meditation")) {
                 work.add("Meditation");
             }
         }
 
         itemname = work.toArray(new String[0]);
 
-        CustomGoalsAdapter adapter=new CustomGoalsAdapter(this, itemname, imgid);
-        list=(ListView)findViewById(R.id.list);
+        CustomGoalsAdapter adapter = new CustomGoalsAdapter(this, itemname, imgid);
+        list = (ListView) findViewById(R.id.list);
 
 
         list.setAdapter(adapter);

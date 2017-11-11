@@ -58,6 +58,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="CustomFbButton">
         <item name="android:layout_height">300dp</item>
         <item name="android:layout_width">80dp</item>

@@ -8,15 +8,17 @@ import com.example.user.fitai.fragment.HomeFragment;
 import com.example.user.fitai.fragment.TrainingProgramsFragment;
 import com.example.user.fitai.fragment.WorkoutFragment;
 
-public class CustomFragmentPageAdapter extends FragmentPagerAdapter{
+public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
     private static final String TAG = CustomFragmentPageAdapter.class.getSimpleName();
     private static final int FRAGMENT_COUNT = 3;
+
     public CustomFragmentPageAdapter(FragmentManager fm) {
         super(fm);
     }
+
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return new HomeFragment();
             case 1:
@@ -26,13 +28,15 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter{
         }
         return null;
     }
+
     @Override
     public int getCount() {
         return FRAGMENT_COUNT;
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return "Home";
             case 1:

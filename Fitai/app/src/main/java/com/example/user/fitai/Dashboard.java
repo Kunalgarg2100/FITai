@@ -39,10 +39,12 @@ public class Dashboard extends AppCompatActivity
 
     private FragmentManager fragmentManager;
     private Fragment fragment = null;
+
     public boolean isLoggedIn() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,9 +79,6 @@ public class Dashboard extends AppCompatActivity
                 }
             });
         }*/
-
-
-
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -121,21 +120,21 @@ public class Dashboard extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header=navigationView.getHeaderView(0);
+        View header = navigationView.getHeaderView(0);
 /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
-        TextView username = (TextView)header.findViewById(R.id.dashboard_username);
-        TextView useremail = (TextView)header.findViewById(R.id.dashboard_email);
+        TextView username = (TextView) header.findViewById(R.id.dashboard_username);
+        TextView useremail = (TextView) header.findViewById(R.id.dashboard_email);
         username.setText(uname);
         useremail.setText(uemail);
         //String personPhotoUrl = sharedpreferences.getString("photoKey", "");
-        ImageView imgProfilePic = (ImageView)header.findViewById(R.id.dashboard_image);
-        if(fblogin == "yes"){
+        ImageView imgProfilePic = (ImageView) header.findViewById(R.id.dashboard_image);
+        if (fblogin == "yes") {
             Glide.with(getApplicationContext()).load(uphoto)
-                .thumbnail(0.3f)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgProfilePic);
-        }else if(fblogin == "no"){
+                    .thumbnail(0.3f)
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imgProfilePic);
+        } else if (fblogin == "no") {
             byte[] photoByte = Base64.decode(uphoto, Base64.DEFAULT);
             imgProfilePic.setImageBitmap(Utils.getImage(photoByte));
         }
@@ -177,8 +176,9 @@ public class Dashboard extends AppCompatActivity
             alert.show();
         }
     }
+
     public void disp() {
-        java.util.Date date= new Date();
+        java.util.Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int mnth = cal.get(Calendar.MONTH);
@@ -224,23 +224,18 @@ public class Dashboard extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             startActivity(new Intent(this, AboutActivity.class));
-        }else if(id == R.id.nav_dashboard){
+        } else if (id == R.id.nav_dashboard) {
             fragment = new TabsFragment();
             getSupportActionBar().setTitle("Dashboard");
-        }
-        else if (id == R.id.nav_workout_plan) {
+        } else if (id == R.id.nav_workout_plan) {
             startActivity(new Intent(this, WorkoutActivity.class));
-        }else if (id == R.id.nav_schedule) {
+        } else if (id == R.id.nav_schedule) {
             disp();
-        }
-        else if (id == R.id.nav_settings){
+        } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, Profile.class));
-        }
-        else if (id == R.id.nav_fitness_goals){
+        } else if (id == R.id.nav_fitness_goals) {
             startActivity(new Intent(this, GoalActivity1.class));
-        }
-        else if (id == R.id.nav_logout)
-        {
+        } else if (id == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setCancelable(false);
             builder.setMessage("Do you want to Logout?");
@@ -252,7 +247,7 @@ public class Dashboard extends AppCompatActivity
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.clear();
                     editor.commit();
-                    if(isLoggedIn())
+                    if (isLoggedIn())
                         LoginManager.getInstance().logOut();
                     startActivity(new Intent(Dashboard.this, LoginActivity.class));
                     finish();
@@ -268,8 +263,7 @@ public class Dashboard extends AppCompatActivity
             });
             AlertDialog alert = builder.create();
             alert.show();
-            }
-        else if (id == R.id.nav_support) {
+        } else if (id == R.id.nav_support) {
             startActivity(new Intent(this, SupportActivity.class));
         } else if (id == R.id.nav_faqs) {
             startActivity(new Intent(this, FrequentlyAskedQuestionsActivity.class));

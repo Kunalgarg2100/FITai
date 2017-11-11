@@ -28,7 +28,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 
-public class SendMail extends AsyncTask<Void,Void,Void> {
+public class SendMail extends AsyncTask<Void, Void, Void> {
 
     //Declaring Variables
     private Context context;
@@ -43,7 +43,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private ProgressDialog progressDialog;
 
     //Class Constructor
-    public SendMail(Context context, String email, String subject, String message){
+    public SendMail(Context context, String email, String subject, String message) {
         //Initializing variables
         this.context = context;
         this.email = email;
@@ -64,7 +64,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         //Dismissing the progress dialog
         //progressDialog.dismiss();
         //Showing a success message
-        Toast.makeText(context,"Mail sent successfully",Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Mail sent successfully", Toast.LENGTH_LONG).show();
         //context.startActivity(new Intent(SendMail.this, VerifyEmail.class));
     }
 

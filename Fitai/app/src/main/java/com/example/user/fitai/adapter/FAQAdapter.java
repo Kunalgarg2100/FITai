@@ -23,7 +23,7 @@ public class FAQAdapter extends ArrayAdapter<String> {
     public FAQAdapter(Context context, String[] questions, String[] answers) {
         super(context, R.layout.custom_faq_layout, questions);
         this.questions_list = questions;
-        this.answers_list=answers;
+        this.answers_list = answers;
     }
 
     @NonNull

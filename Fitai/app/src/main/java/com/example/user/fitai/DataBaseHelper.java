@@ -50,58 +50,57 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertData(String user, String email, String pass, byte[] image){
+    public boolean insertData(String user, String email, String pass, byte[] image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, user);
         contentValues.put(COL_3, email);
         contentValues.put(COL_4, pass);
         contentValues.put(COL_5, image);
-        long res = db.insert(TABLE_NAME,  null, contentValues);
-        if(res == -1) {
+        long res = db.insert(TABLE_NAME, null, contentValues);
+        if (res == -1) {
             Log.d("res", "false");
             return false;
-        }
-        else
+        } else
             return true;
     }
 
-    public boolean verifySignup(String email, String user){
+    public boolean verifySignup(String email, String user) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(TABLE_NAME, null, " EMAIL = ? or USERNAME = ?", new String[]{email, user}, null, null, null);
-        if(cursor.getCount()>0)
+        if (cursor.getCount() > 0)
             return false;
         else
             return true;
     }
 
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
     }
 
-    public boolean verifyLogin(String user, String pass){
+    public boolean verifyLogin(String user, String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor1 = db.query(TABLE_NAME, null, " USERNAME = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
         Cursor cursor2 = db.query(TABLE_NAME, null, " EMAIL = ? and PASSWORD = ?", new String[]{user, pass}, null, null, null);
-        if(cursor1.getCount()==1 || cursor2.getCount()==1)
+        if (cursor1.getCount() == 1 || cursor2.getCount() == 1)
             return true;
         else
             return false;
     }
 
-    public Cursor getEmail(String user){
+    public Cursor getEmail(String user) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor1 = db.query(TABLE_NAME, null, "USERNAME = ?", new String []{user}, null, null, null);
-        Cursor cursor2 = db.query(TABLE_NAME, null, "EMAIL = ?", new String []{user}, null, null, null);
-        if(cursor1 != null) {
+        Cursor cursor1 = db.query(TABLE_NAME, null, "USERNAME = ?", new String[]{user}, null, null, null);
+        Cursor cursor2 = db.query(TABLE_NAME, null, "EMAIL = ?", new String[]{user}, null, null, null);
+        if (cursor1 != null) {
             Log.d("yes", "yes");
             return cursor1;
-        } else if(cursor2 != null){
+        } else if (cursor2 != null) {
             Log.d("yes", "no");
             return cursor2;
-        } else{
+        } else {
             Log.d("yes", "veryno");
             return null;
         }
@@ -132,19 +131,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return null;
     }*/
 
-    public boolean deleteData(){
+    public boolean deleteData() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from " + TABLE_NAME);
         return true;
     }
 
-    public void updateProfile(double height, double weight, String gender, String dob, String user){
+    public void updateProfile(double height, double weight, String gender, String dob, String user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL_6, height);
         cv.put(COL_7, weight);
         cv.put(COL_8, dob);
         cv.put(COL_9, gender);
-        db.update(TABLE_NAME, cv, "USERNAME = ?", new String []{user});
+        db.update(TABLE_NAME, cv, "USERNAME = ?", new String[]{user});
     }
 }

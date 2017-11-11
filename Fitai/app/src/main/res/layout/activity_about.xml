@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -11,127 +10,127 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/first_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/back"
-        android:layout_marginBottom="0dp">
-
-    <TextView
-        android:id="@+id/app_about_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.33"
-        android:text=" FITai"
-        android:textStyle="bold"
-        android:textColor="@color/colorWhite"
-        android:textSize="25dp"
-        android:gravity = "center"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:id="@+id/app_about_description"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.33"
-            android:gravity="center"
-            android:text="VIRTUAL TRAINER ON DEMAND"
-            android:textStyle="bold"
-            android:textColor="@color/colorWhite"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_about_header"
-            android:layout_gravity="center_horizontal"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:id="@+id/description1"
-            android:layout_width="0dp"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/first_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="80% of the members don’t use gym, yet they pay $30 to $125/month. Attrition is linked with discouraging results and lack of engagement. Traditional gym users don’t know proper exercise regimen. Members prefer workout regimens that are fun, customizable and social. "
-            android:layout_gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/app_about_description"
-            android:layout_marginTop="30dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="8dp"
-            android:textColor="@color/colorWhite"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:id="@+id/description2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="We specialize in providing customized fitness solutions using Artificial Intelligence. Travi and Gruvi are our flagship products for fitness."
-            android:layout_gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/description1"
-            android:layout_marginTop="20dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="8dp"
-            android:textColor="@color/colorWhite"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.227" />
-
-        <RelativeLayout
-            android:id="@+id/info_about_fitai"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/description2"
-            android:layout_marginTop="20dp"
-            android:background="#ffffff"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:background="@drawable/back"
+            android:layout_marginBottom="0dp">
 
             <TextView
-                android:id="@+id/travi_title"
-                android:layout_width="match_parent"
+                android:id="@+id/app_about_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:text=" FITai"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="FITAI"
-                android:textAlignment="center" />
+                android:textColor="@color/colorWhite"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
 
             <TextView
-                android:id="@+id/travi_description"
-                android:layout_width="match_parent"
+                android:id="@+id/app_about_description"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.33"
+                android:gravity="center"
+                android:text="VIRTUAL TRAINER ON DEMAND"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_about_header"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/description1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/travi_title"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="9dp"
-                android:text="This is our introductory android app.We have built this app especially for those who are unable to visit any fitness center.This app's primaficial purpose is fitness via at-home workouts.It includes provision for yoga, zumba, pilates, aerobics. We hope that you have a  wonderful experience while using our product."
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-        </RelativeLayout>
-    </android.support.constraint.ConstraintLayout>
+                android:text="80% of the members don’t use gym, yet they pay $30 to $125/month. Attrition is linked with discouraging results and lack of engagement. Traditional gym users don’t know proper exercise regimen. Members prefer workout regimens that are fun, customizable and social. "
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/app_about_description"
+                android:layout_marginTop="30dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/description2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="We specialize in providing customized fitness solutions using Artificial Intelligence. Travi and Gruvi are our flagship products for fitness."
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/description1"
+                android:layout_marginTop="20dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.227" />
+
+            <RelativeLayout
+                android:id="@+id/info_about_fitai"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/description2"
+                android:layout_marginTop="20dp"
+                android:background="#ffffff"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/travi_title"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="FITAI"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/travi_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/travi_title"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="9dp"
+                    android:text="This is our introductory android app.We have built this app especially for those who are unable to visit any fitness center.This app's primaficial purpose is fitness via at-home workouts.It includes provision for yoga, zumba, pilates, aerobics. We hope that you have a  wonderful experience while using our product."
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -155,7 +154,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
-                android:background="@color/btncolor"/>
+                android:background="@color/btncolor" />
+
             <TextView
                 android:id="@+id/zumba_tiles"
                 android:layout_width="100dp"
@@ -169,7 +169,7 @@
                 android:layout_marginTop="20dp"
                 android:textAlignment="center"
                 android:gravity="center_vertical"
-                android:background="@color/colorWhite"/>
+                android:background="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/aerobics_tiles"

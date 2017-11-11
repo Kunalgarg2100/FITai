@@ -25,7 +25,7 @@ public class CustomWorkoutsAdapter extends RecyclerView.Adapter<CustomWorkoutsAd
     private List<Workout> workoutList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title,descript ,instruct;
+        public TextView title, descript, instruct;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
@@ -76,14 +76,13 @@ public class CustomWorkoutsAdapter extends RecyclerView.Adapter<CustomWorkoutsAd
         });
 
     }
-    public void do_whatever_you_want(View view, Workout workout)
-    {
+
+    public void do_whatever_you_want(View view, Workout workout) {
         Intent intent = new Intent(view.getContext(), ListActivity.class);
-        intent.putExtra("ID_OF_CALLER","zumba.json");
+        intent.putExtra("ID_OF_CALLER", "zumba.json");
         mContext.startActivity(intent);
 
     }
-
 
 
     @Override

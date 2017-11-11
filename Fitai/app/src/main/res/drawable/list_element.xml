@@ -6,16 +6,15 @@
             <corners android:radius="40dp" />
         </shape>
     </item>
-    <item android:left="1dp"
+    <item
+        android:left="1dp"
         android:right="1dp"
         android:top="0dp"
-        android:bottom="3dp" >
+        android:bottom="3dp">
         <shape>
-            <solid
-                android:color="@android:color/white" />
+            <solid android:color="@android:color/white" />
 
-            <corners
-                android:radius="40dp" />
+            <corners android:radius="40dp" />
             <padding
                 android:top="10dp"
                 android:right="10dp"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.fitai.RecommendActivity"
-    android:background="#f2f2f2" >
+    android:background="#f2f2f2">
 
     <ListView
         android:id="@+id/list"
@@ -17,7 +17,6 @@
         android:divider="#f2f2f2"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="15dp" >
-    </ListView>
+        android:layout_marginTop="15dp"></ListView>
 
 </RelativeLayout>

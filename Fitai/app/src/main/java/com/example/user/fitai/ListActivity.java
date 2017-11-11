@@ -66,16 +66,16 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         mSwipeContainer = (SwipeRefreshLayout) findViewById(R.id.refresh);
-        mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+        mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh(){
+            public void onRefresh() {
                 startActivity(intent);
                 finish();
             }
         });
-        if(isNetworkConnected(getApplicationContext())){
-            mSwipeContainer.setRefreshing( false );
-            mSwipeContainer.setEnabled( false );
+        if (isNetworkConnected(getApplicationContext())) {
+            mSwipeContainer.setRefreshing(false);
+            mSwipeContainer.setEnabled(false);
         }
 
     }
@@ -106,9 +106,10 @@ public class ListActivity extends AppCompatActivity {
         tempArray[newSize - 1] = newItem;
         return tempArray;
     }
+
     public static boolean isNetworkConnected(Context c) {
         ConnectivityManager conManager = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conManager.getActiveNetworkInfo();
-        return ( netInfo != null && netInfo.isConnected() );
+        return (netInfo != null && netInfo.isConnected());
     }
 }

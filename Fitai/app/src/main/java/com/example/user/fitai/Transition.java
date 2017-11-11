@@ -20,7 +20,7 @@ public class Transition extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },time_out);
+        }, time_out);
         Log.d("hello", "mc");
     }
 }

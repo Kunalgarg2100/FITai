@@ -23,8 +23,8 @@ import java.util.Date;
  * Created by kunal on 3/11/17.
  */
 
-public class ScheduleFragment extends Fragment{
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
+public class ScheduleFragment extends Fragment {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.activity_home, container, false);
         return view;

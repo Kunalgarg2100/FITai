@@ -28,19 +28,19 @@ public class MainActivity extends AppCompatActivity {
 
         //myDB = new DataBaseHelper(this);
 
-        username_text = (EditText)findViewById(R.id.user_text);
-        email_text = (EditText)findViewById(R.id.email_text);
-        pass1_text = (EditText)findViewById(R.id.pass1_text);
+        username_text = (EditText) findViewById(R.id.user_text);
+        email_text = (EditText) findViewById(R.id.email_text);
+        pass1_text = (EditText) findViewById(R.id.pass1_text);
         pass2_text = (EditText) findViewById(R.id.pass2_text);
         signup_btn = (Button) findViewById(R.id.signup_btn);
-        view_data_btn = (Button)findViewById(R.id.view_btn);
-        signup_page_btn = (Button)findViewById(R.id.signup_page_btn);
+        view_data_btn = (Button) findViewById(R.id.view_btn);
+        signup_page_btn = (Button) findViewById(R.id.signup_page_btn);
         newPage();
         addData();
         viewData();
     }
 
-    public void newPage(){
+    public void newPage() {
         signup_page_btn.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    public void addData(){
+    public void addData() {
         signup_btn.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -75,24 +75,23 @@ public class MainActivity extends AppCompatActivity {
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
-                        if(username.equals("") || email.equals("") || pass1.equals("") || pass2.equals("")){
+                        if (username.equals("") || email.equals("") || pass1.equals("") || pass2.equals("")) {
                             Toast.makeText(MainActivity.this, "All fields are required", Toast.LENGTH_LONG).show();
-                            return ;
+                            return;
                         }
-                        if(!pass1.equals(pass2)){
+                        if (!pass1.equals(pass2)) {
                             //Toast.makeText(MainActivity.this, "Passwords do not match", Toast.LENGTH_LONG).show();
                             pass1_text.setError("Passwords do not match!");
                             return;
                         }
-                        if(myDB.verifySignup(email, username)==true){
-                            byte[] image=null;
+                        if (myDB.verifySignup(email, username) == true) {
+                            byte[] image = null;
                             boolean signup = myDB.insertData(username, email, pass1, image);
-                            if(signup == true)
+                            if (signup == true)
                                 Toast.makeText(MainActivity.this, "SignUp successfull", Toast.LENGTH_LONG).show();
                             else
                                 Toast.makeText(MainActivity.this, "SignUp not successfull", Toast.LENGTH_LONG).show();
-                        }
-                        else{
+                        } else {
                             Toast.makeText(MainActivity.this, "Email already exists!!", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -100,33 +99,33 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    public void viewData(){
+    public void viewData() {
         view_data_btn.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Cursor res = myDB.getData();
-                        if(res.getCount() == 0) {
-                            getDialog("Error","Nothing found");
+                        if (res.getCount() == 0) {
+                            getDialog("Error", "Nothing found");
                             return;
                         }
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Id :"+ res.getString(0)+"\n");
-                            buffer.append("Username :"+ res.getString(1)+"\n");
-                            buffer.append("Email :"+ res.getString(2)+"\n");
-                            buffer.append("Password :"+ res.getString(3)+"\n\n");
+                            buffer.append("Id :" + res.getString(0) + "\n");
+                            buffer.append("Username :" + res.getString(1) + "\n");
+                            buffer.append("Email :" + res.getString(2) + "\n");
+                            buffer.append("Password :" + res.getString(3) + "\n\n");
                         }
 
                         // Show all data
-                        getDialog("Data",buffer.toString());
+                        getDialog("Data", buffer.toString());
                     }
                 }
         );
     }
 
-    public void getDialog(String title, String message){
+    public void getDialog(String title, String message) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setCancelable(true);
         dialog.setTitle(title);

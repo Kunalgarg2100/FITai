@@ -60,7 +60,7 @@ public class Utils {
         return baos.toByteArray();
     }
 
-    public static byte[] downloadImage(URL url) throws Exception{
+    public static byte[] downloadImage(URL url) throws Exception {
 
         //URL url = new URL("http://images.11bestbuy.com/images/small_17385013870957.jpg");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -72,7 +72,7 @@ public class Utils {
 
         try {
             Bitmap b = BitmapFactory.decodeStream(con.getInputStream());
-            b.compress(Bitmap.CompressFormat.JPEG,100,bos);
+            b.compress(Bitmap.CompressFormat.JPEG, 100, bos);
         } finally {
             con.disconnect();
         }
