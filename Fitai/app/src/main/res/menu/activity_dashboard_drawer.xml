@@ -30,10 +30,6 @@
             android:icon="@mipmap/ic_menu_preferences"
             android:title="Profile" />
 
-        <item
-            android:id="@+id/nav_notifications"
-            android:icon="@mipmap/ic_menu_preferences"
-            android:title="Notifications" />
 
         <item
             android:id="@+id/nav_logout"
