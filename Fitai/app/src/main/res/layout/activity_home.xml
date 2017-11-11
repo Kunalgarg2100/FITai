@@ -29,8 +29,8 @@
             app:layout_constraintHorizontal_bias="0.535"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_info"
-            android:layout_marginTop="32dp"></TextView>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="38dp"></TextView>
 
 
         <TextView
@@ -44,8 +44,8 @@
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/textView"
             app:layout_constraintHorizontal_bias="0.503"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/set_profile"></TextView>
+            android:layout_marginTop="26dp"
+            app:layout_constraintTop_toBottomOf="@+id/user_info"></TextView>
 
         <ImageView
             android:id="@+id/imageView2"
@@ -53,7 +53,7 @@
             android:layout_height="167dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@drawable/girl_yoga"
+            app:srcCompat="@drawable/meditation"
             android:layout_marginTop="18dp"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -68,11 +68,10 @@
             android:gravity="center"
             android:text="Graph of last Workout"
             android:textSize="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/yourCircularProgressbar"></TextView>
+            android:layout_marginRight="68dp"
+            android:layout_marginTop="157dp"
+            app:layout_constraintTop_toBottomOf="@+id/text2"></TextView>
 
         <TextView
             android:id="@+id/text2"
@@ -92,51 +91,50 @@
             app:layout_constraintRight_toRightOf="parent"></TextView>
 
         <TextView
-            android:id="@+id/text3"
-            android:layout_width="146dp"
-            android:layout_height="60dp"
+            android:id="@+id/text4"
+            android:layout_width="185dp"
+            android:layout_height="76dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/border_style"
             android:gravity="center"
-            android:text="Complete your profile"
+            android:text="Total Days 21\nDays Completed 7"
             android:textSize="20dp"
             android:layout_marginRight="16dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/text1"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/text2" />
+            app:layout_constraintTop_toBottomOf="@+id/text2"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/text1" />
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
             android:id="@+id/yourCircularProgressbar"
-            android:layout_width="108dp"
-            android:layout_height="163dp"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
             app:cpb_background_progressbar_color="#FFCDD2"
             app:cpb_background_progressbar_width="5dp"
             app:cpb_progressbar_color="#F44336"
             app:cpb_progressbar_width="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="-82dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/text2"
-            app:layout_constraintHorizontal_bias="0.197"
-            tools:layout_editor_absoluteX="48dp" />
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/text1"
+            android:layout_marginLeft="47dp"
+            app:layout_constraintVertical_bias="0.486"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/chart"
-            android:layout_width="339dp"
-            android:layout_height="195dp"
+            android:layout_width="350dp"
+            android:layout_height="253dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.68"
-            tools:layout_editor_absoluteY="592dp"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/text1" />
 
         <TextView
             android:id="@+id/user_info"
-            android:layout_width="289dp"
-            android:layout_height="58dp"
+            android:layout_width="290dp"
+            android:layout_height="71dp"
             android:text="TextView"
             android:background="@drawable/border_style"
             android:layout_marginLeft="8dp"
@@ -145,9 +143,8 @@
             app:layout_constraintRight_toRightOf="parent"
             android:textSize="20dp"
             android:textColor="@android:color/black"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/set_profile" />
 
 
     </android.support.constraint.ConstraintLayout>

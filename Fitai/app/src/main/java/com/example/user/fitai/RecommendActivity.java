@@ -32,15 +32,18 @@ public class RecommendActivity extends AppCompatActivity {
     };
 
     Integer[] imgid={
-            R.drawable.body1,
-            R.drawable.body2,
-            R.drawable.body3,
-            R.drawable.body4,
-            R.drawable.body4,
-            R.drawable.body4,
-            R.drawable.body4,
-            R.drawable.body4,
-            R.drawable.body4
+            R.drawable.deskyoga,
+            R.drawable.onflightyoga,
+            R.drawable.meditation ,
+            R.drawable.yoga,
+            R.drawable.zumba,
+            R.drawable.pilates,
+            R.drawable.zumba,
+            R.drawable.suryanamaskar,
+            R.drawable.aerobics,
+            R.drawable.yoga,
+            R.drawable.brainyoga,
+            R.drawable.deskyoga,
     };
 
     @Override

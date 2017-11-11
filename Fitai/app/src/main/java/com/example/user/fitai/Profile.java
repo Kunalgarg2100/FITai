@@ -81,7 +81,7 @@ public class Profile extends AppCompatActivity {
         SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         String uname = sharedpreferences.getString("nameKey", "");
         Log.d("user_name", uname);
-        user_info = LoginActivity.myDB.getEmail(uname);
+/*        user_info = LoginActivity.myDB.getEmail(uname);
         if (user_info.moveToFirst()) {
             image = user_info.getBlob(4);
             height = user_info.getDouble(5);
@@ -92,11 +92,12 @@ public class Profile extends AppCompatActivity {
         else if (user_info == null){
             Toast.makeText(Profile.this, "Error fetching user information!", Toast.LENGTH_LONG).show();
         }
-        //TextView userInfo = (TextView) findViewById(R.id.userName);
+  */      //TextView userInfo = (TextView) findViewById(R.id.userName);
         //userInfo.setText(height.toString()+weight.toString()+dob+sex);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES,Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("prof",Context.MODE_PRIVATE);
+        //SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES,Context.MODE_PRIVATE);
         String image_string = sp.getString(LoginActivity.PhotoUrl,"");
         String weight_string = sp.getString("user_weight", "");
         String height_string = sp.getString("user_height", "");
@@ -130,7 +131,7 @@ public class Profile extends AppCompatActivity {
             b4 = (Button) findViewById(R.id.button_gender);
             b4.setText(gender_string);
         }
-
+/*
         if(!height.equals("")){
             b1.setText(height.toString()+" cm");
         }
@@ -143,7 +144,7 @@ public class Profile extends AppCompatActivity {
         if(!sex.equals("")){
             b4.setText(sex);
         }
-    }
+  */  }
 
     public void dateUpdate(View v){
         final Calendar cal = Calendar.getInstance();

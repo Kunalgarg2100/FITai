@@ -38,7 +38,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter{
             case 1:
                 return "Workouts";
             case 2:
-                return "Training Programs";
+                return "Workouts available";
         }
         return null;
     }

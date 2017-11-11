@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.user.fitai.adapter.CustomWorkoutsAdapter;
 import com.example.user.fitai.adapter.Workout;
 import com.example.user.fitai.adapter.WorkoutsAdapter;
 
@@ -26,7 +27,7 @@ import java.util.List;
 public class WorkoutActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private WorkoutsAdapter adapter;
+    private CustomWorkoutsAdapter adapter;
     private List<Workout> workoutList;
 
     @Override
@@ -41,7 +42,7 @@ public class WorkoutActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         workoutList = new ArrayList<>();
-        adapter = new WorkoutsAdapter(this, workoutList);
+        adapter = new CustomWorkoutsAdapter(this, workoutList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);

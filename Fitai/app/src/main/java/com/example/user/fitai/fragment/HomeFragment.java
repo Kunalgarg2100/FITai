@@ -21,10 +21,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.user.fitai.GoalsActivity;
 import com.example.user.fitai.LoginActivity;
 import com.example.user.fitai.ProgramActivity;
 import com.example.user.fitai.R;
+import com.example.user.fitai.RecommendActivity;
 import com.example.user.fitai.SetProfile;
+import com.example.user.fitai.WorkoutActivity;
 import com.example.user.fitai.adapter.CustomProgramAdapter;
 import com.example.user.fitai.adapter.Workout;
 import com.example.user.fitai.adapter.WorkoutsAdapter;
@@ -42,6 +45,7 @@ import java.util.List;
 
 public class HomeFragment extends TabsFragment{
     TextView setProfile, userInfo;
+    ImageView img;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -63,8 +67,9 @@ public class HomeFragment extends TabsFragment{
 
         if(!height.equals("") && !weight.equals("") && !gender.equals("") && !dob.equals("")) {
             setProfile.setVisibility(view.GONE);
-            userInfo.setText("weight" + weight+" gender"+gender+"dob "+dob);
+            userInfo.setText("Height " + height +"\n" + "Weight " + weight);
         }else{
+            userInfo.setVisibility(view.GONE);
             setProfile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,9 +78,10 @@ public class HomeFragment extends TabsFragment{
             });
         }
         BarChart chart = (BarChart) view.findViewById(R.id.chart);
+        img  = view.findViewById(R.id.imageView2);
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
-        chart.setDescription("My Chart");
+        chart.setDescription("Yoga");
         chart.animateXY(2000, 2000);
         chart.invalidate();
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar)
@@ -89,7 +95,14 @@ public class HomeFragment extends TabsFragment{
         int animationDuration = 2500; // 2500ms = 2,5s
         circularProgressBar.setProgressWithAnimation(65, animationDuration); // Default duration = 1500ms
 
-
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WorkoutActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
         try {
             Glide.with(this).load(R.drawable.cover).into((ImageView) view.findViewById(R.id.backdrop));
         } catch (Exception e) {
@@ -116,7 +129,7 @@ public class HomeFragment extends TabsFragment{
         valueSet1.add(v1e6);
         BarEntry v1e7 = new BarEntry(7.000f, 6);  // Day7
         valueSet1.add(v1e7);
-        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Brand 1");
+        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Yoga");
         barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
 
         dataSets = new ArrayList<>();
