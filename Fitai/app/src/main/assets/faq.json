@@ -1,0 +1,28 @@
+{
+  "list": [
+    {
+      "question": "Q1: Why can't I lose weight?",
+      "answer": "You are not eating at a calorie deficit.Either you are over-estimating the amount of calories your body is using, or under-estimating the amount that you are eating.We strongly recommend reading this extensive article about difficulties losing weight, as well as this article about fat loss from the same site."
+    },
+    {
+      "question": "Q2: Why am I not losing body fat?",
+      "answer": "As it turns out, the expensive thing you (probably) bought to measure your body fat percentage doesn't actually work that well. Consumer grade methods of measuring body fat percentage are not precise or accurate enough to be reliable measures of weight or fat loss."
+    },
+    {
+      "question": "Q3: Why can't I gain weight?",
+      "answer": "You are not eating enough and are not at a calorie surplus. Eat more. It does not matter how much you think you're eating. If you're not gaining weight or getting bigger, it's not enough.If you are absolutely certain that you are eating in a way that should cause you to gain weight, but you have not over a long period of time, then you should consult with a doctor, as the only alternative is a disease or disorder that r/Fitness cannot help you with."
+    },
+    {
+      "question": "Q4: Can I lose fat and build muscle at the same time?",
+      "answer": "The ability to gain muscle while losing fat is dependent on the relationship between your fatness and muscularity. An overly-fat and under-trained person will be able to achieve simultaneous fat loss and muscle gain."
+    },
+    {
+      "question": "Q5: How fast can I lose fat without losing muscle?",
+      "answer": "There is a theoretical maximum amount of fat loss your body can endure, before it starts losing muscle. That amount is 31 calories/day/lb of fat (Note that the author revised this number from 31 to 22 cal an email exchange with Redditor, Chr0me)."
+    },
+    {
+      "question": "Q6: Should I be lifting if I am trying to lose body fat?",
+      "answer": "Yes. Lifting helps spare muscle while eating a deficit. This has the two-fold advantage of reducing body fat faster and giving you a stronger starting point once you start bulking."
+    }
+  ]
+}

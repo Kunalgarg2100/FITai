@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c2c2a3">
+
+    <TextView
+        android:id="@+id/tnc_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:text="@string/read_tnc"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/tnc"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_below="@+id/tnc_text"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/display_tnc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/exit_tnc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tnc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/exit_from_tnc" />
+
+</RelativeLayout>

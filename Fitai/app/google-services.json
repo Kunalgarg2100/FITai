@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "55532647560",
+    "project_id": "fitai-dff8e"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55532647560:android:a12cd66fcd58838e",
+        "android_client_info": {
+          "package_name": "com.example.user.fitai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55532647560-u7i55vfbqr5f6u0op4frhdn72hjva5fs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.fitai",
+            "certificate_hash": "f5bb8005421337f71c86bfcb9ca589f0a19c4efb"
+          }
+        },
+        {
+          "client_id": "55532647560-ppvql56cnil7nuuunhgia0mt2ffsqis8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD0ql8uJQ9osqxsHqlBzYR_qmbq7ari9A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
